@@ -46,50 +46,33 @@
 
 - (void)save {
     if (self.isNew) {
-        // PUT
-        NSURL *url = [self.api urlForRoute:@"feeds.json"];
-        AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
-        httpClient.parameterEncoding = AFJSONParameterEncoding;
-        NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:nil parameters:self.info];
-        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-        AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-            success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                NSLog(@"COSMModelFeed did return a json responce. Unexpected. This might not work as not tested");
-                if ([response valueForKeyPath:@"allHeaderFields.Location"]) {
-                    NSString *feedId = [COSMAPI feedIDFromURLString:[response valueForKeyPath:@"allHeaderFields.Location"]];
-                    [self.info setObject:feedId forKey:@"id"];
-                    
-                    NSLog(@"COSMFeedModel save: should be adding feed id to children");
-                }
-                self.isNew = NO;
-                self.isUpdated = NO;
-                if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidSave:)]) {
-                    [self.delegate modelDidSave:self];
-                }
-            } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                NSLog(@"COSMModelFeed save did not return a json responce");
-                // cosm is returing a header of type text/html
-                // so we are going to check it is type 201 (Created) and
-                // pass on the nil JSON object and not parse
-                if ([response statusCode] == 201) {
-                    if ([response valueForKeyPath:@"allHeaderFields.Location"]) {
-                        NSString *feedId = [COSMAPI feedIDFromURLString:[response valueForKeyPath:@"allHeaderFields.Location"]];
-                        [self.info setObject:feedId forKey:@"id"];
-                    }
-                    self.isNew = NO;
-                    self.isUpdated = NO;
-                    if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidSave:)]) {
-                        [self.delegate modelDidSave:self];
-                    }
-                } else {
-                    if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToSave:withError:json:)]) {
-                        [self.delegate modelFailedToSave:self withError:error json:JSON];
-                    }
-                }
-            }];
-            [operation start];
-    } else {
         // POST
+        NSURL *url = [self.api urlForRoute:@"feeds/"];
+        AFHTTPClient *httpClient = [AFHTTPClient clientWithBaseURL:url];
+        NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:nil parameters:nil];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        NSData *data  = [NSJSONSerialization dataWithJSONObject:self.info options:NSJSONWritingPrettyPrinted error:nil];
+        [request setHTTPBody:data];
+        AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if ([operation.response valueForKeyPath:@"allHeaderFields.Location"]) {
+                NSString *feedId = [COSMAPI feedIDFromURLString:[operation.response valueForKeyPath:@"allHeaderFields.Location"]];
+                [self.info setObject:feedId forKey:@"id"];
+            }
+            self.isNew = NO;
+            self.isUpdated = NO;
+            if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidSave:)]) {
+                [self.delegate modelDidSave:self];
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToSave:withError:json:)]) {
+                id JSON = [NSJSONSerialization JSONObjectWithData:[[[error userInfo] valueForKeyPath:NSLocalizedRecoverySuggestionErrorKey]  dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+                [self.delegate modelFailedToSave:self withError:error json:JSON];
+            }
+        }];
+        [operation start];
+    } else {
+        // PUT
     }
 }
 
