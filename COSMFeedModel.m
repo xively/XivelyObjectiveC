@@ -72,7 +72,26 @@
         }];
         [operation start];
     } else {
-        // PUT
+        NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%@", [self.info valueForKeyPath:@"id"]]];
+        AFHTTPClient *httpClient = [AFHTTPClient clientWithBaseURL:url];
+        NSMutableURLRequest *request = [httpClient requestWithMethod:@"PUT" path:nil parameters:nil];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        NSData *data  = [NSJSONSerialization dataWithJSONObject:self.info options:NSJSONWritingPrettyPrinted error:nil];
+        [request setHTTPBody:data];
+        AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            self.isNew = NO;
+            self.isUpdated = NO;
+            if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidSave:)]) {
+                [self.delegate modelDidSave:self];
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToSave:withError:json:)]) {
+                id JSON = [NSJSONSerialization JSONObjectWithData:[[[error userInfo] valueForKeyPath:NSLocalizedRecoverySuggestionErrorKey]  dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+                [self.delegate modelFailedToSave:self withError:error json:JSON];
+            }
+        }];
+        [operation start];
     }
 }
 
