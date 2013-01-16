@@ -55,7 +55,8 @@
 }
 
 - (void)parse:(id)JSON {
-    NSMutableDictionary * mutableJSON = [NSMutableDictionary dictionaryWithDictionary:JSON];
+    // create a deep mutable copy
+    NSMutableDictionary * mutableJSON  = (__bridge NSMutableDictionary *)CFPropertyListCreateDeepCopy(kCFAllocatorDefault, (CFDictionaryRef)JSON, kCFPropertyListMutableContainers);
     
     [self.feeds removeAllObjects];
     

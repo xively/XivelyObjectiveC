@@ -13,7 +13,6 @@
 // State
 @property (nonatomic, strong) NSArray *required;
 @property BOOL isNew;
-@property BOOL isUpdated;
 @property BOOL isDeletedFromCOSM;
 - (BOOL)isValid;
 

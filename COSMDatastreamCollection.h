@@ -6,7 +6,7 @@
 /// data
 
 @property NSUInteger feedId;
-// feeds
+// datastreams
 @property (nonatomic, strong) NSMutableArray *datastreams;
 // everything else
 @property (nonatomic, strong) NSMutableDictionary *info;

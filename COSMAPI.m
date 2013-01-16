@@ -44,7 +44,7 @@ static COSMAPI *defaultAPI = nil;
         }
     }];
     [url appendFormat:@"key=%@&", apiKey];
-    NSLog(@"COSMAPI `urlForRoute:withParameters:` is %@", url);
+    NSLog(@"COSMAPI `urlForRoute:` is %@", url);    
     return [NSURL URLWithString:url];
 }
 

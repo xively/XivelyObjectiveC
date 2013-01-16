@@ -8,7 +8,6 @@
 
 - (id)init {
     if (self=[super init]) {
-        isUpdated = NO;
         isNew = YES;
         isDeletedFromCOSM = FALSE;
         info = [[NSMutableDictionary alloc] initWithCapacity:25.0f];
@@ -19,7 +18,7 @@
 
 #pragma mark - State
 
-@synthesize isNew, isUpdated, isDeletedFromCOSM, required;
+@synthesize isNew, isDeletedFromCOSM, required;
 
 - (BOOL)isValid {
     BOOL valid = YES;
