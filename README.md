@@ -1,6 +1,6 @@
 # LibCOSM (Alpha Release)
 
-An iOS and OSX Objective-C Libray for [COSM](http://cosm.com/). Requires [AFNetworking](https://github.com/AFNetworking/AFNetworking). It is similar in design to [backbone.js]()
+An iOS and OSX Objective-C Library for [COSM](http://cosm.com/) similar in design to [backbone.js](http://backbonejs.org). Requires [AFNetworking](https://github.com/AFNetworking/AFNetworking).
 
 ## Setting the API Key
 
@@ -8,20 +8,22 @@ This should be done early as possible if only API Key is used.
 
     [[COSMAPI defaultAPI] setApiKey:@"<API Key>"];
 
-By default all new `COSMModel`s and `COSMCollection`s will use this API Key when communicating with the server. A different API Key can be used by creating new COSMAPI object, setting a different key and providing this COSMAPI object to `COSMModel`s and `COSMCollection`s on a case by case basis. E.g.
+By default all new `COSMModel`s and `COSMCollection`s will use this API Key when communicating with the server. 
+
+A different API Key may be used by creating new COSMAPI object. This new COSMAPI object can be added to all COSMModels and COSMCollections on a case by case basis. For example
 
     COSMFeedModel *feed = [[COSMFeedModel alloc] init];
     COSMAPI *alternativeAPI = [[COSMApi alloc] init];
     [feed setApi:alternativeAPI]; 
 
 
-The COSM API url can also be changed:
+The COSM API URL can also be changed
 
     [[COSMAPI defaultAPI] setApiURLString:@"https://proxiedapi.com/v2/"];
 
 ## Getting a list of all feeds
 
-For example, and a table view controller you may have:
+For example, in a table view controller
 
     -(void)viewWillAppear:(BOOL)animated {
     
@@ -33,7 +35,7 @@ For example, and a table view controller you may have:
         // set this feed collection to only fetch 100 feeds
         [self.feedCollection useParameter:@"per_page" withValue:@"100"];
         
-        // set it to only list feeds from the user "joebloggs"
+        // set it to only fetch feeds from the user "joebloggs"
         [self.feedCollection useParameter:@"user" withValue:@"joebloggs"];
         
         // become the delegate so we know when the feedCollection has fetched
@@ -42,27 +44,26 @@ For example, and a table view controller you may have:
         // fetch the feeds
         [self.feedCollection fetch];
     
-In order to know when the collection has fetch we need to implement the FeedCollections delegate methods like so:
+To know when the collection has fetched, implement the FeedCollections delegate methods
 
      - (void)feedCollectionDidFetch:(COSMFeedCollection *)feedCollection {
         
         // feeds were fetch so reload the table view
         [self.tableView reload];
-        
      }
      
      - (void)feedCollectionFailedToFetch:(COSMFeedCollection *)feedCollection withError:(NSError*)error json:(id)JSON {
-     
-        // or if something went wrong
+        
+        // feeds failed to fetch
         NSLog(@"The feed collection failed to fetch.")
         NSLog(@"The error is %@", error)
+
         // and is we spoke to the COSM server, there is a good 
         // chance we will have JSON that describe the error
         NSLog(@"COSM said %@", JSON);
-        
      }
      
-The feed collection will now have an array of feed model which we can use to populate the table like so:
+The feed collection will now have an array of feed models which can be use to populate the table cells
 
     - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
         
@@ -79,16 +80,16 @@ The feed collection will now have an array of feed model which we can use to pop
         COSMDatastreamModel *datastream = [datastreamCollection.datastreams lastObject];
         
         // then we can get information about the datastream
-        NSString *datastreamID = [feed valueForKeyPath:@"info.id"];
-        float currentValue = [[feed valueForKeyPath:@"info.current_value"] floatValue];
-        NSString *unitLabel = [feed valueForKeyPath:@"info.unit.current_value"];
+        NSString *datastreamID  = [feed valueForKeyPath:@"info.id"];
+        NSString *unitLabel     = [feed valueForKeyPath:@"info.unit.label"];
+        float currentValue      = [[feed valueForKeyPath:@"info.current_value"] floatValue];
         
         // or, we could just log all the information about the stream
         NSLog(@"%@", feed.info);
         
 ## Creating a feed
 
-Feeds can be created and saved like so
+Feeds can be created and saved
 
     // create the feed model
     COSMFeedModel *feedModel = [[COSMFeedModel alloc] init];
@@ -129,7 +130,7 @@ Or on its own by giving a new datastream it's feed id
     
     [datastream save];
 
-If you have a feed model which has been previously saved or feched, a new datastream can be add to that feed model then the new datastream saved
+If you have a feed model which has been previously saved or fetched, a new datastream can be add to that feed model then the new datastream saved.
 
 
 
