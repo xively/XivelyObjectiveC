@@ -12,9 +12,7 @@
 
 - (NSMutableDictionary *)saveableInfo {
     NSMutableDictionary *copiedDictionary = [NSMutableDictionary dictionaryWithDictionary:self.info];
-    NSLog(@"saveable info is %@", copiedDictionary);
     [copiedDictionary removeObjectForKey:@"datapoints"];
-    NSLog(@"saveable info is after %@", copiedDictionary);
     return copiedDictionary;
 }
 
