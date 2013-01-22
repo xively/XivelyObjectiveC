@@ -13,14 +13,14 @@
 
 @synthesize datastreamCollection;
 
-- (NSMutableDictionary *)saveableInfo {
+- (NSMutableDictionary *)saveableInfoWithNewDatastreamsOnly:(BOOL)newOnly {
     NSMutableDictionary *copiedDictionary = [NSMutableDictionary dictionaryWithDictionary:self.info];
     NSMutableArray *datastreams = [[NSMutableArray alloc] init];
     [copiedDictionary removeObjectForKey:@"datastreams"];
     [datastreamCollection.datastreams enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if ([obj isKindOfClass:[COSMDatastreamModel class]]) {
             COSMDatastreamModel *datastream = obj;
-            if (datastream.isNew) {
+            if (!newOnly || datastream.isNew) {
                 [datastreams addObject:[datastream saveableInfo]];
             }
         }
@@ -65,8 +65,7 @@
 }
 
 - (void)save {
-    NSMutableDictionary *saveableInfoDictionary = [self saveableInfo];
-    NSLog(@"%@", saveableInfoDictionary);   
+    NSMutableDictionary *saveableInfoDictionary = [self saveableInfoWithNewDatastreamsOnly:YES];
     
     if (self.isNew) {
         // POST
