@@ -183,7 +183,7 @@
 
 - (void)parse:(id)JSON {
     // create a deep mutable copy
-    NSLog(@"JSON is %@", JSON);
+    //NSLog(@"JSON is %@", JSON);
     NSMutableDictionary * mutableJSON  = (__bridge NSMutableDictionary *)CFPropertyListCreateDeepCopy(kCFAllocatorDefault, (CFDictionaryRef)JSON, kCFPropertyListMutableContainers);
     [self.datapointCollection.datapoints removeAllObjects];
     NSArray *returnedDatastreams = [mutableJSON valueForKeyPath:@"datapoints"];
