@@ -75,14 +75,15 @@
         [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         
-        
         NSData *data  = [NSJSONSerialization dataWithJSONObject:saveableInfoDictionary options:NSJSONWritingPrettyPrinted error:nil];
         NSLog(@"JSON %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
         [request setHTTPBody:data];
         AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"recieved response! %@", [operation.response valueForKeyPath:@"allHeaderFields.Location"]);
             if ([operation.response valueForKeyPath:@"allHeaderFields.Location"]) {
                 NSString *feedId = [COSMAPI feedIDFromURLString:[operation.response valueForKeyPath:@"allHeaderFields.Location"]];
                 [self.info setObject:feedId forKey:@"id"];
+                NSLog(@"My ID is %@", feedId);
             }
             self.isNew = NO;
             NSMutableArray *savedDatastreams = [saveableInfoDictionary objectForKey:@"datastreams"];
@@ -100,7 +101,27 @@
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToSave:withError:json:)]) {
-                id JSON = [NSJSONSerialization JSONObjectWithData:[[[error userInfo] valueForKeyPath:NSLocalizedRecoverySuggestionErrorKey]  dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+                // get some data to use as JSON from the error
+                id dataToJsonify = [[error userInfo] valueForKeyPath:NSLocalizedRecoverySuggestionErrorKey];
+                if (!dataToJsonify) {
+                    dataToJsonify = [[error userInfo] valueForKeyPath:NSLocalizedDescriptionKey];
+                }
+                if (!dataToJsonify) {
+                    dataToJsonify = @"Save failed with unknown error.";
+                }
+                NSError *jsonError = NULL;
+                id JSON;
+                // see if the data can be made into data, if not
+                // make something similar to COSM Api error
+                // with the error information we have extracted. 
+                if ([NSJSONSerialization isValidJSONObject:dataToJsonify]) {
+                    JSON = [NSJSONSerialization JSONObjectWithData:[dataToJsonify dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments error:&jsonError];
+                    if (jsonError) {
+                        NSLog(@"JSON error %@", jsonError);
+                    }
+                } else {
+                    JSON = @{@"title" : @"Failed to save", @"errors" : dataToJsonify};
+                }
                 [self.delegate modelFailedToSave:self withError:error json:JSON];
             }
         }];
