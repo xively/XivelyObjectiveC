@@ -176,8 +176,12 @@
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToDeleteFromCOSM:withError:json:)]) {
-            id JSON = [NSJSONSerialization JSONObjectWithData:[[[error userInfo] valueForKeyPath:NSLocalizedRecoverySuggestionErrorKey]  dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-            [self.delegate modelFailedToDeleteFromCOSM:self withError:error json:JSON];
+            if ([[error userInfo] valueForKeyPath:NSLocalizedRecoverySuggestionErrorKey]) {
+                id JSON = [NSJSONSerialization JSONObjectWithData:[[[error userInfo] valueForKeyPath:NSLocalizedRecoverySuggestionErrorKey]  dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+                [self.delegate modelFailedToDeleteFromCOSM:self withError:error json:JSON];
+            } else {
+                [self.delegate modelFailedToDeleteFromCOSM:self withError:error json:NULL];
+            }
         }
     }];
     [operation start];
