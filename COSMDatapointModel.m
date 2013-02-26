@@ -3,12 +3,7 @@
 @implementation COSMDatapointModel
 
 -(id)init {
-    if (self = [super init]) {
-        required = @[
-            @"at",
-            @"value"
-        ];
-    }
+    if (self = [super init]) { }
     return self;
 }
 

@@ -35,9 +35,6 @@
     if (self = [super init]) {
 		self.api = [COSMAPI defaultAPI];
         self.datastreamCollection = [[COSMDatastreamCollection alloc] init];
-        required = @[
-            @"title"
-        ];
     }
     return self;
 }

@@ -29,10 +29,6 @@
     if (self = [super init]) {
 		self.api = [COSMAPI defaultAPI];
         self.datapointCollection = [[COSMDatapointCollection alloc] init];
-        required = @[
-            @"id",
-            @"current_value"
-        ];
         [self.info setValue:[[NSMutableDictionary alloc] init] forKey:@"unit"];
     }
     return self;
