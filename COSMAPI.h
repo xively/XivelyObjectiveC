@@ -12,6 +12,7 @@
 // Sync settings
 @property (nonatomic, strong) NSString *apiKey;
 @property (nonatomic, strong) NSString *apiURLString;
+@property (nonatomic, strong) NSString *socketApiURLString;
 @property BOOL useGzip;
 
 // Helpers

@@ -1,7 +1,9 @@
 #import "COSMModel.h"
 @class COSMDatapointCollection;
+// socket
+#import "SRWebSocket.h"
 
-@interface COSMDatastreamModel : COSMModel
+@interface COSMDatastreamModel : COSMModel<SRWebSocketDelegate>
 
 // data
 @property NSUInteger feedId;
@@ -16,6 +18,7 @@
 - (void)save;
 - (void)parse:(id)JSON;
 // socket connection
+@property (readonly) BOOL isSubscribed;
 - (void)subscribe;
 - (void)unsubscribe;
 
