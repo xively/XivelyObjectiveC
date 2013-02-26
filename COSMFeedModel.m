@@ -13,14 +13,14 @@
 
 @synthesize datastreamCollection;
 
-- (NSMutableDictionary *)saveableInfo {
+- (NSMutableDictionary *)saveableInfoWithNewDatastreamsOnly:(BOOL)newOnly {
     NSMutableDictionary *copiedDictionary = [NSMutableDictionary dictionaryWithDictionary:self.info];
     NSMutableArray *datastreams = [[NSMutableArray alloc] init];
     [copiedDictionary removeObjectForKey:@"datastreams"];
     [datastreamCollection.datastreams enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if ([obj isKindOfClass:[COSMDatastreamModel class]]) {
             COSMDatastreamModel *datastream = obj;
-            if (datastream.isNew) {
+            if (!newOnly || datastream.isNew) {
                 [datastreams addObject:[datastream saveableInfo]];
             }
         }
@@ -65,8 +65,7 @@
 }
 
 - (void)save {
-    NSMutableDictionary *saveableInfoDictionary = [self saveableInfo];
-    NSLog(@"%@", saveableInfoDictionary);   
+    NSMutableDictionary *saveableInfoDictionary = [self saveableInfoWithNewDatastreamsOnly:YES];
     
     if (self.isNew) {
         // POST
@@ -76,14 +75,15 @@
         [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         
-        
         NSData *data  = [NSJSONSerialization dataWithJSONObject:saveableInfoDictionary options:NSJSONWritingPrettyPrinted error:nil];
         NSLog(@"JSON %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
         [request setHTTPBody:data];
         AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"recieved response! %@", [operation.response valueForKeyPath:@"allHeaderFields.Location"]);
             if ([operation.response valueForKeyPath:@"allHeaderFields.Location"]) {
                 NSString *feedId = [COSMAPI feedIDFromURLString:[operation.response valueForKeyPath:@"allHeaderFields.Location"]];
                 [self.info setObject:feedId forKey:@"id"];
+                NSLog(@"My ID is %@", feedId);
             }
             self.isNew = NO;
             NSMutableArray *savedDatastreams = [saveableInfoDictionary objectForKey:@"datastreams"];
@@ -101,7 +101,27 @@
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToSave:withError:json:)]) {
-                id JSON = [NSJSONSerialization JSONObjectWithData:[[[error userInfo] valueForKeyPath:NSLocalizedRecoverySuggestionErrorKey]  dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+                // get some data to use as JSON from the error
+                id dataToJsonify = [[error userInfo] valueForKeyPath:NSLocalizedRecoverySuggestionErrorKey];
+                if (!dataToJsonify) {
+                    dataToJsonify = [[error userInfo] valueForKeyPath:NSLocalizedDescriptionKey];
+                }
+                if (!dataToJsonify) {
+                    dataToJsonify = @"Save failed with unknown error.";
+                }
+                NSError *jsonError = NULL;
+                id JSON;
+                // see if the data can be made into data, if not
+                // make something similar to COSM Api error
+                // with the error information we have extracted. 
+                if ([NSJSONSerialization isValidJSONObject:dataToJsonify]) {
+                    JSON = [NSJSONSerialization JSONObjectWithData:[dataToJsonify dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments error:&jsonError];
+                    if (jsonError) {
+                        NSLog(@"JSON error %@", jsonError);
+                    }
+                } else {
+                    JSON = @{@"title" : @"Failed to save", @"errors" : dataToJsonify};
+                }
                 [self.delegate modelFailedToSave:self withError:error json:JSON];
             }
         }];
@@ -156,8 +176,12 @@
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToDeleteFromCOSM:withError:json:)]) {
-            id JSON = [NSJSONSerialization JSONObjectWithData:[[[error userInfo] valueForKeyPath:NSLocalizedRecoverySuggestionErrorKey]  dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-            [self.delegate modelFailedToDeleteFromCOSM:self withError:error json:JSON];
+            if ([[error userInfo] valueForKeyPath:NSLocalizedRecoverySuggestionErrorKey]) {
+                id JSON = [NSJSONSerialization JSONObjectWithData:[[[error userInfo] valueForKeyPath:NSLocalizedRecoverySuggestionErrorKey]  dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+                [self.delegate modelFailedToDeleteFromCOSM:self withError:error json:JSON];
+            } else {
+                [self.delegate modelFailedToDeleteFromCOSM:self withError:error json:NULL];
+            }
         }
     }];
     [operation start];

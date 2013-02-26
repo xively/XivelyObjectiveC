@@ -44,7 +44,7 @@ For example, in a table view controller
         // fetch the feeds
         [self.feedCollection fetch];
     
-To know when the collection has fetched, implement the FeedCollections delegate methods
+To know when the collection has fetched, implement the COSMFeedCollectionDelegate methods
 
      - (void)feedCollectionDidFetch:(COSMFeedCollection *)feedCollection {
         

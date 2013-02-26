@@ -15,5 +15,4 @@
 /// Synchronisation
 - (void)parse:(id)JSON;
 
-
 @end
