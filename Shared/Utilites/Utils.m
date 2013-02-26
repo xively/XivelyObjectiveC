@@ -1,5 +1,4 @@
 #import "Utils.h"
-#import "ISO8601DateFormatter.h"
 
 @implementation Utils
 
@@ -82,16 +81,6 @@
         return str;
     }
     return [regex stringByReplacingMatchesInString:str options:0 range:NSMakeRange(0, [str length]) withTemplate:@"$4:$5 $1/$2/$3"];
-}
-
-#pragma mark - Date
-
-+ (ISO8601DateFormatter *)dateFormmater {
-    static ISO8601DateFormatter *iSO8601DateFormmater = nil;
-    if (!iSO8601DateFormmater) {
-        iSO8601DateFormmater = [[ISO8601DateFormatter alloc] init];
-    }
-    return iSO8601DateFormmater;
 }
 
 @end

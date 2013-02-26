@@ -5,7 +5,6 @@
 // is a class method
 //
 #import <Foundation/Foundation.h>
-@class ISO8601DateFormatter;
 
 @interface Utils : NSObject
 
@@ -18,8 +17,5 @@
 + (NSString*)describeArray:(NSArray *)arr;
 + (NSString*)describeDictionary:(NSDictionary *)dict;
 + (NSString *)replaceDates:(NSString*)str;
-
-// Date
-+ (ISO8601DateFormatter *)dateFormmater;
 
 @end

@@ -88,7 +88,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="sNL-0B-lJ7">
-                                        <rect key="frame" x="0.0" y="7" width="320" height="172"/>
+                                        <rect key="frame" x="0.0" y="12" width="320" height="172"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="30,000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" id="4mZ-QW-QEQ">
@@ -113,28 +113,28 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="MAX VALUE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gq2-zo-LAP">
-                                                <rect key="frame" x="168" y="152" width="131" height="20"/>
+                                                <rect key="frame" x="168" y="155" width="131" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="MIN VALUE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uhC-ak-UPW">
-                                                <rect key="frame" x="16" y="152" width="144" height="21"/>
+                                                <rect key="frame" x="16" y="155" width="144" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="30,000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" id="zFk-vO-gZa">
-                                                <rect key="frame" x="16" y="127" width="144" height="28"/>
+                                                <rect key="frame" x="16" y="130" width="144" height="28"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="22"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="30,000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" id="uNr-ua-IDu">
-                                                <rect key="frame" x="168" y="127" width="131" height="28"/>
+                                                <rect key="frame" x="168" y="130" width="131" height="28"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="22"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -189,6 +189,7 @@
                         <outlet property="lastUpdatedLabel" destination="F57-M0-m6f" id="eBh-Lt-X15"/>
                         <outlet property="maxValueLabel" destination="uNr-ua-IDu" id="gID-T0-4fb"/>
                         <outlet property="minValueLabel" destination="zFk-vO-gZa" id="Ai0-dC-TMl"/>
+                        <outlet property="subscribeUnsubscribeButton" destination="OOb-bT-0dR" id="7zi-0N-Feo"/>
                         <outlet property="unitLabel" destination="Jd6-af-S8D" id="TNA-do-azV"/>
                     </connections>
                 </viewController>
@@ -211,6 +212,7 @@
                 <relationship kind="outlet" name="lastUpdatedLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="maxValueLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="minValueLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="subscribeUnsubscribeButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="unitLabel" candidateClass="UILabel"/>
             </relationships>
         </class>

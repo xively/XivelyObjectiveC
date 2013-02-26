@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 #import "COSM.h"
 
-@interface DatastreamViewController : UIViewController<COSMModelDelegate, UITextFieldDelegate>
+@interface DatastreamViewController : UIViewController<COSMSubscribableDelegate, UITextFieldDelegate>
 
 // UI
 - (void)updateLabels;
@@ -12,10 +12,10 @@
 // Cosm Model Delegate Methods
 - (void)modelDidFetch:(COSMModel *)model;
 - (void)modelFailedToFetch:(COSMModel *)model withError:(NSError *)error json:(id)JSON;
-- (void)modelSocketDidSubscribe:(COSMModel *)model;
-- (void)modelSocketFailedToSubscribe:(COSMModel *)model withError:(NSError *)error;
-- (void)modelSocket:(COSMModel *)model didUnsubscribeWithCode:(NSInteger)code reason:(NSString *)reason  wasClean:(BOOL)wasClean;
-- (void)modelSocketDidUpdate:(COSMModel *)model;
+// Socket Connection Delegate Methods
+- (void)modelDidSubscribe:(COSMModel *)model;
+- (void)modelDidUnsubscribe:(COSMModel *)model withError:(NSError *)error;
+- (void)modelUpdatedViaSubscription:(COSMModel *)model;
 
 // Interface Builder
 - (IBAction)loadDatastreamTouched:(id)sender;
@@ -30,6 +30,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *minValueLabel;
 @property (nonatomic, weak) IBOutlet UILabel *maxValueLabel;
 @property (nonatomic, weak) IBOutlet UILabel *lastUpdatedLabel;
+@property (nonatomic, weak) IBOutlet UIButton *subscribeUnsubscribeButton;
 
 // UITextField Delegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
