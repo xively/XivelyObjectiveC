@@ -1,0 +1,9 @@
+[submodule "COSM-Objective-C"]
+	path = COSM-Objective-C
+	url = git@github.com:rc1/cosm-objective-c.git
+[submodule "Libraries/AFNetworking"]
+	path = Libraries/AFNetworking
+	url = git@github.com:AFNetworking/AFNetworking.git
+[submodule "Libraries/SocketRocket"]
+	path = Libraries/SocketRocket
+	url = git@github.com:square/SocketRocket.git
