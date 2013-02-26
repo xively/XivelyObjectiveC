@@ -10,7 +10,16 @@
 
 @implementation COSMSubscribable
 
-#pragma mark - Virtual
+#pragma mark - Lifecycle
+
+- (void)dealloc {
+    self.delegate = nil;
+    self.socketConnection.delegate = nil;
+    self.socketConnection = nil;
+    if (isSubscribed) {
+        [self unsubscribe];
+    }
+}
 
 #pragma mark - Socket Connection
 
@@ -38,7 +47,6 @@
 
 - (void)unsubscribe {
     if (!isSubscribed) {
-        NSLog(@"No socket connection to unsubscribe from");
         return;
     }
     
@@ -60,9 +68,15 @@
                                                          error:&error];
     if (!jsonData) {
         NSLog(@"Could not recreate internal unsubscribe request data. Error %@", error);
+        if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidUnsubscribe:withError:)]) {
+            NSError *unsubscribeError = [NSError errorWithDomain:@"com.cosm" code:9 userInfo:nil];
+            [self.delegate modelDidUnsubscribe:self withError:unsubscribeError];
+        }
         [self.socketConnection close];
         return;
     }
+    
+    //NSLog(@"Sending %@", [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]);
     
     // send request for subscription
     [self.socketConnection send:[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]];
@@ -94,9 +108,9 @@
             // let the delegate know of success or fail to subscribe
             NSInteger statusCode = [[json valueForKeyPath:@"status"] integerValue];
             if (statusCode != 200) {
-                if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToSubscribe:withError:)]) {
+                if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidUnsubscribe:withError:)]) {
                     NSError *subscribeError = [NSError errorWithDomain:@"com.cosm" code:statusCode userInfo:json];
-                    [self.delegate modelFailedToSubscribe:self withError:subscribeError];
+                    [self.delegate modelDidUnsubscribe:self withError:subscribeError];
                 }
                 [self.socketConnection close];
                 return;
@@ -125,22 +139,28 @@
             // let the delegate know of success or fail to subscribe
             NSInteger statusCode = [[json valueForKeyPath:@"status"] integerValue];
             if (statusCode != 200) {
-                if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToUnsubscribe:withError:)]) {
+                if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidUnsubscribe:withError:)]) {
                     NSError *unsubscribeError = [NSError errorWithDomain:@"com.cosm" code:statusCode userInfo:json];
-                    [self.delegate modelFailedToUnsubscribe:self withError:unsubscribeError];
+                    [self.delegate modelDidUnsubscribe:self withError:unsubscribeError];
                 }
+                self.delegate = nil;
+                [self.socketConnection close];
+                return;
+            } else {
+                NSLog(@"Expecting to close socket");
+                [self.socketConnection close];
                 return;
             }
+        } else {
+            NSLog(@"Recieved something to do with unsubsribing, but don't know what it is. Will still unsubscribe");
+            NSLog(@"%@", json);
             [self.socketConnection close];
             return;
-        } else {
-            NSLog(@"Recieved something to do with unsubsribing, but don't know what it is");
-            NSLog(@"%@", json);
         }
-    } else {
-        NSLog(@"Recieved responce but is nothing to do with subscribe");
-        return;
-    }
+    } 
+    
+    NSLog(@"Recived message, don't know what to do with it");
+    NSLog(@"Message %@", message);
 }
 
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket {
@@ -163,6 +183,10 @@
                                                          error:&error];
     if (!jsonData) {
         NSLog(@"Could not recreate internal subscribe request data. Error %@", error);
+        if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidUnsubscribe:withError:)]) {
+            NSError *unsubscribeError = [NSError errorWithDomain:@"com.cosm" code:9 userInfo:nil];
+            [self.delegate modelDidUnsubscribe:self withError:unsubscribeError];
+        }
         [self.socketConnection close];
         return;
     }
@@ -172,12 +196,13 @@
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error {
+    //NSLog(@"COSMSubscribable websocket connection failed with error %@", error);
     self.subscribeToken = nil;
     self.unsubscribeToken = nil;
     self.socketConnection.delegate = nil;
     self.socketConnection = nil;
-    if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToUnsubscribe:withError:)]) {
-        [self.delegate modelFailedToUnsubscribe:self withError:error];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidUnsubscribe:withError:)]) {
+        [self.delegate modelDidUnsubscribe:self withError:error];
     }
 }
 
@@ -187,8 +212,13 @@
     self.unsubscribeToken = nil;
     self.socketConnection.delegate = nil;
     self.socketConnection = nil;
-    if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidUnsubscribe:)]) {
-        [self.delegate modelDidUnsubscribe:self];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidUnsubscribe:withError:)]) {
+        NSError *error = nil;
+        if (code != 1000 && code != 0) {
+            NSDictionary *dict = @{ NSLocalizedDescriptionKey : reason };
+            error = [NSError errorWithDomain:@"com.cosm" code:code userInfo:dict];
+        }
+        [self.delegate modelDidUnsubscribe:self withError:error];
     }
 }
 
