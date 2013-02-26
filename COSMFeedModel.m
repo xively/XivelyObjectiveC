@@ -80,7 +80,6 @@
             if ([operation.response valueForKeyPath:@"allHeaderFields.Location"]) {
                 NSString *feedId = [COSMAPI feedIDFromURLString:[operation.response valueForKeyPath:@"allHeaderFields.Location"]];
                 [self.info setObject:feedId forKey:@"id"];
-                NSLog(@"My ID is %@", feedId);
             }
             self.isNew = NO;
             NSMutableArray *savedDatastreams = [saveableInfoDictionary objectForKey:@"datastreams"];

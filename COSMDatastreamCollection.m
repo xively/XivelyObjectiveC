@@ -44,7 +44,7 @@
             [self.datastreams addObject:datastream];
         }
     } else {
-        NSLog(@"COSMDatastreamCollection::parse: don't know what kind JSON is. Not adding and data streams to collection.");
+	NSLog(@"COSMDatastreamCollection::parse: don't know what kind JSON is. Not adding and datastreams to collection.");
         NSLog(@"COSMDatastreamCollection::parse %@", [JSON class]);
         NSLog(@"%@", JSON);
     }
