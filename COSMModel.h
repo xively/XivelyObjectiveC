@@ -13,7 +13,9 @@
 @property BOOL isDeletedFromCOSM;
 
 // Synchronisation
-@property (weak) id<COSMModelDelegate> delegate;
+@property (nonatomic, weak) id<COSMModelDelegate> delegate;
 @property (nonatomic, strong) COSMAPI *api;
+- (NSString *)resourceURLString;
+- (void)parse:(id)JSON;
 
 @end
