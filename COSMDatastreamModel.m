@@ -128,77 +128,6 @@
         }];
         [operation start];
     }
-    
-    /*
-    NSMutableDictionary *saveableInfoDictionary = [self saveableInfo];
-    
-    if (self.isNew) {
-        // POST
-        NSURL *url = [self.api urlForRoute:@"feeds/"];
-        AFHTTPClient *httpClient = [AFHTTPClient clientWithBaseURL:url];
-        NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:nil parameters:nil];
-        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        NSData *data  = [NSJSONSerialization dataWithJSONObject:saveableInfoDictionary options:NSJSONWritingPrettyPrinted error:nil];
-        [request setHTTPBody:data];
-        AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            if ([operation.response valueForKeyPath:@"allHeaderFields.Location"]) {
-                NSString *feedId = [COSMAPI feedIDFromURLString:[operation.response valueForKeyPath:@"allHeaderFields.Location"]];
-                [self.info setObject:feedId forKey:@"id"];
-            }
-            self.isNew = NO;
-            NSMutableArray *savedDatastreams = [saveableInfoDictionary objectForKey:@"datastreams"];
-            [savedDatastreams enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                COSMDatastreamModel *savedDatastream = obj;
-                [self.datastreamCollection.datastreams enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                    COSMDatastreamModel *storedDatastream = obj;
-                    if([[savedDatastream valueForKeyPath:@"id"] isKindOfClass:[NSString class]] && [[savedDatastream valueForKeyPath:@"id"] isEqualToString:[storedDatastream.info valueForKeyPath:@"id"]]) {
-                        storedDatastream.isNew = NO;
-                    }
-                }];
-            }];
-            if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidSave:)]) {
-                [self.delegate modelDidSave:self];
-            }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToSave:withError:json:)]) {
-                id JSON = [NSJSONSerialization JSONObjectWithData:[[[error userInfo] valueForKeyPath:NSLocalizedRecoverySuggestionErrorKey]  dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-                [self.delegate modelFailedToSave:self withError:error json:JSON];
-            }
-        }];
-        [operation start];
-    } else {
-        NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%@", [self.info valueForKeyPath:@"id"]]];
-        AFHTTPClient *httpClient = [AFHTTPClient clientWithBaseURL:url];
-        NSMutableURLRequest *request = [httpClient requestWithMethod:@"PUT" path:nil parameters:nil];
-        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        NSData *data  = [NSJSONSerialization dataWithJSONObject:saveableInfoDictionary options:NSJSONWritingPrettyPrinted error:nil];
-        [request setHTTPBody:data];
-        AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            self.isNew = NO;
-            NSMutableArray *savedDatastreams = [saveableInfoDictionary objectForKey:@"datastreams"];
-            [savedDatastreams enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                COSMDatastreamModel *savedDatastream = obj;
-                [self.datastreamCollection.datastreams enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                    COSMDatastreamModel *storedDatastream = obj;
-                    if([[savedDatastream valueForKeyPath:@"id"] isKindOfClass:[NSString class]] && [[savedDatastream valueForKeyPath:@"id"] isEqualToString:[storedDatastream.info valueForKeyPath:@"id"]]) {
-                        storedDatastream.isNew = NO;
-                    }
-                }];
-            }];
-            if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidSave:)]) {
-                [self.delegate modelDidSave:self];
-            }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToSave:withError:json:)]) {
-                id JSON = [NSJSONSerialization JSONObjectWithData:[[[error userInfo] valueForKeyPath:NSLocalizedRecoverySuggestionErrorKey]  dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-                [self.delegate modelFailedToSave:self withError:error json:JSON];
-            }
-        }];
-        [operation start];
-    }
-     */
 }
 
 - (void)parse:(id)JSON {
@@ -209,6 +138,16 @@
     [mutableJSON removeObjectForKey:@"datastreams"];
     self.info = mutableJSON;
     self.isNew = NO;
+}
+
+#pragma mark - Socket Connection
+
+- (void)subscribe {
+    
+}
+
+- (void)unsubscribe {
+    
 }
 
 @end

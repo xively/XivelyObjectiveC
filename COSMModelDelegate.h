@@ -13,4 +13,9 @@
 
 - (void)modelDidDeleteFromCOSM:(COSMModel *)model;
 - (void)modelFailedToDeleteFromCOSM:(COSMModel *)model withError:(NSError*)error json:(id)JSON;
+
+- (void)modelSocketDidSubscribe:(COSMModel *)model;
+- (void)modelSocketFailedToSubscribe:(COSMModel *)model withError:(NSError *)error;
+- (void)modelSocket:(COSMModel *)model didUnsubscribeWithCode:(NSInteger)code reason:(NSString *)reason  wasClean:(BOOL)wasClean;
+- (void)modelSocketDidUpdate:(COSMModel *)model;
 @end

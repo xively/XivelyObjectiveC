@@ -17,7 +17,6 @@
 // Helpers
 - (NSURL*)urlForRoute:(NSString*)route;
 - (NSURL*)urlForRoute:(NSString*)route withParameters:(NSDictionary *)parameters;
-
 + (NSString *)feedIDFromURLString:(NSString *)urlString;
 
 @end
