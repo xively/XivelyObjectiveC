@@ -36,8 +36,12 @@
 
 #pragma mark - Synchronization
 
+- (NSString *)resourceURLString {
+    return [NSString stringWithFormat:@"feeds/%d/datastreams/%@", self.feedId, [self.info valueForKeyPath:@"id"]];
+}
+
 - (void)fetch {
-    NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%d/datastreams/%@", self.feedId, [self.info valueForKeyPath:@"id"]] withParameters:self.parameters];
+    NSURL *url = [self.api urlForRoute:self.resourceURLString withParameters:self.parameters];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:40.0];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
@@ -91,7 +95,7 @@
         }];
         [operation start];
     } else {
-        NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%d/datastreams/%@", self.feedId, [self.info valueForKeyPath:@"id"]]];
+	NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:self.resourceURLString, self.feedId, [self.info valueForKeyPath:@"id"]]];
         AFHTTPClient *httpClient = [AFHTTPClient clientWithBaseURL:url];
         NSMutableURLRequest *request = [httpClient requestWithMethod:@"PUT" path:nil parameters:nil];
         [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];

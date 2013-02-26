@@ -1,5 +1,9 @@
 #import "COSMModel.h"
 
+@interface COSMModel () {}
+@property (nonatomic, readonly) NSString *resourceFormat;
+@end
+
 @implementation COSMModel
 
 @synthesize info, delegate;
