@@ -5,7 +5,7 @@
 
 // data
 @property NSUInteger feedId;
-@property (nonatomic, retain) COSMDatapointCollection *datapointCollection;
+@property (nonatomic, strong) COSMDatapointCollection *datapointCollection;
 // returns the info dictionary without any references
 // to any datapoints, so that the COSMDatastreamModel
 // and COSMFeedModel cannot make edits to any datapoints
