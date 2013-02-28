@@ -133,7 +133,7 @@
             if (self.delegate && [self.delegate respondsToSelector:@selector(modelUpdatedViaSubscription:)]) {
                 [self.delegate modelUpdatedViaSubscription:self];
             }
-	    return;
+            return;
         }
         
     }
@@ -201,7 +201,7 @@
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error {
-    //NSLog(@"COSMSubscribable websocket connection failed with error %@", error);
+    isSubscribed = NO;
     self.subscribeToken = nil;
     self.unsubscribeToken = nil;
     self.socketConnection.delegate = nil;
