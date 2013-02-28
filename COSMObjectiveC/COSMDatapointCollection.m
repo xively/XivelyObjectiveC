@@ -13,10 +13,6 @@
 
 #pragma mark - Synchronisation
 
-- (void)fetch {
-    
-}
-
 - (void)parse:(id)JSON {
     if ([JSON isKindOfClass:[NSDictionary class]])  {
         NSLog(@"@stub: COSMDatapointCollection::parse with JSON of NSDictionary. Not adding any datapoints to collection.");

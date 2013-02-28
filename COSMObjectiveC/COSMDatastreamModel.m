@@ -16,6 +16,10 @@
 
 #pragma mark - Synchronization
 
+- (BOOL)isNew {
+    return ([self.info valueForKeyPath:@"id"] != NULL);
+}
+
 - (NSString *)resourceURLString {
     return [NSString stringWithFormat:@"feeds/%d/datastreams/%@", self.feedId, [self.info valueForKeyPath:@"id"]];
 }
@@ -63,7 +67,6 @@
             NSLog(@"response string %@", operation.responseString);
             NSLog(@"%@: %@, %@", [responseObject class], responseObject, [[NSString alloc] initWithData:responseObject
                                                                                                 encoding:NSUTF8StringEncoding]);
-            self.isNew = NO;
             if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidSave:)]) {
                 [self.delegate modelDidSave:self];
             }
@@ -83,7 +86,6 @@
         NSData *data  = [NSJSONSerialization dataWithJSONObject:saveableInfoDictionary options:NSJSONWritingPrettyPrinted error:nil];
         [request setHTTPBody:data];
         AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            self.isNew = NO;
             if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidSave:)]) {
                 [self.delegate modelDidSave:self];
             }
@@ -126,7 +128,6 @@
     [self.datapointCollection parse:returnedDatastreams];
     [mutableJSON removeObjectForKey:@"datastreams"];
     self.info = mutableJSON;
-    self.isNew = NO;
     CFRelease(mutableJSONRef);
 }
 

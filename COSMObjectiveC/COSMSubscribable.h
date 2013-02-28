@@ -17,12 +17,23 @@
 - (void)modelUpdatedViaSubscription:(COSMModel *)model;
 @end
 
+
+/**
+  COSMSubscribable is used by COSMFeedModels and COSMDatastreamModels so they may subscribe to live updates from Cosm via web socket connection. 
+ 
+ When a COSMFeedModels or COSMDatastreamModels is subscribed Cosm its own data and child collections we be repopulated with data whenever they are change on Cosm. When a model recieves an update triggered by Cosm its delegate will be notified by the `modelUpdatedViaSubscription:` method.  
+ 
+ @warning *Important:* Web socket connection are not allow on many mobile networks providers. If the device is running on a mobile connection and attempts to subscribe, the `modelDidUnsubscribe:withError:` may be called imeditaly or after a few seconds. */
 @interface COSMSubscribable : COSMModel<SRWebSocketDelegate>
 
-// delegate
+///---------------------------------------------------------------------------------------
+/// @name Delegate
+///---------------------------------------------------------------------------------------
 @property (nonatomic, weak) id<COSMSubscribableDelegate, COSMModelDelegate> delegate;
 
-// socket connection
+///---------------------------------------------------------------------------------------
+/// @name Socket Connection
+///---------------------------------------------------------------------------------------
 @property (readonly) BOOL isSubscribed;
 - (void)subscribe;
 - (void)unsubscribe;

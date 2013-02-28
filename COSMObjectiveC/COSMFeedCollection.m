@@ -6,7 +6,11 @@
 
 #pragma mark - Data
 
-@synthesize feeds, info;
+@synthesize info;
+
+#pragma mark - Feeds
+
+@synthesize feeds;
 
 #pragma mark - Synchronisation
 
@@ -35,7 +39,7 @@
     COSMFeedModel *feed;
     
     for (feed in feeds) {
-        if ([feed shouldDeleteFromCOSM]) {
+        if ([feed isDeletedFromCosm]) {
             [deletedItems addObject:feed];
         }
     }
