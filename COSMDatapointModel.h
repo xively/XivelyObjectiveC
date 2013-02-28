@@ -4,13 +4,10 @@
     
 }
 
+// Data
 @property NSUInteger feedId;
 
-// socket connection
-- (void)subscribe;
-- (void)unsubscribe;
-
-// synchronization
+// Synchronization
 - (void)parse:(id)JSON;
 
 @end

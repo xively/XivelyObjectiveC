@@ -2,10 +2,9 @@
 
 @implementation COSMDatapointModel
 
--(id)init {
-    if (self = [super init]) { }
-    return self;
-}
+#pragma mark - Data
+
+@synthesize feedId;
 
 #pragma mark - Synchronization
 
