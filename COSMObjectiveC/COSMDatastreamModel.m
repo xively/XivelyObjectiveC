@@ -8,24 +8,11 @@
 
 #pragma marl - Data
 
-@synthesize datapointCollection, feedId;
+@synthesize feedId;
 
-- (NSMutableDictionary *)saveableInfo {
-    NSMutableDictionary *copiedDictionary = [NSMutableDictionary dictionaryWithDictionary:self.info];
-    [copiedDictionary removeObjectForKey:@"datapoints"];
-    return copiedDictionary;
-}
+#pragma mark - Datapoints
 
-#pragma mark - Life cycle
-
--(id)init {
-    if (self = [super init]) {
-		self.api = [COSMAPI defaultAPI];
-        self.datapointCollection = [[COSMDatapointCollection alloc] init];
-        [self.info setValue:[[NSMutableDictionary alloc] init] forKey:@"unit"];
-    }
-    return self;
-}
+@synthesize datapointCollection;
 
 #pragma mark - Synchronization
 
@@ -141,6 +128,23 @@
     self.info = mutableJSON;
     self.isNew = NO;
     CFRelease(mutableJSONRef);
+}
+
+- (NSMutableDictionary *)saveableInfo {
+    NSMutableDictionary *copiedDictionary = [NSMutableDictionary dictionaryWithDictionary:self.info];
+    [copiedDictionary removeObjectForKey:@"datapoints"];
+    return copiedDictionary;
+}
+
+#pragma mark - Life cycle
+
+-(id)init {
+    if (self = [super init]) {
+		self.api = [COSMAPI defaultAPI];
+        self.datapointCollection = [[COSMDatapointCollection alloc] init];
+        [self.info setValue:[[NSMutableDictionary alloc] init] forKey:@"unit"];
+    }
+    return self;
 }
 
 @end

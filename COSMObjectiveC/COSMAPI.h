@@ -2,9 +2,7 @@
 
 @class COSMAPI;
 
-@interface COSMAPI : NSObject {
-    
-}
+@interface COSMAPI : NSObject
 
 // defaut COSMSync used by all models & collections
 + (COSMAPI *)defaultAPI;

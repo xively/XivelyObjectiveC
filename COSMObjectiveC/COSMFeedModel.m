@@ -3,41 +3,11 @@
 #import "AFJSONRequestOperation.h"
 #import "AFHTTPClient.h"
 
-@interface COSMFeedModel ()
-
-@end
-
 @implementation COSMFeedModel
 
 #pragma mark - Data
 
 @synthesize datastreamCollection;
-
-- (NSMutableDictionary *)saveableInfoWithNewDatastreamsOnly:(BOOL)newOnly {
-    NSMutableDictionary *copiedDictionary = [NSMutableDictionary dictionaryWithDictionary:self.info];
-    NSMutableArray *datastreams = [[NSMutableArray alloc] init];
-    [copiedDictionary removeObjectForKey:@"datastreams"];
-    [datastreamCollection.datastreams enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if ([obj isKindOfClass:[COSMDatastreamModel class]]) {
-            COSMDatastreamModel *datastream = obj;
-            if (!newOnly || datastream.isNew) {
-                [datastreams addObject:[datastream saveableInfo]];
-            }
-        }
-    }];
-    [copiedDictionary setObject:datastreams forKey:@"datastreams"];
-    return copiedDictionary;
-}
-
-#pragma mark - Life cycle
-
--(id)init {
-    if (self = [super init]) {
-		self.api = [COSMAPI defaultAPI];
-        self.datastreamCollection = [[COSMDatastreamCollection alloc] init];
-    }
-    return self;
-}
 
 #pragma mark - Synchronization
 
@@ -170,7 +140,7 @@
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"DELETE" path:nil parameters:nil];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        self.isDeletedFromCOSM = YES;
+        self.shouldDeleteFromCOSM = YES;
         if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidDeleteFromCOSM:)]) {
             [self.delegate modelDidDeleteFromCOSM:self];
         }
@@ -202,6 +172,32 @@
     self.info = mutableJSON;
     self.isNew = NO;
     CFRelease(mutableJSONRef);
+}
+
+- (NSMutableDictionary *)saveableInfoWithNewDatastreamsOnly:(BOOL)newOnly {
+    NSMutableDictionary *copiedDictionary = [NSMutableDictionary dictionaryWithDictionary:self.info];
+    NSMutableArray *datastreams = [[NSMutableArray alloc] init];
+    [copiedDictionary removeObjectForKey:@"datastreams"];
+    [datastreamCollection.datastreams enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([obj isKindOfClass:[COSMDatastreamModel class]]) {
+            COSMDatastreamModel *datastream = obj;
+            if (!newOnly || datastream.isNew) {
+                [datastreams addObject:[datastream saveableInfo]];
+            }
+        }
+    }];
+    [copiedDictionary setObject:datastreams forKey:@"datastreams"];
+    return copiedDictionary;
+}
+
+#pragma mark - Life cycle
+
+-(id)init {
+    if (self = [super init]) {
+		self.api = [COSMAPI defaultAPI];
+        self.datastreamCollection = [[COSMDatastreamCollection alloc] init];
+    }
+    return self;
 }
 
 @end

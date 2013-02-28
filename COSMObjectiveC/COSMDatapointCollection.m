@@ -3,22 +3,15 @@
 
 @implementation COSMDatapointCollection
 
-#pragma mark - Life cycle
-
-- (id)init {
-    if (self=[super init]) {
-        self.datapoints = [[NSMutableArray alloc] init];
-        self.info = [[NSMutableDictionary alloc] init];
-    }
-    return self;
-}
-
 #pragma mark - Data
 
-@synthesize feedId, datapoints, info;
+@synthesize feedId, info;
 
-////
-/// Synchronisation
+#pragma mark - Datapoints
+
+@synthesize datapoints;
+
+#pragma mark - Synchronisation
 
 - (void)fetch {
     
@@ -42,5 +35,17 @@
         //NSLog(@"COSMDatapointCollection::parse: don't know what kind JSON is. Not adding any datapoint to collection.");
     }
 }
+
+#pragma mark - Life Cycle
+
+- (id)init {
+    if (self=[super init]) {
+        self.datapoints = [[NSMutableArray alloc] init];
+        self.info = [[NSMutableDictionary alloc] init];
+    }
+    return self;
+}
+
+
 
 @end

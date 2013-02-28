@@ -4,33 +4,9 @@
 
 @implementation COSMFeedCollection
 
-#pragma mark - Lifecycle
-
-- (id)init {
-    if (self=[super init]) {
-        feeds = [[NSMutableArray alloc] init];
-        info = [[NSMutableDictionary alloc] init];
-		api = [COSMAPI defaultAPI];
-	}
-    return self;
-}
-
 #pragma mark - Data
 
 @synthesize feeds, info;
-
-- (void)removeDeletedFromCOSM {
-    NSMutableArray *deletedItems = [NSMutableArray array];
-    COSMFeedModel *feed;
-    
-    for (feed in feeds) {
-        if ([feed isDeletedFromCOSM]) {
-            [deletedItems addObject:feed];
-        }
-    }
-    
-    [feeds removeObjectsInArray:deletedItems];
-}
 
 #pragma mark - Synchronisation
 
@@ -52,6 +28,19 @@
             }
         }];
     [operation start];
+}
+
+- (void)removeDeletedFromCOSM {
+    NSMutableArray *deletedItems = [NSMutableArray array];
+    COSMFeedModel *feed;
+    
+    for (feed in feeds) {
+        if ([feed shouldDeleteFromCOSM]) {
+            [deletedItems addObject:feed];
+        }
+    }
+    
+    [feeds removeObjectsInArray:deletedItems];
 }
 
 - (void)parse:(id)JSON {
@@ -76,6 +65,17 @@
     self.info = mutableJSON;
 
     CFRelease(mutableJSONRef);
+}
+
+#pragma mark - Lifecycle
+
+- (id)init {
+    if (self=[super init]) {
+        feeds = [[NSMutableArray alloc] init];
+        info = [[NSMutableDictionary alloc] init];
+		api = [COSMAPI defaultAPI];
+	}
+    return self;
 }
 
 @end

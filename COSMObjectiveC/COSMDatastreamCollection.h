@@ -2,19 +2,15 @@
 
 @interface COSMDatastreamCollection : NSObject
 
-////
-/// data
-
+// data
 @property NSUInteger feedId;
-// datastreams
-@property (nonatomic, strong) NSMutableArray *datastreams;
-// everything else
 @property (nonatomic, strong) NSMutableDictionary *info;
 
-////
-/// Synchronisation
+// datastreams
+@property (nonatomic, strong) NSMutableArray *datastreams;
+
+// Synchronisation
 - (void)fetch;
 - (void)parse:(id)JSON;
-
 
 @end

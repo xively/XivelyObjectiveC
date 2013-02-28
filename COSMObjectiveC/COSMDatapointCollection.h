@@ -2,16 +2,13 @@
 
 @interface COSMDatapointCollection : NSObject
 
-////
-/// data
-
+// data
 @property NSUInteger feedId;
-// datapoints
-@property (nonatomic, strong) NSMutableArray *datapoints;
-// everything else
 @property (nonatomic, strong) NSMutableDictionary *info;
 
-////
+// datapoints
+@property (nonatomic, strong) NSMutableArray *datapoints;
+
 /// Synchronisation
 - (void)parse:(id)JSON;
 

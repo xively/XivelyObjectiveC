@@ -5,12 +5,12 @@
 
 @interface COSMModel : COSMRequestable
 
-// data
+// Data
 @property (nonatomic, strong) NSMutableDictionary *info;
 
 // State
 @property BOOL isNew;
-@property BOOL isDeletedFromCOSM;
+@property BOOL shouldDeleteFromCOSM;
 
 // Synchronisation
 @property (nonatomic, weak) id<COSMModelDelegate> delegate;

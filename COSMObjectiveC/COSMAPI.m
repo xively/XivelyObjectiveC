@@ -2,18 +2,7 @@
 
 @implementation COSMAPI
 
-#pragma mark - Lifecycle
-
-- (id)init {
-    if (self=[super init]) {
-        apiURLString = @"http://api.cosm.com/v2";
-        socketApiURLString = @"http://api.cosm.com:8080";
-        useGzip = YES;
-    }
-    return self;
-}
-
-#pragma mark - Default instance
+#pragma mark - Default Instance
 
 static COSMAPI *defaultAPI = nil;
 + (COSMAPI *)defaultAPI {
@@ -65,6 +54,17 @@ static COSMAPI *defaultAPI = nil;
         NSLog(@"Error in regex %@", error);
     }
     return feedId;
+}
+
+#pragma mark - Life Cycle
+
+- (id)init {
+    if (self=[super init]) {
+        apiURLString = @"http://api.cosm.com/v2";
+        socketApiURLString = @"http://api.cosm.com:8080";
+        useGzip = YES;
+    }
+    return self;
 }
 
 @end

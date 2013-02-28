@@ -3,24 +3,17 @@
 #import "COSMFeedCollectionDelegate.h"
 #import "COSMAPI.h"
 
-@interface COSMFeedCollection : COSMRequestable {
-    
-}
+@interface COSMFeedCollection : COSMRequestable
 
-////
-/// data
-
-// feeds
-@property (nonatomic, strong) NSMutableArray *feeds;
-// everything else
+// Data
 @property (nonatomic, strong) NSMutableDictionary *info;
-- (void)removeDeletedFromCOSM;
+@property (nonatomic, strong) NSMutableArray *feeds;
 
-////
-/// Synchronisation
+// Synchronisation
 @property (nonatomic, strong) COSMAPI *api;
 @property (weak) id<COSMFeedCollectionDelegate> delegate;
 - (void)fetch;
+- (void)removeDeletedFromCOSM;
 - (void)parse:(id)JSON;
 
 @end

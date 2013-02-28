@@ -1,8 +1,6 @@
 #import "COSMModel.h"
 
-@interface COSMDatapointModel : COSMModel {
-    
-}
+@interface COSMDatapointModel : COSMModel 
 
 // Data
 @property NSUInteger feedId;

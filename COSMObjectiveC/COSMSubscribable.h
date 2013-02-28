@@ -19,6 +19,7 @@
 
 @interface COSMSubscribable : COSMModel<SRWebSocketDelegate>
 
+// delegate
 @property (nonatomic, weak) id<COSMSubscribableDelegate, COSMModelDelegate> delegate;
 
 // socket connection

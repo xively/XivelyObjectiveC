@@ -21,6 +21,10 @@
     }
 }
 
+#pragma mark - Delegate
+
+@synthesize delegate;
+
 #pragma mark - Socket Connection
 
 // private

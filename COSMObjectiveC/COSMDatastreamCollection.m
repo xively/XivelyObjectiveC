@@ -3,22 +3,15 @@
 
 @implementation COSMDatastreamCollection
 
-#pragma mark - Life cycle
-
-- (id)init {
-    if (self=[super init]) {
-        self.datastreams = [[NSMutableArray alloc] init];
-        self.info = [[NSMutableDictionary alloc] init];
-    }
-    return self;
-}
-
 #pragma mark - Data
 
-@synthesize feedId, datastreams, info;
+@synthesize feedId, info;
 
-////
-/// Synchronisation
+#pragma mark - Datastreams
+
+@synthesize datastreams;
+
+#pragma mark - Synchronisation
 
 - (void)fetch {
     
@@ -48,6 +41,16 @@
         NSLog(@"COSMDatastreamCollection::parse %@", [JSON class]);
         NSLog(@"%@", JSON);
     }
+}
+
+#pragma mark - Life Cycle
+
+- (id)init {
+    if (self=[super init]) {
+        self.datastreams = [[NSMutableArray alloc] init];
+        self.info = [[NSMutableDictionary alloc] init];
+    }
+    return self;
 }
 
 @end
