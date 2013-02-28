@@ -8,7 +8,11 @@
 
 #pragma mark - State
 
-@synthesize isNew, shouldDeleteFromCOSM;
+- (BOOL)isNew {
+    return NO;
+}
+
+@synthesize isDeletedFromCosm;
 
 #pragma mark - Synchronisation 
 
@@ -24,8 +28,7 @@
 
 - (id)init {
     if (self=[super init]) {
-        isNew = YES;
-        shouldDeleteFromCOSM = FALSE;
+        isDeletedFromCosm = FALSE;
         info = [[NSMutableDictionary alloc] initWithCapacity:25.0f];
 		api = [COSMAPI defaultAPI];
 	}

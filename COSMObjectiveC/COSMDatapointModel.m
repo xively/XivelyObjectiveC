@@ -8,9 +8,12 @@
 
 #pragma mark - Synchronization
 
+- (BOOL)isNew {
+    return ([self.info valueForKeyPath:@"at"] != NULL);
+}
+
 - (void)parse:(id)JSON {
     self.info = [NSMutableDictionary dictionaryWithDictionary:JSON];
-    self.isNew = FALSE;
 }
 
 @end

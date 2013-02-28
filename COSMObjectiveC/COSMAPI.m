@@ -14,7 +14,7 @@ static COSMAPI *defaultAPI = nil;
 
 #pragma mark - Sync settings
 
-@synthesize apiKey, apiURLString, socketApiURLString, useGzip;
+@synthesize apiKey, apiURLString, socketApiURLString;
 
 #pragma mark - Helpers
 
@@ -62,7 +62,6 @@ static COSMAPI *defaultAPI = nil;
     if (self=[super init]) {
         apiURLString = @"http://api.cosm.com/v2";
         socketApiURLString = @"http://api.cosm.com:8080";
-        useGzip = YES;
     }
     return self;
 }

@@ -3,10 +3,14 @@
 
 @interface COSMFeedModel : COSMSubscribable
 
-// data
+///---------------------------------------------------------------------------------------
+/// @name Data
+///---------------------------------------------------------------------------------------
 @property (nonatomic, strong) COSMDatastreamCollection *datastreamCollection;
 
-// synchronization
+///---------------------------------------------------------------------------------------
+/// @name Synchronization
+///---------------------------------------------------------------------------------------
 - (void)fetch;
 - (void)save;
 - (void)deleteFromCOSM;

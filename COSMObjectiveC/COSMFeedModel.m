@@ -11,6 +11,10 @@
 
 #pragma mark - Synchronization
 
+- (BOOL)isNew {
+    return ([self.info valueForKeyPath:@"id"] != NULL);
+}
+
 - (NSString *)resourceURLString {
     return [NSString stringWithFormat:@"feeds/%@", [self.info valueForKeyPath:@"id"]];
 }
@@ -55,14 +59,12 @@
                 NSString *feedId = [COSMAPI feedIDFromURLString:[operation.response valueForKeyPath:@"allHeaderFields.Location"]];
                 [self.info setObject:feedId forKey:@"id"];
             }
-            self.isNew = NO;
             NSMutableArray *savedDatastreams = [saveableInfoDictionary objectForKey:@"datastreams"];
             [savedDatastreams enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 COSMDatastreamModel *savedDatastream = obj;
                 [self.datastreamCollection.datastreams enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                     COSMDatastreamModel *storedDatastream = obj;
                     if([[savedDatastream valueForKeyPath:@"id"] isKindOfClass:[NSString class]] && [[savedDatastream valueForKeyPath:@"id"] isEqualToString:[storedDatastream.info valueForKeyPath:@"id"]]) {
-                        storedDatastream.isNew = NO;
                     }
                 }];
             }];
@@ -105,14 +107,12 @@
         NSData *data  = [NSJSONSerialization dataWithJSONObject:saveableInfoDictionary options:NSJSONWritingPrettyPrinted error:nil];
         [request setHTTPBody:data];
         AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            self.isNew = NO;
             NSMutableArray *savedDatastreams = [saveableInfoDictionary objectForKey:@"datastreams"];
             [savedDatastreams enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 COSMDatastreamModel *savedDatastream = obj;
                 [self.datastreamCollection.datastreams enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                     COSMDatastreamModel *storedDatastream = obj;
                     if([[savedDatastream valueForKeyPath:@"id"] isKindOfClass:[NSString class]] && [[savedDatastream valueForKeyPath:@"id"] isEqualToString:[storedDatastream.info valueForKeyPath:@"id"]]) {
-                        storedDatastream.isNew = NO;
                     }
                 }];
             }];
@@ -140,7 +140,7 @@
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"DELETE" path:nil parameters:nil];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        self.shouldDeleteFromCOSM = YES;
+        self.isDeletedFromCosm = YES;
         if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidDeleteFromCOSM:)]) {
             [self.delegate modelDidDeleteFromCOSM:self];
         }
@@ -170,7 +170,6 @@
     }];
     [mutableJSON removeObjectForKey:@"datastreams"];
     self.info = mutableJSON;
-    self.isNew = NO;
     CFRelease(mutableJSONRef);
 }
 

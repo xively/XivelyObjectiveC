@@ -13,10 +13,6 @@
 
 #pragma mark - Synchronisation
 
-- (void)fetch {
-    
-}
-
 - (void)parse:(id)JSON {
     
     if (JSON == NULL) {
