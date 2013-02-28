@@ -4,7 +4,7 @@
 @interface FeedViewController : UIViewController<COSMSubscribableDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 // UI
-- (void)updateDatastreamLabels;
+- (void)updateView;
 @property (nonatomic, weak) UITableView *tableView;
 
 // Cosm Datastream

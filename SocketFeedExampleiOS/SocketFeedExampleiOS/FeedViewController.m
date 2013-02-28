@@ -10,16 +10,21 @@
 
 #pragma mark - UI
 
-- (void)updateTable {
+- (void)updateView {
     if (self.feedModel) {
+        self.subscribeUnsubscribeButton.hidden = NO;
         // reset the button is this is a newly synced feed
         if (!self.feedModel.isSubscribed) {
             self.subscribeUnsubscribeButton.userInteractionEnabled = YES;
             [self.subscribeUnsubscribeButton setTitle:@"Subscribe" forState:UIControlStateNormal];
+        } else {
+            self.subscribeUnsubscribeButton.userInteractionEnabled = YES;
+            [self.subscribeUnsubscribeButton setTitle:@"Unubscribe" forState:UIControlStateNormal];
         }
-        // update the table
-        NSLog(@"Should be updating table");
+        // reload the table
         [self.tableView reloadData];
+    } else {
+        self.subscribeUnsubscribeButton.hidden = YES;
     }
 }
 
@@ -32,7 +37,7 @@
 #pragma mark - Cosm Model Delegate Methods
 
 - (void)modelDidFetch:(COSMModel *)model {
-    [self updateTable];
+    [self updateView];
 }
 
 - (void)modelFailedToFetch:(COSMModel *)model withError:(NSError *)error json:(id)JSON {
@@ -45,11 +50,13 @@
 #pragma mark – Socket Connection Delegate Methods
 
 - (void)modelDidSubscribe:(COSMModel *)model {
+    NSLog(@"modelDidSubscribe");
     self.subscribeUnsubscribeButton.userInteractionEnabled = YES;
     [self.subscribeUnsubscribeButton setTitle:@"Unsubscribe" forState:UIControlStateNormal];
 }
 
 - (void)modelDidUnsubscribe:(COSMModel *)model withError:(NSError *)error {
+    NSLog(@"modelDidUnsubscribe");
     if (error) {
         NSLog(@"Error subscribing %@", error);
         [Utils alert:@"Failed to subscribe to feed" message:@"Something went wrong, check console"];
@@ -59,7 +66,7 @@
 }
 
 - (void)modelUpdatedViaSubscription:(COSMModel *)model {
-    [self updateTable];
+    [self updateView];
 }
 
 #pragma mark - Interface Builder
@@ -103,7 +110,7 @@
     }
 }
 
-@synthesize apiKeyTextField, feedIdTextField;
+@synthesize apiKeyTextField, feedIdTextField, subscribeUnsubscribeButton;
 
 #pragma mark - UITextField Delegate
 
@@ -163,7 +170,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    
+    [self updateView];
     [self loadUserEnteredInfo];
 }
 
