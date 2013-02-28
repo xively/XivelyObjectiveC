@@ -1,22 +1,18 @@
-#import "COSMModel.h"
+#import "COSMSubscribable.h"
 @class COSMDatapointCollection;
 
-@interface COSMDatastreamModel : COSMModel {
-    
-}
+@interface COSMDatastreamModel : COSMSubscribable
 
 // data
 @property NSUInteger feedId;
-@property (nonatomic, retain) COSMDatapointCollection *datapointCollection;
+@property (nonatomic, strong) COSMDatapointCollection *datapointCollection;
 // returns the info dictionary without any references
 // to any datapoints, so that the COSMDatastreamModel
-// and COSMFeedModel cannot make edits to any
-// datapoints
+// and COSMFeedModel cannot make edits to any datapoints
 - (NSMutableDictionary *)saveableInfo;
 
 // synchronization
 - (void)fetch;
-- (void)parse:(id)JSON;
 - (void)save;
-
+- (void)parse:(id)JSON;
 @end

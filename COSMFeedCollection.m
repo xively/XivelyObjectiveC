@@ -56,7 +56,9 @@
 
 - (void)parse:(id)JSON {
     // create a deep mutable copy
-    NSMutableDictionary * mutableJSON  = (__bridge NSMutableDictionary *)CFPropertyListCreateDeepCopy(kCFAllocatorDefault, (CFDictionaryRef)JSON, kCFPropertyListMutableContainers);
+    CFPropertyListRef mutableJSONRef  = CFPropertyListCreateDeepCopy(kCFAllocatorDefault, (CFDictionaryRef)JSON, kCFPropertyListMutableContainers);
+    NSMutableDictionary *mutableJSON = (__bridge NSMutableDictionary *)mutableJSONRef;
+    if (!mutableJSON) { return; }
     
     [self.feeds removeAllObjects];
     
@@ -72,6 +74,8 @@
     [mutableJSON removeObjectForKey:@"results"];
     
     self.info = mutableJSON;
+
+    CFRelease(mutableJSONRef);
 }
 
 @end

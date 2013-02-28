@@ -1,5 +1,9 @@
 #import "COSMModel.h"
 
+@interface COSMModel () {}
+@property (nonatomic, readonly) NSString *resourceFormat;
+@end
+
 @implementation COSMModel
 
 @synthesize info, delegate;
@@ -18,25 +22,16 @@
 
 #pragma mark - State
 
-@synthesize isNew, isDeletedFromCOSM, required;
-
-- (BOOL)isValid {
-    BOOL valid = YES;
-    NSEnumerator *requireEnumerator = [required objectEnumerator];
-    id requiredKey;
-    while (requiredKey = [requireEnumerator nextObject]) {
-        id object = [info objectForKey:requiredKey];
-        if (object == NULL || ([object isKindOfClass:[NSString class]] && [object isEqualToString:@""])) {
-            NSLog(@"Object does not contain %@", requiredKey);
-            valid = NO;
-        }
-        
-    }
-    return valid;
-}
+@synthesize isNew, isDeletedFromCOSM;
 
 #pragma mark - Synchronisation 
 
 @synthesize api;
+
+- (NSString *)resourceURLString {
+    return nil;
+}
+
+- (void)parse:(id)JSON {}
 
 @end

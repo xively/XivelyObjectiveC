@@ -4,9 +4,10 @@
     
 }
 
+// Data
 @property NSUInteger feedId;
 
-// synchronization
+// Synchronization
 - (void)parse:(id)JSON;
 
 @end

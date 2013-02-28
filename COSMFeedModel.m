@@ -35,14 +35,15 @@
     if (self = [super init]) {
 		self.api = [COSMAPI defaultAPI];
         self.datastreamCollection = [[COSMDatastreamCollection alloc] init];
-        required = @[
-            @"title"
-        ];
     }
     return self;
 }
 
 #pragma mark - Synchronization
+
+- (NSString *)resourceURLString {
+    return [NSString stringWithFormat:@"feeds/%@", [self.info valueForKeyPath:@"id"]];
+}
 
 - (void)fetch {
     [self useParameter:@"show_user" withValue:@"true"];
@@ -83,7 +84,6 @@
             if ([operation.response valueForKeyPath:@"allHeaderFields.Location"]) {
                 NSString *feedId = [COSMAPI feedIDFromURLString:[operation.response valueForKeyPath:@"allHeaderFields.Location"]];
                 [self.info setObject:feedId forKey:@"id"];
-                NSLog(@"My ID is %@", feedId);
             }
             self.isNew = NO;
             NSMutableArray *savedDatastreams = [saveableInfoDictionary objectForKey:@"datastreams"];
@@ -189,7 +189,9 @@
 
 - (void)parse:(id)JSON {
     // create a deep mutable copy
-    NSMutableDictionary * mutableJSON  = (__bridge NSMutableDictionary *)CFPropertyListCreateDeepCopy(kCFAllocatorDefault, (CFDictionaryRef)JSON, kCFPropertyListMutableContainers);
+    CFPropertyListRef mutableJSONRef  = CFPropertyListCreateDeepCopy(kCFAllocatorDefault, (CFDictionaryRef)JSON, kCFPropertyListMutableContainers);
+    NSMutableDictionary *mutableJSON = (__bridge NSMutableDictionary *)mutableJSONRef;
+    if (!mutableJSON) { return; }
     self.datastreamCollection.feedId = [[mutableJSON valueForKeyPath:@"id"] integerValue];
     [self.datastreamCollection parse:[mutableJSON valueForKeyPath:@"datastreams"]];
     [self.datastreamCollection.datastreams enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -199,6 +201,7 @@
     [mutableJSON removeObjectForKey:@"datastreams"];
     self.info = mutableJSON;
     self.isNew = NO;
+    CFRelease(mutableJSONRef);
 }
 
 @end
