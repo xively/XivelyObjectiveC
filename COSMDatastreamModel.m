@@ -131,13 +131,16 @@
 }
 
 - (void)parse:(id)JSON {
-    NSMutableDictionary * mutableJSON  = (__bridge NSMutableDictionary *)CFPropertyListCreateDeepCopy(kCFAllocatorDefault, (CFDictionaryRef)JSON, kCFPropertyListMutableContainers);
+    CFPropertyListRef mutableJSONRef  = CFPropertyListCreateDeepCopy(kCFAllocatorDefault, (CFDictionaryRef)JSON, kCFPropertyListMutableContainers);
+    NSMutableDictionary *mutableJSON = (__bridge NSMutableDictionary *)mutableJSONRef;
+    if (!mutableJSON) { return; }
     [self.datapointCollection.datapoints removeAllObjects];
     NSArray *returnedDatastreams = [mutableJSON valueForKeyPath:@"datapoints"];
     [self.datapointCollection parse:returnedDatastreams];
     [mutableJSON removeObjectForKey:@"datastreams"];
     self.info = mutableJSON;
     self.isNew = NO;
+    CFRelease(mutableJSONRef);
 }
 
 @end
