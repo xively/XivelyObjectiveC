@@ -1,12 +1,12 @@
-#import "COSMModel.h"
+#import "COSMSubscribable.h"
 #import "COSMDatastreamCollection.h"
 
-@interface COSMFeedModel : COSMModel {
+@interface COSMFeedModel : COSMSubscribable {
     
 }
 
 // data
-@property (nonatomic, retain) COSMDatastreamCollection *datastreamCollection;
+@property (nonatomic, strong) COSMDatastreamCollection *datastreamCollection;
 // returns the info dictionary without any references
 // to any datastream that are not mark with `isNew==true`
 // this is to prevent the model saving any datastreams which

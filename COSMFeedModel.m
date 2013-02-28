@@ -41,6 +41,10 @@
 
 #pragma mark - Synchronization
 
+- (NSString *)resourceURLString {
+    return [NSString stringWithFormat:@"feeds/%@", [self.info valueForKeyPath:@"id"]];
+}
+
 - (void)fetch {
     [self useParameter:@"show_user" withValue:@"true"];
     NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%@", [self.info valueForKeyPath:@"id"]] withParameters:self.parameters];
