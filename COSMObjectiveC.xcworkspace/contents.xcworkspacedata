@@ -4,4 +4,7 @@
    <FileRef
       location = "group:SocketDatastreamExampleiOS/SocketDatastreamExampleiOS.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:SocketFeedExampleiOS/SocketFeedExampleiOS.xcodeproj">
+   </FileRef>
 </Workspace>
