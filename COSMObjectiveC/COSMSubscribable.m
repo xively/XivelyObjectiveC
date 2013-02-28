@@ -133,6 +133,7 @@
             if (self.delegate && [self.delegate respondsToSelector:@selector(modelUpdatedViaSubscription:)]) {
                 [self.delegate modelUpdatedViaSubscription:self];
             }
+	    return;
         }
         
     }
