@@ -1,5 +1,5 @@
-[submodule "COSM-Objective-C"]
-	path = COSM-Objective-C
+[submodule "COSMObjectiveC"]
+	path = COSMObjectiveC
 	url = git@github.com:rc1/cosm-objective-c.git
 [submodule "Libraries/AFNetworking"]
 	path = Libraries/AFNetworking
