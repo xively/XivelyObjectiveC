@@ -101,7 +101,9 @@
 ///---------------------------------------------------------------------------------------
 - (void)fetch;
 - (void)save;
+- (void)deleteFromCosm;
 - (void)parse:(id)JSON;
+@property BOOL isNew;
 /// returns the info dictionary without any references
 /// to any datapoints, so that the COSMDatastreamModel
 /// and COSMFeedModel cannot make edits to any datapoints
