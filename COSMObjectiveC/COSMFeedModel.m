@@ -51,10 +51,10 @@
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         
         NSData *data  = [NSJSONSerialization dataWithJSONObject:saveableInfoDictionary options:NSJSONWritingPrettyPrinted error:nil];
-        NSLog(@"JSON %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+	//NSLog(@"JSON %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
         [request setHTTPBody:data];
         AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"recieved response! %@", [operation.response valueForKeyPath:@"allHeaderFields.Location"]);
+	    //NSLog(@"recieved response! %@", [operation.response valueForKeyPath:@"allHeaderFields.Location"]);
             if ([operation.response valueForKeyPath:@"allHeaderFields.Location"]) {
                 NSString *feedId = [COSMAPI feedIDFromURLString:[operation.response valueForKeyPath:@"allHeaderFields.Location"]];
                 [self.info setObject:feedId forKey:@"id"];
@@ -88,9 +88,9 @@
                 // with the error information we have extracted. 
                 if ([NSJSONSerialization isValidJSONObject:dataToJsonify]) {
                     JSON = [NSJSONSerialization JSONObjectWithData:[dataToJsonify dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments error:&jsonError];
-                    if (jsonError) {
-                        NSLog(@"JSON error %@", jsonError);
-                    }
+//                    if (jsonError) {
+//                        NSLog(@"JSON error %@", jsonError);
+//                    }
                 } else {
                     JSON = @{@"title" : @"Failed to save", @"errors" : dataToJsonify};
                 }
