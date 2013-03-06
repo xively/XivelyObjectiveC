@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Tests/Tests.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:SocketDatastreamExampleiOS/SocketDatastreamExampleiOS.xcodeproj">
    </FileRef>
    <FileRef
