@@ -1,6 +1,6 @@
-#import "TestsTests.h"
+#import "CrudTests.h"
 
-@implementation TestsTests
+@implementation CrudTests
 
 #pragma mark - Setup up / Tear down
 

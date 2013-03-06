@@ -11,7 +11,7 @@
 		91074F5916E4DE47008418BE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91074F3916E4DE47008418BE /* UIKit.framework */; };
 		91074F5A16E4DE47008418BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91074F3B16E4DE47008418BE /* Foundation.framework */; };
 		91074F6216E4DE47008418BE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91074F6016E4DE47008418BE /* InfoPlist.strings */; };
-		91074F6516E4DE47008418BE /* TestsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F6416E4DE47008418BE /* TestsTests.m */; };
+		91074F6516E4DE47008418BE /* CrudTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F6416E4DE47008418BE /* CrudTests.m */; };
 		91074F8916E4DEE3008418BE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 91074F6F16E4DEE3008418BE /* .gitignore */; };
 		91074F8B16E4DEE3008418BE /* COSMAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F7216E4DEE3008418BE /* COSMAPI.m */; };
 		91074F8D16E4DEE3008418BE /* COSMDatapointCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F7416E4DEE3008418BE /* COSMDatapointCollection.m */; };
@@ -45,21 +45,12 @@
 		91074F3916E4DE47008418BE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		91074F3B16E4DE47008418BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		91074F3D16E4DE47008418BE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		91074F4116E4DE47008418BE /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
-		91074F4316E4DE47008418BE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		91074F4516E4DE47008418BE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		91074F4716E4DE47008418BE /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		91074F4816E4DE47008418BE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		91074F4916E4DE47008418BE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		91074F4B16E4DE47008418BE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		91074F4D16E4DE47008418BE /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		91074F4F16E4DE47008418BE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		91074F5616E4DE47008418BE /* TestsTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestsTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91074F5716E4DE47008418BE /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		91074F5F16E4DE47008418BE /* TestsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestsTests-Info.plist"; sourceTree = "<group>"; };
 		91074F6116E4DE47008418BE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		91074F6316E4DE47008418BE /* TestsTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestsTests.h; sourceTree = "<group>"; };
-		91074F6416E4DE47008418BE /* TestsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestsTests.m; sourceTree = "<group>"; };
+		91074F6316E4DE47008418BE /* CrudTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CrudTests.h; path = TestsTests/CrudTests.h; sourceTree = "<group>"; };
+		91074F6416E4DE47008418BE /* CrudTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CrudTests.m; path = TestsTests/CrudTests.m; sourceTree = "<group>"; };
 		91074F6F16E4DEE3008418BE /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		91074F7016E4DEE3008418BE /* COSM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSM.h; sourceTree = "<group>"; };
 		91074F7116E4DEE3008418BE /* COSMAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMAPI.h; sourceTree = "<group>"; };
@@ -140,8 +131,9 @@
 				91074FF316E4EAE2008418BE /* SocketRocket */,
 				91074FCD16E4EADA008418BE /* AFNetworking */,
 				91074F6E16E4DEE3008418BE /* COSMObjectiveC */,
-				91074F3F16E4DE47008418BE /* Tests */,
-				91074F5D16E4DE47008418BE /* TestsTests */,
+				91074F6316E4DE47008418BE /* CrudTests.h */,
+				91074F6416E4DE47008418BE /* CrudTests.m */,
+				91074F5E16E4DE47008418BE /* Supporting Files */,
 				91074F3816E4DE47008418BE /* Frameworks */,
 				91074F3616E4DE47008418BE /* Products */,
 			);
@@ -169,40 +161,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		91074F3F16E4DE47008418BE /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				91074F4816E4DE47008418BE /* AppDelegate.h */,
-				91074F4916E4DE47008418BE /* AppDelegate.m */,
-				91074F4016E4DE47008418BE /* Supporting Files */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		91074F4016E4DE47008418BE /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				91074F4116E4DE47008418BE /* Tests-Info.plist */,
-				91074F4216E4DE47008418BE /* InfoPlist.strings */,
-				91074F4516E4DE47008418BE /* main.m */,
-				91074F4716E4DE47008418BE /* Tests-Prefix.pch */,
-				91074F4B16E4DE47008418BE /* Default.png */,
-				91074F4D16E4DE47008418BE /* Default@2x.png */,
-				91074F4F16E4DE47008418BE /* Default-568h@2x.png */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		91074F5D16E4DE47008418BE /* TestsTests */ = {
-			isa = PBXGroup;
-			children = (
-				91074F6316E4DE47008418BE /* TestsTests.h */,
-				91074F6416E4DE47008418BE /* TestsTests.m */,
-				91074F5E16E4DE47008418BE /* Supporting Files */,
-			);
-			path = TestsTests;
-			sourceTree = "<group>";
-		};
 		91074F5E16E4DE47008418BE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +168,7 @@
 				91074F6016E4DE47008418BE /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			path = TestsTests;
 			sourceTree = "<group>";
 		};
 		91074F6E16E4DEE3008418BE /* COSMObjectiveC */ = {
@@ -291,9 +250,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		91074F5516E4DE47008418BE /* TestsTests */ = {
+		91074F5516E4DE47008418BE /* COSMObjectiveCTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 91074F6B16E4DE47008418BE /* Build configuration list for PBXNativeTarget "TestsTests" */;
+			buildConfigurationList = 91074F6B16E4DE47008418BE /* Build configuration list for PBXNativeTarget "COSMObjectiveCTests" */;
 			buildPhases = (
 				91074F5116E4DE47008418BE /* Sources */,
 				91074F5216E4DE47008418BE /* Frameworks */,
@@ -304,7 +263,7 @@
 			);
 			dependencies = (
 			);
-			name = TestsTests;
+			name = COSMObjectiveCTests;
 			productName = TestsTests;
 			productReference = 91074F5616E4DE47008418BE /* TestsTests.octest */;
 			productType = "com.apple.product-type.bundle";
@@ -330,7 +289,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				91074F5516E4DE47008418BE /* TestsTests */,
+				91074F5516E4DE47008418BE /* COSMObjectiveCTests */,
 			);
 		};
 /* End PBXProject section */
@@ -369,7 +328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91074F6516E4DE47008418BE /* TestsTests.m in Sources */,
+				91074F6516E4DE47008418BE /* CrudTests.m in Sources */,
 				91074F8B16E4DEE3008418BE /* COSMAPI.m in Sources */,
 				91074F8D16E4DEE3008418BE /* COSMDatapointCollection.m in Sources */,
 				91074F8F16E4DEE3008418BE /* COSMDatapointModel.m in Sources */,
@@ -398,14 +357,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		91074F4216E4DE47008418BE /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				91074F4316E4DE47008418BE /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		91074F6016E4DE47008418BE /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -513,7 +464,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		91074F6B16E4DE47008418BE /* Build configuration list for PBXNativeTarget "TestsTests" */ = {
+		91074F6B16E4DE47008418BE /* Build configuration list for PBXNativeTarget "COSMObjectiveCTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				91074F6C16E4DE47008418BE /* Debug */,

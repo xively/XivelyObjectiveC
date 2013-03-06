@@ -3,7 +3,7 @@
 
 #define kAPI_KEY @"LwH31lva9MX0YG84cy3_XKv9z4OSAKx5NDdDYzAzejBHUT0g"
 
-@interface TestsTests : SenTestCase<COSMFeedCollectionDelegate, COSMSubscribableDelegate, COSMDatapointCollectionDelegate>
+@interface CrudTests : SenTestCase<COSMFeedCollectionDelegate, COSMSubscribableDelegate, COSMDatapointCollectionDelegate>
 
 // Feed Collection
 @property (nonatomic, strong) COSMFeedCollection *feedCollection;
@@ -14,7 +14,7 @@
 
 // Datastream Collection
 @property (nonatomic, strong) COSMDatastreamCollection *datastreamCollection;
-- (void)testFetchDatastreamCollection;
+- (void)testDatastreamCollection;
 
 // Datastream Model
 @property (nonatomic, strong) COSMDatastreamModel *datastreamModel;
@@ -26,7 +26,7 @@
 
 // Datapoint
 @property (nonatomic, strong) COSMDatapointModel *datapointModel;
-- (void)testDatapointMolde;
+- (void)testDatapointModel;
 
 // Locking
 @property (nonatomic, strong) dispatch_semaphore_t semaphore;
