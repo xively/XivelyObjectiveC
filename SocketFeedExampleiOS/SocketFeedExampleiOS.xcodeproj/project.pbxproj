@@ -47,6 +47,7 @@
 		91BEBCBA16DE057F0004EF4E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BEBCA716DE02DA0004EF4E /* AppDelegate.m */; };
 		91BEBCBB16DE057F0004EF4E /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BEBCA916DE02DA0004EF4E /* FeedViewController.m */; };
 		91BEBCBC16DE05A60004EF4E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91BEBCAA16DE02DA0004EF4E /* MainStoryboard.storyboard */; };
+		91D7530516E77555005D5DDA /* COSMDatapointCollectionDelegate.h in Resources */ = {isa = PBXBuildFile; fileRef = 91D7530416E77555005D5DDA /* COSMDatapointCollectionDelegate.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +125,7 @@
 		91BEBCB316DE03050004EF4E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "SocketFeedExampleiOS/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
 		91BEBCB416DE03050004EF4E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = SocketFeedExampleiOS/Default.png; sourceTree = SOURCE_ROOT; };
 		91BEBCB516DE03050004EF4E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "SocketFeedExampleiOS/Default@2x.png"; sourceTree = SOURCE_ROOT; };
+		91D7530416E77555005D5DDA /* COSMDatapointCollectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = COSMDatapointCollectionDelegate.h; path = ../COSMObjectiveC/COSMDatapointCollectionDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				918D6BD016DF9B6400909170 /* COSM.h */,
 				918D6BD116DF9B6400909170 /* COSMAPI.h */,
 				918D6BD216DF9B6400909170 /* COSMAPI.m */,
+				91D7530416E77555005D5DDA /* COSMDatapointCollectionDelegate.h */,
 				918D6BD316DF9B6400909170 /* COSMDatapointCollection.h */,
 				918D6BD416DF9B6400909170 /* COSMDatapointCollection.m */,
 				918D6BD516DF9B6400909170 /* COSMDatapointModel.h */,
@@ -348,6 +351,7 @@
 				91BEBCB816DE03050004EF4E /* Default@2x.png in Resources */,
 				91BEBCBC16DE05A60004EF4E /* MainStoryboard.storyboard in Resources */,
 				918D6BF216DF9B6400909170 /* README.md in Resources */,
+				91D7530516E77555005D5DDA /* COSMDatapointCollectionDelegate.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

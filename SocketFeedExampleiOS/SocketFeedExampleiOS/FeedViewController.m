@@ -50,7 +50,6 @@
 #pragma mark – Socket Connection Delegate Methods
 
 - (void)modelDidSubscribe:(COSMModel *)model {
-    NSLog(@"modelDidSubscribe");
     self.subscribeUnsubscribeButton.userInteractionEnabled = YES;
     [self.subscribeUnsubscribeButton setTitle:@"Unsubscribe" forState:UIControlStateNormal];
 }

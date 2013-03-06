@@ -1,11 +1,3 @@
-//
-//  main.m
-//  SocketDatastreamExampleiOS
-//
-//  Created by Ross Cairns on 26/02/2013.
-//  Copyright (c) 2013 COSM Ltd. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
 #import "AppDelegate.h"
