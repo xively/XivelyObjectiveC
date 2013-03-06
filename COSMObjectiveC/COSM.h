@@ -32,4 +32,5 @@
 #include "COSMDatastreamModel.h"
 
 #include "COSMDatapointCollection.h"
+#include "COSMDatapointCollectionDelegate.h"
 #include "COSMDatapointModel.h"

@@ -1,4 +1,6 @@
 #import <Foundation/Foundation.h>
+#import "COSMDatapointCollectionDelegate.h"
+#import "COSMAPI.h"
 
 @interface COSMDatapointCollection : NSObject
 
@@ -16,6 +18,7 @@
  When initalising a COSMDatapointCollection directly the feedId is require inorder for the COSMDatapointCollection access the correct resource for Cosm's webservice. */
 @property NSUInteger feedId;
 
+@property (nonatomic, strong) NSString *datastreamId;
 ///---------------------------------------------------------------------------------------
 /// @name Datapoints
 ///---------------------------------------------------------------------------------------
@@ -26,6 +29,9 @@
 ///---------------------------------------------------------------------------------------
 /// @name Synchronization
 ///---------------------------------------------------------------------------------------
+@property (nonatomic, strong) COSMAPI *api;
+@property (nonatomic, weak) id<COSMDatapointCollectionDelegate> delegate;
+- (void)saveAll;
 
 /** Given responce JSON, will convert any JSON representation of COSMDatapointModels into the datapoints array and place other content into the info dictionary 
  

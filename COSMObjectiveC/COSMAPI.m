@@ -20,7 +20,7 @@ static COSMAPI *defaultAPI = nil;
 
 - (NSURL*)urlForRoute:(NSString*)route {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@?key=%@", apiURLString, route, apiKey]];
-    NSLog(@"COSMAPI `urlForRoute:` is %@", url);
+    //NSLog(@"COSMAPI `urlForRoute:` is %@", url);
     return url;
 }
 
@@ -33,8 +33,10 @@ static COSMAPI *defaultAPI = nil;
             [url appendFormat:@"%@=%@&", key, parameter];
         }
     }];
-    [url appendFormat:@"key=%@&", apiKey];
-    NSLog(@"COSMAPI `urlForRoute:` is %@", url);    
+    if (self.apiKey) {
+        [url appendFormat:@"key=%@&", apiKey];
+    }
+    //NSLog(@"COSMAPI `urlForRoute:` is %@", url);
     return [NSURL URLWithString:url];
 }
 

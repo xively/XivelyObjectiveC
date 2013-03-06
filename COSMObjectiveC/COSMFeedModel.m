@@ -12,7 +12,7 @@
 #pragma mark - Synchronization
 
 - (BOOL)isNew {
-    return ([self.info valueForKeyPath:@"id"] != NULL);
+    return ([self.info valueForKeyPath:@"id"] == nil);
 }
 
 - (NSString *)resourceURLString {
@@ -20,18 +20,23 @@
 }
 
 - (void)fetch {
+    if ([self.info valueForKeyPath:@"id"] == nil) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToFetch:withError:json:)]) {
+            [self.delegate modelFailedToFetch:self withError:nil json:@{ @"Error" : @"Feed has no id" }];
+        }
+        return;
+    }
+    
     [self useParameter:@"show_user" withValue:@"true"];
     NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%@", [self.info valueForKeyPath:@"id"]] withParameters:self.parameters];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:40.0];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        NSLog(@"Data: %@", JSON);
         [self parse:JSON];
         if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidFetch:)]) {
             [self.delegate modelDidFetch:self];
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        NSLog(@"Error %@", error);
         if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToFetch:withError:json:)]) {
             [self.delegate modelFailedToFetch:self withError:error json:JSON];
         }
@@ -51,10 +56,10 @@
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         
         NSData *data  = [NSJSONSerialization dataWithJSONObject:saveableInfoDictionary options:NSJSONWritingPrettyPrinted error:nil];
-        NSLog(@"JSON %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        //NSLog(@"JSON %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
         [request setHTTPBody:data];
         AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"recieved response! %@", [operation.response valueForKeyPath:@"allHeaderFields.Location"]);
+            //NSLog(@"recieved response! %@", [operation.response valueForKeyPath:@"allHeaderFields.Location"]);
             if ([operation.response valueForKeyPath:@"allHeaderFields.Location"]) {
                 NSString *feedId = [COSMAPI feedIDFromURLString:[operation.response valueForKeyPath:@"allHeaderFields.Location"]];
                 [self.info setObject:feedId forKey:@"id"];
@@ -88,9 +93,9 @@
                 // with the error information we have extracted. 
                 if ([NSJSONSerialization isValidJSONObject:dataToJsonify]) {
                     JSON = [NSJSONSerialization JSONObjectWithData:[dataToJsonify dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments error:&jsonError];
-                    if (jsonError) {
-                        NSLog(@"JSON error %@", jsonError);
-                    }
+//                    if (jsonError) {
+//                        NSLog(@"JSON error %@", jsonError);
+//                    }
                 } else {
                     JSON = @{@"title" : @"Failed to save", @"errors" : dataToJsonify};
                 }
@@ -130,9 +135,18 @@
 }
 
 - (void)deleteFromCOSM {
+    if ([self.info valueForKeyPath:@"id"] == nil) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToDeleteFromCOSM:withError:json:)]) {
+            [self.delegate modelFailedToDeleteFromCOSM:self withError:nil json:@{ @"Error" : @"Feed has no id" }];
+        }
+        return;
+    }
     NSString *feedId = [self.info valueForKeyPath:@"id"];
     if (!feedId) {
-        NSLog(@"COSMFeedController `deleteFromCOSM` cannot delete feed. Feed has no `id` in info dictionary");
+        NSLog(@"COSMFeedModel `deleteFromCOSM` cannot delete feed. Feed has no `id` in info dictionary");
+        if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToDeleteFromCOSM:withError:json:)]) {
+            [self.delegate modelFailedToDeleteFromCOSM:self withError:nil json:@{ @"Error" : @"Feed has no `id` in info dictionary" }];
+        }
         return;
     }
     NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%@", feedId]];

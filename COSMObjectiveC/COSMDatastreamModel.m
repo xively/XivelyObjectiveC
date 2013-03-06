@@ -10,21 +10,38 @@
 
 @synthesize feedId;
 
+- (BOOL)checkIdAndNotifyOnFailure {
+    
+    return YES;
+}
+
 #pragma mark - Datapoints
 
 @synthesize datapointCollection;
 
 #pragma mark - Synchronization
 
-- (BOOL)isNew {
-    return ([self.info valueForKeyPath:@"id"] != NULL);
-}
+@synthesize isNew;
 
 - (NSString *)resourceURLString {
     return [NSString stringWithFormat:@"feeds/%d/datastreams/%@", self.feedId, [self.info valueForKeyPath:@"id"]];
 }
 
 - (void)fetch {
+    if (!self.feedId) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToFetch:withError:json:)]) {
+            [self.delegate modelFailedToFetch:self withError:nil json:@{ @"Error" : @"Datastream has no feed id" }];
+        }
+        return;
+    }
+    NSString *datastreamId = [self.info valueForKeyPath:@"id"];
+    if (!datastreamId) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToFetch:withError:json:)]) {
+            [self.delegate modelFailedToFetch:self withError:nil json:@{ @"Error" : @"Datastream has no id" }];
+        }
+        return;
+    }
+
     NSURL *url = [self.api urlForRoute:self.resourceURLString withParameters:self.parameters];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:40.0];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
@@ -34,7 +51,7 @@
                                 [self.delegate modelDidFetch:self];
                             }
                         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                            NSLog(@"Error %@", error);
+                            //NSLog(@"Error %@", error);
                             if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToFetch:withError:json:)]) {
                                 [self.delegate modelFailedToFetch:self withError:error json:JSON];
                             }
@@ -46,12 +63,15 @@
     NSMutableDictionary *saveableInfoDictionary = [self saveableInfo];
     
     if (self.isNew) {
+        if (!self.feedId) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToSave:withError:json:)]) {
+                [self.delegate modelFailedToSave:self withError:nil json:@{ @"Error" : @"Datastream has no feed id" }];
+            }
+            return;
+        }
+
         // POST
-        #warning TODO: COSMDatastreamModel should be checking for a feed id
-        // this is not what the docs say. this is not createing feed
-        // the the api says to "POST" a new feed, but this is not
-        // possible, api repied methong must be get, put or post
-        // therefore using the datastream feed api
+        // using the feed api as the datastream api is returning an error?
         NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%d", self.feedId]];
         AFHTTPClient *httpClient = [AFHTTPClient clientWithBaseURL:url];
         NSMutableURLRequest *request = [httpClient requestWithMethod:@"PUT" path:nil parameters:nil];
@@ -59,17 +79,15 @@
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         // wrapping the saveable info so this looks like an update to a feed
         NSMutableDictionary *wrappedInfo = [NSMutableDictionary dictionaryWithObjects:@[@[saveableInfoDictionary]] forKeys:@[@"datastreams"]];
-        NSLog(@"sending %@", wrappedInfo);
         NSData *data  = [NSJSONSerialization dataWithJSONObject:wrappedInfo options:NSJSONWritingPrettyPrinted error:nil];
         [request setHTTPBody:data];
         AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"response %d", operation.response.statusCode);
-            NSLog(@"response string %@", operation.responseString);
-            NSLog(@"%@: %@, %@", [responseObject class], responseObject, [[NSString alloc] initWithData:responseObject
-                                                                                                encoding:NSUTF8StringEncoding]);
+            self.isNew = NO;
             if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidSave:)]) {
                 [self.delegate modelDidSave:self];
             }
+            self.datapointCollection.feedId = self.feedId;
+            self.datapointCollection.datastreamId = [self.info valueForKeyPath:@"id"];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToSave:withError:json:)]) {
                 id JSON = [NSJSONSerialization JSONObjectWithData:[[[error userInfo] valueForKeyPath:NSLocalizedRecoverySuggestionErrorKey]  dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
@@ -78,6 +96,19 @@
         }];
         [operation start];
     } else {
+        if (!self.feedId) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToSave:withError:json:)]) {
+                [self.delegate modelFailedToSave:self withError:nil json:@{ @"Error" : @"Datastream has no feed id" }];
+            }
+            return;
+        }
+        NSString *datastreamId = [self.info valueForKeyPath:@"id"];
+        if (!datastreamId) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToSave:withError:json:)]) {
+                [self.delegate modelFailedToSave:self withError:nil json:@{ @"Error" : @"Datastream has no id" }];
+            }
+            return;
+        }
         NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:self.resourceURLString, self.feedId, [self.info valueForKeyPath:@"id"]]];
         AFHTTPClient *httpClient = [AFHTTPClient clientWithBaseURL:url];
         NSMutableURLRequest *request = [httpClient requestWithMethod:@"PUT" path:nil parameters:nil];
@@ -106,9 +137,9 @@
                 // with the error information we have extracted.
                 if ([NSJSONSerialization isValidJSONObject:dataToJsonify]) {
                     JSON = [NSJSONSerialization JSONObjectWithData:[dataToJsonify dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments error:&jsonError];
-                    if (jsonError) {
-                        NSLog(@"JSON error %@", jsonError);
-                    }
+                    //if (jsonError) {
+                        //NSLog(@"JSON error %@", jsonError);
+                    //}
                 } else {
                     JSON = @{@"title" : @"Failed to save", @"errors" : dataToJsonify};
                 }
@@ -119,11 +150,50 @@
     }
 }
 
+- (void)deleteFromCosm {
+    if (!self.feedId) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToDeleteFromCOSM:withError:json:)]) {
+            [self.delegate modelFailedToDeleteFromCOSM:self withError:nil json:@{ @"Error" : @"Datastream has no feed id" }];
+        }
+        return;
+    }
+    NSString *datastreamId = [self.info valueForKeyPath:@"id"];
+    if (!datastreamId) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToDeleteFromCOSM:withError:json:)]) {
+            [self.delegate modelFailedToDeleteFromCOSM:self withError:nil json:@{ @"Error" : @"Datastream has no id" }];
+        }
+        return;
+    }
+    NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%d/datastreams/%@", feedId, datastreamId]];
+    AFHTTPClient *httpClient = [AFHTTPClient clientWithBaseURL:url];
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"DELETE" path:nil parameters:nil];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        self.isDeletedFromCosm = YES;
+        if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidDeleteFromCOSM:)]) {
+            [self.delegate modelDidDeleteFromCOSM:self];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToDeleteFromCOSM:withError:json:)]) {
+            if ([[error userInfo] valueForKeyPath:NSLocalizedRecoverySuggestionErrorKey]) {
+                id JSON = [NSJSONSerialization JSONObjectWithData:[[[error userInfo] valueForKeyPath:NSLocalizedRecoverySuggestionErrorKey]  dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+                [self.delegate modelFailedToDeleteFromCOSM:self withError:error json:JSON];
+            } else {
+                [self.delegate modelFailedToDeleteFromCOSM:self withError:error json:NULL];
+            }
+        }
+    }];
+    [operation start];
+}
+
 - (void)parse:(id)JSON {
     CFPropertyListRef mutableJSONRef  = CFPropertyListCreateDeepCopy(kCFAllocatorDefault, (CFDictionaryRef)JSON, kCFPropertyListMutableContainers);
     NSMutableDictionary *mutableJSON = (__bridge NSMutableDictionary *)mutableJSONRef;
     if (!mutableJSON) { return; }
+    self.isNew = ([mutableJSON valueForKeyPath:@"id"] == nil);
     [self.datapointCollection.datapoints removeAllObjects];
+    self.datapointCollection.feedId = self.feedId;
+    self.datapointCollection.datastreamId = [mutableJSON valueForKeyPath:@"id"];
     NSArray *returnedDatastreams = [mutableJSON valueForKeyPath:@"datapoints"];
     [self.datapointCollection parse:returnedDatastreams];
     [mutableJSON removeObjectForKey:@"datastreams"];
@@ -144,6 +214,7 @@
 		self.api = [COSMAPI defaultAPI];
         self.datapointCollection = [[COSMDatapointCollection alloc] init];
         [self.info setValue:[[NSMutableDictionary alloc] init] forKey:@"unit"];
+        self.isNew = YES;
     }
     return self;
 }
