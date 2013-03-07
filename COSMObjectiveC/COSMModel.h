@@ -11,7 +11,7 @@
 /// @name Data
 ///---------------------------------------------------------------------------------------
 
-/** Mutable dictionary of information (if present) about the model.
+/** Mutable dictionary of information about the model.
  
  The info dictionary contains an NSDictionary representation of model minus any child Cosm models. For example a COSMFeedModel's info object will not contain any COSMDatastreamModels and a COSMDatapointModel's info object will not contain any COSMDatapointModels */
 @property (nonatomic, strong) NSMutableDictionary *info;

@@ -22,7 +22,6 @@
 		91074F9916E4DEE3008418BE /* COSMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F8116E4DEE3008418BE /* COSMModel.m */; };
 		91074F9B16E4DEE3008418BE /* COSMRequestable.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F8416E4DEE3008418BE /* COSMRequestable.m */; };
 		91074F9D16E4DEE3008418BE /* COSMSubscribable.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F8616E4DEE3008418BE /* COSMSubscribable.m */; };
-		91074F9F16E4DEE3008418BE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 91074F8716E4DEE3008418BE /* README.md */; };
 		91074FE216E4EADA008418BE /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074FCF16E4EADA008418BE /* AFHTTPClient.m */; };
 		91074FE416E4EADA008418BE /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074FD116E4EADA008418BE /* AFHTTPRequestOperation.m */; };
 		91074FE616E4EADA008418BE /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074FD316E4EADA008418BE /* AFImageRequestOperation.m */; };
@@ -73,7 +72,6 @@
 		91074F8416E4DEE3008418BE /* COSMRequestable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMRequestable.m; sourceTree = "<group>"; };
 		91074F8516E4DEE3008418BE /* COSMSubscribable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMSubscribable.h; sourceTree = "<group>"; };
 		91074F8616E4DEE3008418BE /* COSMSubscribable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMSubscribable.m; sourceTree = "<group>"; };
-		91074F8716E4DEE3008418BE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		91074FCE16E4EADA008418BE /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		91074FCF16E4EADA008418BE /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		91074FD016E4EADA008418BE /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -198,7 +196,6 @@
 				91074F8516E4DEE3008418BE /* COSMSubscribable.h */,
 				91074F8616E4DEE3008418BE /* COSMSubscribable.m */,
 				91D7531316E79AF9005D5DDA /* COSMSubscribableDelegate.h */,
-				91074F8716E4DEE3008418BE /* README.md */,
 			);
 			name = COSMObjectiveC;
 			path = ../COSMObjectiveC;
@@ -299,7 +296,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				91074F6216E4DE47008418BE /* InfoPlist.strings in Resources */,
-				91074F9F16E4DEE3008418BE /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

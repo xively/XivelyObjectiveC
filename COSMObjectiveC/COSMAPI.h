@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 
 /**
- Holds an API key to be used by models and collections when interacting with Cosm's web services.
+ Holds an API key to be used by models and collectionss when interacting with Cosm's web services.
  
  You may set a default API key for all models and collection by adding it to the defaultAPI object in your application delegate.
  A new COSMAPI can be added to any model or collection on a case by case basis to override the defaultAPI.
@@ -32,8 +32,10 @@
 @property (nonatomic, strong) NSString *apiKey;
 /** The URL string to be used for Cosm's rest services. The default value is http://api.cosm.com/v2 */
 @property (nonatomic, strong) NSString *apiURLString;
-/** The URL string to be used for Cosm's WebSocket services. The default value is http://api.cosm.com:8080 */
+/** The URL string to be used for Cosm's web socket services. The default value is http://api.cosm.com:8080 */
 @property (nonatomic, strong) NSString *socketApiURLString;
+/** The version of this library */
+@property (nonatomic, strong) NSString *versionString;
 
 ///---------------------------------------------------------------------------------------
 /// @name Helpers

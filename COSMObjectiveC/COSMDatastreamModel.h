@@ -18,7 +18,7 @@
 /// @name Datapoints
 ///---------------------------------------------------------------------------------------
 
-/** Container for the datastreams datapoint */
+/** Container for the datastream's datapoint */
 @property (nonatomic, strong) COSMDatapointCollection *datapointCollection;
 
 ///---------------------------------------------------------------------------------------

@@ -14,7 +14,7 @@ static COSMAPI *defaultAPI = nil;
 
 #pragma mark - Sync settings
 
-@synthesize apiKey, apiURLString, socketApiURLString;
+@synthesize apiKey, apiURLString, socketApiURLString, versionString;
 
 #pragma mark - Helpers
 
@@ -61,8 +61,9 @@ static COSMAPI *defaultAPI = nil;
 
 - (id)init {
     if (self=[super init]) {
-        apiURLString = @"http://api.cosm.com/v2";
-        socketApiURLString = @"http://api.cosm.com:8080";
+        self.apiURLString = @"http://api.cosm.com/v2";
+        self.socketApiURLString = @"http://api.cosm.com:8080";
+        self.versionString = @"Cosm-ObjectiveC-Lib/1.0";
     }
     return self;
 }

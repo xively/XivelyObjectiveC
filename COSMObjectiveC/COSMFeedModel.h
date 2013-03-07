@@ -1,7 +1,7 @@
 #import "COSMSubscribable.h"
 #import "COSMDatastreamCollection.h"
 
-/** COSMFeedModel is the representation of a feed on Cosm. It can fetched, saved, deleted, subscribed and unsubscribed to/from Cosm. */
+/** COSMFeedModel is the representation of a feed on Cosm. It can be fetched, saved, deleted, subscribed and unsubscribed to/from Cosm. */
 @interface COSMFeedModel : COSMSubscribable
 
 ///---------------------------------------------------------------------------------------

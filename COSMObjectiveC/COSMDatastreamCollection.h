@@ -8,7 +8,7 @@
 /// @name Data
 ///---------------------------------------------------------------------------------------
 
-/** Mutable dictionary of information (if present) about the collection. 
+/** Mutable dictionary of information about the collection. 
  
  The info dictionary contains an NSDictionary representation of the collection minus the datastreams. The datapoints will have be parsed  into the datastreams property. */
 @property (nonatomic, strong) NSMutableDictionary *info;

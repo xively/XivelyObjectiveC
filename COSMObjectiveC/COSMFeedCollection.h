@@ -3,7 +3,7 @@
 #import "COSMFeedCollectionDelegate.h"
 #import "COSMAPI.h"
 
-/** COSMFeedCollection contains a mutable array of COSMFeedModels. It can also be used to fetch mutliple feeds in a single request. Feed filter or search parameters may be added via COSMRequestable */
+/** COSMFeedCollection contains a mutable array of COSMFeedModels. It can also be used to fetch mutliple feeds in a single request. Feed filters may be added via COSMRequestable's `useParameter:withValue` */
 
 @interface COSMFeedCollection : COSMRequestable
 
@@ -11,7 +11,7 @@
 /// @name Data
 ///---------------------------------------------------------------------------------------
 
-/** Mutable dictionary of information, if any, about the collection.
+/** Mutable dictionary of information about the collection.
  
  The info dictionary contains an NSDictionary representation of the collection minus the feeds themselves. The feeds will have been parsed into the datapoints property. */
 @property (nonatomic, strong) NSMutableDictionary *info;
