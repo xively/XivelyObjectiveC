@@ -1,4 +1,4 @@
-# LibCOSM (Alpha Release)
+# COSMObjectiveC
 
 An iOS and OSX Objective-C Library for [COSM](http://cosm.com/) similar in design to [backbone.js](http://backbonejs.org).
 
@@ -8,7 +8,7 @@ Requires [AFNetworking](https://github.com/AFNetworking/AFNetworking) and [Socke
 
 ## Adding to your project
 
-After adding [AFNetworking](https://github.com/AFNetworking/AFNetworking) and [SocketRocket](https://github.com/square/SocketRocket) to your project, simply add the files within the COSMObjectiveC to you project.
+After adding [AFNetworking](https://github.com/AFNetworking/AFNetworking) and [SocketRocket](https://github.com/square/SocketRocket) to your project, simply add the files within the COSMObjectiveC to your project.
 
 ## Documentation
 
@@ -30,9 +30,11 @@ Information about the model's child entities (a feed's datastreams or a datastre
 
 ### Collections
 
-COSMFeedCollection, COSMDatastreamCollection and COSMDatapoints are container classes for multiple models. 
+COSMFeedCollection, COSMDatastreamCollection and COSMDatapoints are container classes for models. 
 
 COSMFeedCollection can also __fetch__ feeds from Cosm whilst specifying request parameters so the fetch will return a filtered set of feeds, or feeds based on a historical query. 
+
+COSMDatapointCollection can also __save__ all its new datapoints to Cosm.
 
 ### Setting the API Key
 
@@ -78,7 +80,7 @@ datapoint.datastreamId = @"miles";
     
 ### Adding multiple new datapoints to Cosm
 
-Multiple datapoint can be saved to Cosm in one go by using a datapoint collection
+Multiple datapoints can be saved to Cosm in one go by using a datapoint collection
 
 ``` objective-c
 // create & setup a new datapoint collection
@@ -92,6 +94,9 @@ COSMDatapointModel *datapoint = [[COSMDatapointModel alloc] init];
 [datapoint.info setValue:@"13234" forKey:@"value"];
 [datapoint.info setValue:@"2010-05-20T11:01:43Z" forKey:@"at"];
 [self.datapointCollection.datapoints addObject:datapoint];
+
+// save the new datapoints
+[self.datapointsCollection save];
 ```
 
 ### Fetching a list of all feeds from Cosm

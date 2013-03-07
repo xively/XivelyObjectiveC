@@ -39,10 +39,10 @@
 /** Delegate object conforming to the COSMDatapointCollectionDelegate protocol which will be notified with the result of any saveAll request. */
 @property (nonatomic, weak) id<COSMDatapointCollectionDelegate> delegate;
 
-/** Saves all datapoints contained in the collection to Cosm. The result of the operation will be notified to the collections delegate using the COSMDatapointCollectionDelegate protocol. 
+/** Saves all new datapoints contained in the collection to Cosm. The result of the operation will be notified to the collections delegate using the COSMDatapointCollectionDelegate protocol. 
  
  @see COSMDatapointCollectionDelegate */
-- (void)saveAll;
+- (void)save;
 
 /* Given a JSON response will convert any JSON representation of COSMDatapointModels into the datapoints array and place other content into the info dictionary. 
  

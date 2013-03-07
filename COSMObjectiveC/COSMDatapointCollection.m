@@ -18,7 +18,7 @@
 
 @synthesize delegate, api;
 
-- (void)saveAll {
+- (void)save {
     if (self.feedId == 0) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(datapointCollectionFailedToSaveAll:withError:json:)]) {
             [self.delegate datapointCollectionFailedToSaveAll:self withError:nil json:@{ @"Error" : @"Datapoint collection has no feed id" }];
@@ -40,7 +40,9 @@
     
     NSMutableArray *arrayOfDatapoints = [[NSMutableArray alloc] initWithCapacity:self.datapoints.count];
     [self.datapoints enumerateObjectsUsingBlock:^(COSMDatapointModel *model, NSUInteger idx, BOOL *stop) {
-        [arrayOfDatapoints addObject:model.info];
+        if (model.isNew) {
+            [arrayOfDatapoints addObject:model.info];
+        }
     }];
     
     NSData *data  = [NSJSONSerialization dataWithJSONObject:@{@"datapoints":arrayOfDatapoints} options:NSJSONWritingPrettyPrinted error:nil];

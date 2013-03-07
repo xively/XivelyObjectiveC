@@ -433,21 +433,21 @@
     self.semaphore = dispatch_semaphore_create(0);
     self.datapointCollection = [[COSMDatapointCollection alloc] init];
     self.datapointCollection.delegate = self;
-    [self.datapointCollection saveAll];
+    [self.datapointCollection save];
     STAssertTrue(self.errorObj || self.errorJSON, @"Error returned for no feed id on save all");
     self.errorObj = nil;
     self.errorJSON = nil;
     
     self.semaphore = dispatch_semaphore_create(0);
     self.datapointCollection.feedId = [[temporaryFeed.info valueForKeyPath:@"id"] integerValue];
-    [self.datapointCollection saveAll];
+    [self.datapointCollection save];
     STAssertTrue(self.errorObj || self.errorJSON, @"Error returned for no datastreamId id on save all");
     self.errorObj = nil;
     self.errorJSON = nil;
     
     self.semaphore = dispatch_semaphore_create(0);
     self.datapointCollection.datastreamId = [temporaryDatastream.info valueForKeyPath:@"id"];
-    [self.datapointCollection saveAll];
+    [self.datapointCollection save];
     
     while (dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_NOW)) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
