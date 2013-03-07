@@ -24,7 +24,7 @@
 /// @name Updates
 ///---------------------------------------------------------------------------------------
 
-/** Tells the delegate that an update was made to model via the subscription.
+/** Tells the delegate that an update was made to the model via the subscription.
  @param model Reference to the model which was subscribed 
  @warning New datastreams and/or datapoints will be created when the model is updated. Therefore any previous info and/or feeds and datastreams will be dereferenced by the model. *
  */
