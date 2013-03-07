@@ -1,5 +1,7 @@
 #import <Foundation/Foundation.h>
 
+/** COSMDatastreamCollection collection contains a mutable array of COSMDatapointModels.*/
+
 @interface COSMDatastreamCollection : NSObject
 
 ///---------------------------------------------------------------------------------------
@@ -27,7 +29,7 @@
 /// @name Synchronisation
 ///---------------------------------------------------------------------------------------
 
-/** Given responce JSON, will convert any JSON representation of Cosm datastream into the datastream array and parse other JSON content into the info dictionary as a NSMutableDictionary.
+/* Given responce JSON, will convert any JSON representation of Cosm datastream into the datastream array and parse other JSON content into the info dictionary as a NSMutableDictionary.
  
 Should not need to be called directly. Used internally to parse responces from fetch, save and delete requests. */
 - (void)parse:(id)JSON;

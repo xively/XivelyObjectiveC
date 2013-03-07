@@ -9,7 +9,7 @@
 @synthesize feedId;
 @synthesize datastreamId;
 
-#pragma mark - Synchronization
+#pragma mark - Synchronisation
 
 @synthesize isNew;
 

@@ -19,7 +19,7 @@
 
 @synthesize datapointCollection;
 
-#pragma mark - Synchronization
+#pragma mark - Synchronisation
 
 @synthesize isNew;
 

@@ -9,7 +9,7 @@
 
 @synthesize datastreamCollection;
 
-#pragma mark - Synchronization
+#pragma mark - Synchronisation
 
 - (BOOL)isNew {
     return ([self.info valueForKeyPath:@"id"] == nil);

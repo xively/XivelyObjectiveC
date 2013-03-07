@@ -7,7 +7,8 @@
 
 #pragma mark - Data
 
-@synthesize feedId, info, datastreamId;
+@synthesize feedId, datastreamId;
+
 
 #pragma mark - Datapoints
 
@@ -100,7 +101,6 @@
     if (self=[super init]) {
         self.api = [COSMAPI defaultAPI];
         self.datapoints = [[NSMutableArray alloc] init];
-        self.info = [[NSMutableDictionary alloc] init];
     }
     return self;
 }

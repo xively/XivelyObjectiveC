@@ -7,9 +7,16 @@ documentation:
 		--project-company "COSM Ltd." \
 		--company-id com.cosm \
 		--output ~/help \
-		--keep-undocumented-objects \
-		--keep-undocumented-members \
-		--search-undocumented-doc \
+ 		--no-keep-undocumented-objects \
+		--no-keep-undocumented-members \
+		--no-warn-missing-output-path \
+		--no-warn-missing-company-id \
+		--no-warn-undocumented-object \
+		--no-warn-undocumented-member \
+		--no-warn-empty-description \
+		--no-warn-unknown-directive \
+		--no-warn-invalid-crossref \
+		--no-warn-missing-arg \
 		COSMObjectiveC
 
 publish-docs:
@@ -20,5 +27,8 @@ publish-docs:
 	git --git-dir=../Documentation/.git --work-tree=../Documentation commit -am "automated commit" 
 	git --git-dir=../Documentation/.git --work-tree=../Documentation push origin gh-pages;
 
+open:
+
+	open /Volumes/MacintoshHD/ross/Library/Developer/Shared/Documentation/DocSets/com.cosm.COSMObjectiveC.docset/Contents/Resources/Documents/index.html
 
 .PHONY: documentation publish-docs

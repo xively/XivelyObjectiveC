@@ -3,6 +3,8 @@
 #import "COSMModelDelegate.h"
 #import "COSMAPI.h"
 
+/** COSMModel is the base class for individual feeds, datastreams and datapoints. */
+
 @interface COSMModel : COSMRequestable
 
 ///---------------------------------------------------------------------------------------
@@ -18,9 +20,9 @@
 /// @name State
 ///---------------------------------------------------------------------------------------
 
-/** Determins if the model exsits on Cosm. Normally by identifiying if it has an id.
+/** Determins, or is a flag which indicates, if the model exsits on Cosm. 
  
- Used internally to decide on POST or PUT request when save is called. */
+ Used internally to decide on POST or PUT request when save is called for feeds and datastreams. */
 - (BOOL)isNew;
 
 /** Flags a model is deleted so that it may be removed from a parent collection by called `removeDeletedFromCOSM` on any containing collection  */
@@ -38,12 +40,12 @@
  If an COSMAPI object is not provided directy, the model will use COSMAPI's defaultAPI object. */
 @property (nonatomic, strong) COSMAPI *api;
 
-/** Returns the model's resource URL path.
+/* Returns the model's resource URL path.
  
  Should not need to be called directly. Used internally to create the request URL string for any fetch, save, delete and subscribe requests. */
 - (NSString *)resourceURLString;
 
-/** Parses any responce JSON into models info object and or any collection the model has. 
+/* Parses any responce JSON into models info object and or any collection the model has. 
  
  Should not need to be called directly. Used internally to parse responces from fetch, save, delete and subscribe requests. */
 - (void)parse:(id)JSON;

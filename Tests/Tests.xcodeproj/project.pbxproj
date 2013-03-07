@@ -12,7 +12,6 @@
 		91074F5A16E4DE47008418BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91074F3B16E4DE47008418BE /* Foundation.framework */; };
 		91074F6216E4DE47008418BE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91074F6016E4DE47008418BE /* InfoPlist.strings */; };
 		91074F6516E4DE47008418BE /* CrudTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F6416E4DE47008418BE /* CrudTests.m */; };
-		91074F8916E4DEE3008418BE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 91074F6F16E4DEE3008418BE /* .gitignore */; };
 		91074F8B16E4DEE3008418BE /* COSMAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F7216E4DEE3008418BE /* COSMAPI.m */; };
 		91074F8D16E4DEE3008418BE /* COSMDatapointCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F7416E4DEE3008418BE /* COSMDatapointCollection.m */; };
 		91074F8F16E4DEE3008418BE /* COSMDatapointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F7616E4DEE3008418BE /* COSMDatapointModel.m */; };
@@ -45,13 +44,12 @@
 		91074F3916E4DE47008418BE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		91074F3B16E4DE47008418BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		91074F3D16E4DE47008418BE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		91074F5616E4DE47008418BE /* TestsTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestsTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		91074F5616E4DE47008418BE /* TestsTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = TestsTests.octest; path = COSMObjectiveCTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91074F5716E4DE47008418BE /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		91074F5F16E4DE47008418BE /* TestsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestsTests-Info.plist"; sourceTree = "<group>"; };
 		91074F6116E4DE47008418BE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		91074F6316E4DE47008418BE /* CrudTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CrudTests.h; path = TestsTests/CrudTests.h; sourceTree = "<group>"; };
 		91074F6416E4DE47008418BE /* CrudTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CrudTests.m; path = TestsTests/CrudTests.m; sourceTree = "<group>"; };
-		91074F6F16E4DEE3008418BE /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		91074F7016E4DEE3008418BE /* COSM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSM.h; sourceTree = "<group>"; };
 		91074F7116E4DEE3008418BE /* COSMAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMAPI.h; sourceTree = "<group>"; };
 		91074F7216E4DEE3008418BE /* COSMAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMAPI.m; sourceTree = "<group>"; };
@@ -106,6 +104,7 @@
 		9107500316E4EC97008418BE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9107500516E4ECA1008418BE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		91D7530016E768E4005D5DDA /* COSMDatapointCollectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMDatapointCollectionDelegate.h; sourceTree = "<group>"; };
+		91D7531316E79AF9005D5DDA /* COSMSubscribableDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = COSMSubscribableDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,13 +173,12 @@
 		91074F6E16E4DEE3008418BE /* COSMObjectiveC */ = {
 			isa = PBXGroup;
 			children = (
-				91074F6F16E4DEE3008418BE /* .gitignore */,
 				91074F7016E4DEE3008418BE /* COSM.h */,
 				91074F7116E4DEE3008418BE /* COSMAPI.h */,
 				91074F7216E4DEE3008418BE /* COSMAPI.m */,
-				91D7530016E768E4005D5DDA /* COSMDatapointCollectionDelegate.h */,
 				91074F7316E4DEE3008418BE /* COSMDatapointCollection.h */,
 				91074F7416E4DEE3008418BE /* COSMDatapointCollection.m */,
+				91D7530016E768E4005D5DDA /* COSMDatapointCollectionDelegate.h */,
 				91074F7516E4DEE3008418BE /* COSMDatapointModel.h */,
 				91074F7616E4DEE3008418BE /* COSMDatapointModel.m */,
 				91074F7716E4DEE3008418BE /* COSMDatastreamCollection.h */,
@@ -199,6 +197,7 @@
 				91074F8416E4DEE3008418BE /* COSMRequestable.m */,
 				91074F8516E4DEE3008418BE /* COSMSubscribable.h */,
 				91074F8616E4DEE3008418BE /* COSMSubscribable.m */,
+				91D7531316E79AF9005D5DDA /* COSMSubscribableDelegate.h */,
 				91074F8716E4DEE3008418BE /* README.md */,
 			);
 			name = COSMObjectiveC;
@@ -300,7 +299,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				91074F6216E4DE47008418BE /* InfoPlist.strings in Resources */,
-				91074F8916E4DEE3008418BE /* .gitignore in Resources */,
 				91074F9F16E4DEE3008418BE /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
