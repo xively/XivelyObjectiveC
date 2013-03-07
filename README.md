@@ -12,7 +12,7 @@ After adding [AFNetworking](https://github.com/AFNetworking/AFNetworking) and [S
 
 ## Documentation
 
-Documentation is online at [http://cosm.github.com/COSMObjective-C](http://cosm.github.com/COSMObjective-C).
+Documentation is online at [http://cosm.github.com/COSMObjective-C](http://cosm.github.com/COSMObjectiveC).
 
 ## Core Concepts
 
