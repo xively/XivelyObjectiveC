@@ -3,9 +3,10 @@
 /**
  Holds an API key to be used by models and collections when interacting with Cosm's web services.
  
- You can set a default API key for all models and collection by adding it to the defaultAPI object. Alternatively, a new COSMAPI can be added to any model or collection on a case by case basis.
- 
- If your application only requires one API key, add it to the default COSMAPI object in your application delegate. For example in ` AppDelegate.h`:
+ You may set a default API key for all models and collection by adding it to the defaultAPI object in your application delegate.
+ A new COSMAPI can be added to any model or collection on a case by case basis to override the defaultAPI.
+
+ The following is an example of how you would add the key to the default COSMAPI object in `AppDelegate.h`:
  
      - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
          // set the default api
@@ -20,34 +21,34 @@
 /// @name Shared API
 ///---------------------------------------------------------------------------------------
  
-/** The default COSMAPI used by all models & collections if no other is provided. May be accessed at any point with `[COSMAPI defaultAPI]`. */
+/** The default COSMAPI is used by all models & collections if no other is provided and may be accessed at any point with `[COSMAPI defaultAPI]`. */
 + (COSMAPI *)defaultAPI;
 
 ///---------------------------------------------------------------------------------------
 /// @name Sync Settings
 ///---------------------------------------------------------------------------------------
 
-/** An API to be used when interacting with Cosm's web services. */
+/** An API key to be used when interacting with Cosm's web services. */
 @property (nonatomic, strong) NSString *apiKey;
-/** The URL string to be used for Cosm's rest services. By default this is set to http://api.cosm.com/v2. */
+/** The URL string to be used for Cosm's rest services. The default value is http://api.cosm.com/v2 */
 @property (nonatomic, strong) NSString *apiURLString;
-/** The URL string of be used for Cosm's web socket services. By default this is set to http://api.cosm.com:8080. */
+/** The URL string to be used for Cosm's WebSocket services. The default value is http://api.cosm.com:8080 */
 @property (nonatomic, strong) NSString *socketApiURLString;
 
 ///---------------------------------------------------------------------------------------
 /// @name Helpers
 ///---------------------------------------------------------------------------------------
 
-/* Creates a URL with the Cosm's api URL string, the resource string and API key.
+/* Creates a URL with the Cosm API URL string, the resource string and API key.
  
  @param NSString resource path.
- @return Returns NSURL a resource
+ @return Returns NSURL a resource.
  
  Should not need to be called directly. Used internally by models and collections. 
  */
 - (NSURL*)urlForRoute:(NSString*)route;
 
-/* Creates a URL with the Cosm's api URL string, the resource string, request parameters and API key.
+/* Creates a URL with the Cosm's API URL string, the resource string, request parameters and API key.
 
   Should not need to be called directly. Used internally by models and collections. */
 - (NSURL*)urlForRoute:(NSString*)route withParameters:(NSDictionary *)parameters;

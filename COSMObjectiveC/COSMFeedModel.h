@@ -1,7 +1,7 @@
 #import "COSMSubscribable.h"
 #import "COSMDatastreamCollection.h"
 
-/** COSMFeedModel is the representation of a feed on Cosm. It can fetched, saved, be deleted, subscribed and unsubscribed from Cosm. */
+/** COSMFeedModel is the representation of a feed on Cosm. It can fetched, saved, deleted, subscribed and unsubscribed to/from Cosm. */
 @interface COSMFeedModel : COSMSubscribable
 
 ///---------------------------------------------------------------------------------------
@@ -15,17 +15,17 @@
 /// @name Synchronisation
 ///---------------------------------------------------------------------------------------
 
-/** Fetches the feed from Cosm. Before fetching it must have an `id` key in it's info dictionary. The result of the operation will be notified to the model's delegate using the COSModelDelegate protocol. 
+/** Fetches the feed from Cosm. It must have an `id` key in its info dictionary before fetching. The result of the operation will be notified to the model's delegate using the COSModelDelegate protocol.
  
  @see COSMModelDelegate */
 - (void)fetch;
 
-/** Saves the feed to Cosm. The result of the operation will be notified to the model's delegate using the COSModelDelegate protocol. 
+/** Saves the feed to Cosm. The result of the operation will be notified to the model's delegate using the COSModelDelegate protocol.
  
  @see COSMModelDelegate */
 - (void)save;
 
-/** Deletes the feed from Cosm. Before deleting the datastream must have an `id` key in it's info dictionary and have it's feedId set.The result of the operation will be notified to the model's delegate using the COSModelDelegate protocol and the models flag isDeletedFromCosm will be set to true. 
+/** Deletes the feed from Cosm. It must have an `id` key in its info dictionary and have its feedId set. The result of the operation will be notified to the model's delegate using the COSModelDelegate protocol and the model's flag isDeletedFromCosm will be set to true. 
  
  @see COSMModelDelegate */
 - (void)deleteFromCOSM;
