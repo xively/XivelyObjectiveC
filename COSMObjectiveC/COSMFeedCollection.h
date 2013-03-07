@@ -31,7 +31,7 @@
 /** Removed any of the COSMFeedModels contained in this collection which have been deleted from Cosm.
  
  After sucessfully deleting a feed from collections feeds this should be called to remove the deleted feed from the collection. */ 
-- (void)removeDeletedFromCOSM;
+- (void)removeDeleted;
 
 /** Given responce JSON, will convert any JSON representation of COSMFeedModel into the feeds array and place other content into the info dictionary
  

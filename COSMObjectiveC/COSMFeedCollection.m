@@ -26,7 +26,7 @@
                 [self.delegate feedCollectionDidFetch:self];
             }
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-            NSLog(@"Error %@", error);
+            //NSLog(@"Error %@", error);
             if (self.delegate && [self.delegate respondsToSelector:@selector(feedCollectionFailedToFetch:withError:json:)]) {
                 [self.delegate feedCollectionFailedToFetch:self withError:error json:JSON];
             }
@@ -34,7 +34,7 @@
     [operation start];
 }
 
-- (void)removeDeletedFromCOSM {
+- (void)removeDeleted {
     NSMutableArray *deletedItems = [NSMutableArray array];
     COSMFeedModel *feed;
     
