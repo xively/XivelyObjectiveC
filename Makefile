@@ -21,7 +21,7 @@ documentation:
 
 publish-docs:
 
-	cp -r /Volumes/MacintoshHD/ross/Library/Developer/Shared/Documentation/DocSets/com.cosm.COSMObjectiveC.docset/Contents/Resources/Documents/* ../Documentation/
+	cp -r ~/Library/Developer/Shared/Documentation/DocSets/com.cosm.COSMObjectiveC.docset/Contents/Resources/Documents/* ../Documentation/
 	git --git-dir=../Documentation/.git --work-tree=../Documentation status
 	git --git-dir=../Documentation/.git --work-tree=../Documentation add .
 	git --git-dir=../Documentation/.git --work-tree=../Documentation commit -am "automated commit" 
@@ -29,6 +29,6 @@ publish-docs:
 
 open:
 
-	open /Volumes/MacintoshHD/ross/Library/Developer/Shared/Documentation/DocSets/com.cosm.COSMObjectiveC.docset/Contents/Resources/Documents/index.html
+	open ~/Library/Developer/Shared/Documentation/DocSets/com.cosm.COSMObjectiveC.docset/Contents/Resources/Documents/index.html
 
 .PHONY: documentation publish-docs
