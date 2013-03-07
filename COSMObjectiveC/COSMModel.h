@@ -45,7 +45,7 @@
  Should not need to be called directly. Used internally to create the request URL string for any fetch, save, delete and subscribe requests. */
 - (NSString *)resourceURLString;
 
-/* Parses any response JSON into the model's info object and that of any collection the model has. 
+/* Parses any response JSON into the model's info object and that of any collection the model has.
  
  Should not need to be called directly. Used internally to parse responses from fetch, save, delete and subscribe requests. */
 - (void)parse:(id)JSON;
