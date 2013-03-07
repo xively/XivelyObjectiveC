@@ -475,7 +475,7 @@
     [self reset];
 }
 
-#pragma mark - Datastream Model
+#pragma mark - Datapoint Model
 
 @synthesize datapointModel;
 
