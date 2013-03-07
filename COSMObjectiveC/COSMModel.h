@@ -47,7 +47,7 @@
 
 /* Parses any response JSON into the model's info object and that of any collection the model has. 
  
- Should not need to be called directly. Used internally to parse responces from fetch, save, delete and subscribe requests. */
+ Should not need to be called directly. Used internally to parse responses from fetch, save, delete and subscribe requests. */
 - (void)parse:(id)JSON;
 
 @end
