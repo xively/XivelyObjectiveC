@@ -36,6 +36,7 @@
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:nil parameters:nil];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:self.api.versionString forHTTPHeaderField:@"User-Agent"];
     
     NSMutableArray *arrayOfDatapoints = [[NSMutableArray alloc] initWithCapacity:self.datapoints.count];
     [self.datapoints enumerateObjectsUsingBlock:^(COSMDatapointModel *model, NSUInteger idx, BOOL *stop) {

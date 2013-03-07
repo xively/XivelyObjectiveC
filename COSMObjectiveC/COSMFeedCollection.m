@@ -18,7 +18,8 @@
 
 - (void)fetch {
     NSURL *url = [self.api urlForRoute:@"feeds/" withParameters:self.parameters];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:40.0];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:40.0];
+    [request setValue:self.api.versionString forHTTPHeaderField:@"User-Agent"];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
             [self parse:JSON];

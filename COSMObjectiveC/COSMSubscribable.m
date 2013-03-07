@@ -62,7 +62,7 @@
     NSDictionary *subscribeRequest = @{
     @"method" : @"unsubscribe",
     @"resource" : [NSString stringWithFormat:@"/%@", self.resourceURLString],
-    @"headers" : @{@"X-ApiKey" : self.api.apiKey},
+    @"headers" : @{@"X-ApiKey" : self.api.apiKey, @"User-Agent" : self.api.versionString},
     @"token" : self.unsubscribeToken
     };
     

@@ -29,7 +29,8 @@
     
     [self useParameter:@"show_user" withValue:@"true"];
     NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%@", [self.info valueForKeyPath:@"id"]] withParameters:self.parameters];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:40.0];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:40.0];
+    [request setValue:self.api.versionString forHTTPHeaderField:@"User-Agent"];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         [self parse:JSON];
@@ -54,6 +55,7 @@
         NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:nil parameters:nil];
         [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setValue:self.api.versionString forHTTPHeaderField:@"User-Agent"];
         
         NSData *data  = [NSJSONSerialization dataWithJSONObject:saveableInfoDictionary options:NSJSONWritingPrettyPrinted error:nil];
         //NSLog(@"JSON %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
@@ -109,6 +111,7 @@
         NSMutableURLRequest *request = [httpClient requestWithMethod:@"PUT" path:nil parameters:nil];
         [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setValue:self.api.versionString forHTTPHeaderField:@"User-Agent"];
         NSData *data  = [NSJSONSerialization dataWithJSONObject:saveableInfoDictionary options:NSJSONWritingPrettyPrinted error:nil];
         [request setHTTPBody:data];
         AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -153,6 +156,7 @@
     AFHTTPClient *httpClient = [AFHTTPClient clientWithBaseURL:url];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"DELETE" path:nil parameters:nil];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:self.api.versionString forHTTPHeaderField:@"User-Agent"];
     AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         self.isDeletedFromCosm = YES;
         if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidDeleteFromCOSM:)]) {
