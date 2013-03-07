@@ -1,7 +1,7 @@
 #import "COSMSubscribable.h"
 @class COSMDatapointCollection;
 
-/** COSMDatastreamModel is the representation of a datastream on Cosm. It can fetched, saved, be deleted, subscribed and unsubscribed from Cosm. */
+/** COSMDatastreamModel is the representation of a datastream on Cosm. It can fetched, saved, deleted, subscribed and unsubscribed to/from Cosm. */
 
 @interface COSMDatastreamModel : COSMSubscribable
 
@@ -25,17 +25,17 @@
 /// @name Synchronisation
 ///---------------------------------------------------------------------------------------
 
-/** Fetches the datastream from Cosm. Before fetching the datastream much have an `id` key in it's info dictionary and have it's feedId set. The result of the operation will be notified to the model's delegate using the COSModelDelegate protocol. 
+/** Fetches the datastream from Cosm. It must have an `id` key in its info dictionary and have its feedId set before fetching the datastream. The result of the operation will be notified to the model's delegate using the COSModelDelegate protocol.
  
  @see COSMModelDelegate */
 - (void)fetch;
 
-/** Saves the datastream to Cosm. The result of the operation will be notified to the model's delegate using the COSModelDelegate protocol. 
+/** Saves the datastream to Cosm. The result of the operation will be notified to the model's delegate using the COSModelDelegate protocol.
  
  @see COSMModelDelegate */
 - (void)save;
 
-/** Deletes the datastream from Cosm. Before deleting the datastream must have an `id` key in it's info dictionary and have it's feedId set.The result of the operation will be notified to the model's delegate using the COSModelDelegate protocol and the models flag isDeletedFromCosm will be set to true. 
+/** Deletes the datastream from Cosm. It must have an `id` key in it's info dictionary and have it's feedId set before deleting the datastream. The result of the operation will be notified to the model's delegate using the COSModelDelegate protocol and the model's flag isDeletedFromCosm will be set to true.
  
  @see COSMModelDelegate */
 - (void)deleteFromCosm;
