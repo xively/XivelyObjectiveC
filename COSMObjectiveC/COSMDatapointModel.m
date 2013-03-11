@@ -9,7 +9,7 @@
 @synthesize feedId;
 @synthesize datastreamId;
 
-#pragma mark - Synchronization
+#pragma mark - Synchronisation
 
 @synthesize isNew;
 
@@ -31,6 +31,7 @@
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:nil parameters:nil];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:self.api.versionString forHTTPHeaderField:@"User-Agent"];
     
     NSData *data  = [NSJSONSerialization dataWithJSONObject:@{@"datapoints":@[self.info]} options:NSJSONWritingPrettyPrinted error:nil];
     [request setHTTPBody:data];
@@ -85,7 +86,8 @@
         return;
     }
     NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%d/datastreams/%@/datapoints/%@", self.feedId, self.datastreamId, [self.info objectForKey:@"at"]] withParameters:self.parameters];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:40.0];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:40.0];
+    [request setValue:self.api.versionString forHTTPHeaderField:@"User-Agent"];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
             [self parse:JSON];
@@ -124,6 +126,7 @@
     AFHTTPClient *httpClient = [AFHTTPClient clientWithBaseURL:url];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"DELETE" path:nil parameters:nil];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:self.api.versionString forHTTPHeaderField:@"User-Agent"];
     AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
         self.isDeletedFromCosm = YES;
         if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidDeleteFromCOSM:)]) {

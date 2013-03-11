@@ -7,7 +7,8 @@
 
 #pragma mark - Data
 
-@synthesize feedId, info, datastreamId;
+@synthesize feedId, datastreamId;
+
 
 #pragma mark - Datapoints
 
@@ -17,7 +18,7 @@
 
 @synthesize delegate, api;
 
-- (void)saveAll {
+- (void)save {
     if (self.feedId == 0) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(datapointCollectionFailedToSaveAll:withError:json:)]) {
             [self.delegate datapointCollectionFailedToSaveAll:self withError:nil json:@{ @"Error" : @"Datapoint collection has no feed id" }];
@@ -35,10 +36,13 @@
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:nil parameters:nil];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:self.api.versionString forHTTPHeaderField:@"User-Agent"];
     
     NSMutableArray *arrayOfDatapoints = [[NSMutableArray alloc] initWithCapacity:self.datapoints.count];
     [self.datapoints enumerateObjectsUsingBlock:^(COSMDatapointModel *model, NSUInteger idx, BOOL *stop) {
-        [arrayOfDatapoints addObject:model.info];
+        if (model.isNew) {
+            [arrayOfDatapoints addObject:model.info];
+        }
     }];
     
     NSData *data  = [NSJSONSerialization dataWithJSONObject:@{@"datapoints":arrayOfDatapoints} options:NSJSONWritingPrettyPrinted error:nil];
@@ -100,7 +104,6 @@
     if (self=[super init]) {
         self.api = [COSMAPI defaultAPI];
         self.datapoints = [[NSMutableArray alloc] init];
-        self.info = [[NSMutableDictionary alloc] init];
     }
     return self;
 }

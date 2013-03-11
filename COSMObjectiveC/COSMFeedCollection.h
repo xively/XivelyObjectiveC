@@ -3,15 +3,17 @@
 #import "COSMFeedCollectionDelegate.h"
 #import "COSMAPI.h"
 
+/** COSMFeedCollection contains a mutable array of COSMFeedModels. It can also be used to fetch mutliple feeds in a single request. Feed filters may be added via COSMRequestable's `useParameter:withValue` */
+
 @interface COSMFeedCollection : COSMRequestable
 
 ///---------------------------------------------------------------------------------------
 /// @name Data
 ///---------------------------------------------------------------------------------------
 
-/** Mutable dictionary of information, if any, about the collection.
+/** Mutable dictionary of information about the collection.
  
- The info dictionary contains an NSDictionary representation of collection minus the feeds themself. The feeds will have been parsed into the datapoints property. */
+ The info dictionary contains an NSDictionary representation of the collection minus the feeds themselves. The feeds will have been parsed into the datapoints property. */
 @property (nonatomic, strong) NSMutableDictionary *info;
 
 ///---------------------------------------------------------------------------------------
@@ -24,16 +26,24 @@
 ///---------------------------------------------------------------------------------------
 /// @name Synchronisation
 ///---------------------------------------------------------------------------------------
+
+/** The model's reference to a COSMAPI object containing an API key to be used for any request operations.
+ 
+ If a COSMAPI object is not provided directy the model will use COSMAPI's defaultAPI object. */
 @property (nonatomic, strong) COSMAPI *api;
+
+/** Delegate object conforming to the COSMFeedCollectionDelegate protocol which will be notified with the result of any fetch requests. */
 @property (weak) id<COSMFeedCollectionDelegate> delegate;
+
+/** Fetches feeds from Cosm. Parameters for the fetch can be set using the `useParameter:withValue:` The result of the operation will be notified to the collections delegate using the COSMDatapointCollectionDelegate protocol. 
+ 
+ @see COSMFeedCollectionDelegate */
 - (void)fetch;
 
-/** Removed any of the COSMFeedModels contained in this collection which have been deleted from Cosm.
- 
- After sucessfully deleting a feed from collections feeds this should be called to remove the deleted feed from the collection. */ 
+/** Convenience method to remove COSMFeedModels deleted on Cosm from the collection  */ 
 - (void)removeDeleted;
 
-/** Given responce JSON, will convert any JSON representation of COSMFeedModel into the feeds array and place other content into the info dictionary
+/* Given a JSOn response it will convert any JSON representation of COSMFeedModel into the feeds array and place other content into the info dictionary
  
  Should not need to be called directly. Used internally to parse responces from fetch, save, delete and subscribe requests. */
 - (void)parse:(id)JSON;
