@@ -1,6 +1,6 @@
-# COSMObjectiveC
+# XivelyObjectiveC
 
-An iOS and OSX Objective-C Library for [COSM](http://cosm.com/) similar in design to [backbone.js](http://backbonejs.org).
+An iOS and OSX Objective-C Library for [Xively](http://xively.com/) similar in design to [backbone.js](http://backbonejs.org).
 
 ## Requirements
 
@@ -8,49 +8,49 @@ Requires [AFNetworking](https://github.com/AFNetworking/AFNetworking) and [Socke
 
 ## Adding to your project
 
-After adding [AFNetworking](https://github.com/AFNetworking/AFNetworking) and [SocketRocket](https://github.com/square/SocketRocket) to your project, simply add the files within the COSMObjectiveC to your project.
+After adding [AFNetworking](https://github.com/AFNetworking/AFNetworking) and [SocketRocket](https://github.com/square/SocketRocket) to your project, simply add the files within the XivelyObjectiveC to your project.
 
 ## Documentation
 
-Documentation is online at [http://cosm.github.com/COSMObjective-C](http://cosm.github.com/COSMObjectiveC).
+Documentation is online at [http://xively.github.com/XivelyObjective-C](http://xively.github.com/XivelyObjectiveC).
 
 ## Core Concepts
 
 ### Models
 
-COSMFeedModel, COSMDatastreamModel and COSMDatapointModel are representations of a single entity on Cosm: a feed, a datastream or a datapoint. 
+XivelyFeedModel, XivelyDatastreamModel and XivelyDatapointModel are representations of a single entity on Xively: a feed, a datastream or a datapoint. 
 
 Information about the entity is stored in a mutable dictionary called `info`  (such the _id_, _current_value_, _tags_, _title_, _at_, etc.) .
 
-A model can __fetch__ which will load it from Cosm; it can __save__ which will create or update it on Cosm; and __deleteFromCosm__ which will remove it from Cosm.
+A model can __fetch__ which will load it from Xively; it can __save__ which will create or update it on Xively; and __deleteFromXively__ which will remove it from Xively.
     
-COSMFeedModel and COSMDatastreamModel can also __subscribe__ and __unsubscribe__ from Cosm. A subscribed feed or datastream model will automatically update with any changes which happen on Cosm.
+XivelyFeedModel and XivelyDatastreamModel can also __subscribe__ and __unsubscribe__ from Xively. A subscribed feed or datastream model will automatically update with any changes which happen on Xively.
 
 Information about the model's child entities (a feed's datastreams or a datastream's datapoints) are stored in collections.
 
 ### Collections
 
-COSMFeedCollection, COSMDatastreamCollection and COSMDatapoints are container classes for models. 
+XivelyFeedCollection, XivelyDatastreamCollection and XivelyDatapoints are container classes for models. 
 
-COSMFeedCollection can also __fetch__ feeds from Cosm whilst specifying request parameters so the fetch will return a filtered set of feeds, or feeds based on a historical query. 
+XivelyFeedCollection can also __fetch__ feeds from Xively whilst specifying request parameters so the fetch will return a filtered set of feeds, or feeds based on a historical query. 
 
-COSMDatapointCollection can also __save__ all its new datapoints to Cosm.
+XivelyDatapointCollection can also __save__ all its new datapoints to Xively.
 
 ### Setting the API Key
 
 This should be done early as possible if only one API Key is used.
 
 ``` objective-c
-[[COSMAPI defaultAPI] setApiKey:@"<API Key>"];
+[[XivelyAPI defaultAPI] setApiKey:@"<API Key>"];
 ```
 
 By default all new models and collections will use this API Key when communicating with the server. 
 
-A different API Key may be used by creating new COSMAPI object and adding to other COSMModels and COSMCollections on a case by case basis
+A different API Key may be used by creating new XivelyAPI object and adding to other XivelyModels and XivelyCollections on a case by case basis
 
 ``` objective-c
-COSMFeedModel *feed = [[COSMFeedModel alloc] init];
-COSMAPI *alternativeAPI = [[COSMApi alloc] init];
+XivelyFeedModel *feed = [[XivelyFeedModel alloc] init];
+XivelyAPI *alternativeAPI = [[XivelyApi alloc] init];
 [feed setApi:alternativeAPI]; 
 ```
 
@@ -58,14 +58,14 @@ COSMAPI *alternativeAPI = [[COSMApi alloc] init];
 
 ### Basic example
 
-Add a new datapoint to  Cosm
+Add a new datapoint to  Xively
 
 ``` objective-c
 // set your API key
-[[COSMAPI defaultAPI] setApiKey:@"somekey"];
+[[XivelyAPI defaultAPI] setApiKey:@"somekey"];
 
 // create and & setup datapoint
-COSMDatapointModel *datapoint = [[COSMDatapointModel alloc] init];
+XivelyDatapointModel *datapoint = [[XivelyDatapointModel alloc] init];
 // set the id of the feed the datapoint belongs to
 datapoint.feedId = 100;
 // set the id of the datastream the datapoint belongs to
@@ -74,23 +74,23 @@ datapoint.datastreamId = @"miles";
 // set the value of the datapoint
 [datapoint.info setValue:@"2399" forKey:@"value"];
 
-// save it to Cosm
+// save it to Xively
 [datapoint save];
 ```
     
-### Adding multiple new datapoints to Cosm
+### Adding multiple new datapoints to Xively
 
-Multiple datapoints can be saved to Cosm in one go by using a datapoint collection
+Multiple datapoints can be saved to Xively in one go by using a datapoint collection
 
 ``` objective-c
 // create & setup a new datapoint collection
-self.datapointCollection = [[COSMDatapointCollection alloc] init];
+self.datapointCollection = [[XivelyDatapointCollection alloc] init];
 self.datapointCollection.feedId = 100;
 self.datapointCollection.datastreamId = @"miles";
 
 // ..
 // later add a datapoint to the collection
-COSMDatapointModel *datapoint = [[COSMDatapointModel alloc] init];
+XivelyDatapointModel *datapoint = [[XivelyDatapointModel alloc] init];
 [datapoint.info setValue:@"13234" forKey:@"value"];
 [datapoint.info setValue:@"2010-05-20T11:01:43Z" forKey:@"at"];
 [self.datapointCollection.datapoints addObject:datapoint];
@@ -99,7 +99,7 @@ COSMDatapointModel *datapoint = [[COSMDatapointModel alloc] init];
 [self.datapointsCollection save];
 ```
 
-### Fetching a list of all feeds from Cosm
+### Fetching a list of all feeds from Xively
 
 For example, in a table view controller
 
@@ -107,7 +107,7 @@ For example, in a table view controller
 -(void)viewWillAppear:(BOOL)animated {
     // create the a new feed collection
     if (!self.feedCollection) {
-        self.feedCollection = [[COSMFeedCollection alloc] init]
+        self.feedCollection = [[XivelyFeedCollection alloc] init]
     }
     
     // set this feed collection to only fetch 100 feeds
@@ -123,22 +123,22 @@ For example, in a table view controller
     [self.feedCollection fetch];
 ```
     
-To know when the collection has fetched, implement the methods of the COSMFeedCollectionDelegate protocol.
+To know when the collection has fetched, implement the methods of the XivelyFeedCollectionDelegate protocol.
 
 ``` objective-c
-- (void)feedCollectionDidFetch:(COSMFeedCollection *)feedCollection {
+- (void)feedCollectionDidFetch:(XivelyFeedCollection *)feedCollection {
     // feeds were fetch so reload the table view
     [self.tableView reload];
 }
  
-- (void)feedCollectionFailedToFetch:(COSMFeedCollection *)feedCollection withError:(NSError*)error json:(id)JSON {
+- (void)feedCollectionFailedToFetch:(XivelyFeedCollection *)feedCollection withError:(NSError*)error json:(id)JSON {
     // feeds failed to fetch
     NSLog(@"The feed collection failed to fetch.")
     NSLog(@"The error is %@", error)
 
-    // and if we spoke to the COSM server, there is a good 
+    // and if we spoke to the Xively server, there is a good 
     // chance we will have JSON that describe the error
-    NSLog(@"COSM said %@", JSON);
+    NSLog(@"Xively said %@", JSON);
 ```
 
 The feed collection will now have an array of feed models which can be use to populate the table cells
@@ -146,16 +146,16 @@ The feed collection will now have an array of feed models which can be use to po
 ``` objective-c
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // get the feed model
-    COSMFeedModel *feed = [self.feedsCollection.feeds objectAtIndex:indexPath.row];
+    XivelyFeedModel *feed = [self.feedsCollection.feeds objectAtIndex:indexPath.row];
     
     // we can query things about this feed
     NSString *title = [feed.info valueForKeyPath:@"title"];
     
     // the feeds also has a datastream collection with all the datastreams
-    COSMDatastreamCollection *datastreamCollection = feed.datastreamCollection;
+    XivelyDatastreamCollection *datastreamCollection = feed.datastreamCollection;
     
-    // this contains an array of COSMDatastreamModels and we can get the last one as it is an array
-    COSMDatastreamModel *datastream = [datastreamCollection.datastreams lastObject];
+    // this contains an array of XivelyDatastreamModels and we can get the last one as it is an array
+    XivelyDatastreamModel *datastream = [datastreamCollection.datastreams lastObject];
     
     // then we can get information about the datastream
     NSString *datastreamID  = [feed.info valueForKeyPath:@"id"];
@@ -166,13 +166,13 @@ The feed collection will now have an array of feed models which can be use to po
     NSLog(@"%@", feed.info);
 ```
 
-### Creating a new feed on Cosm
+### Creating a new feed on Xively
 
 Feeds can be created and saved
 
 ``` objective-c
 // create the feed model
-COSMFeedModel *feedModel = [[COSMFeedModel alloc] init];
+XivelyFeedModel *feedModel = [[XivelyFeedModel alloc] init];
 
 // add a title
 [feedModel.info setObject:@"Example Feed" forKey:@"title"];
@@ -183,17 +183,17 @@ COSMFeedModel *feedModel = [[COSMFeedModel alloc] init];
 After this a delegate will be notified via either of these methods
 
 ``` objective-c
-- (void)modelDidSave:(COSMModel *)model;
-- (void)modelFailedToSave:(COSMModel *)model withError:(NSError*)error json:(id)JSON;
+- (void)modelDidSave:(XivelyModel *)model;
+- (void)modelFailedToSave:(XivelyModel *)model withError:(NSError*)error json:(id)JSON;
 ```
 
-### Fetching a feed from Cosm
+### Fetching a feed from Xively
 
-A feed on Cosm can be retrieved from Cosm by
+A feed on Xively can be retrieved from Xively by
 
 ``` objective-c
 // create a feed model
-COSMFeedModel *feedModel = [[COSMFeedModel alloc] init];
+XivelyFeedModel *feedModel = [[XivelyFeedModel alloc] init];
 
 // set the feed's id
 [feedModel.info setValue:@"100" forKey:@"id"];
@@ -204,17 +204,17 @@ COSMFeedModel *feedModel = [[COSMFeedModel alloc] init];
 After this a delegate will be notified via either of these methods
 
 ``` objective-c
-- (void)modelDidFetch:(COSMModel *)model;
-- (void)modelFailedToFetch:(COSMModel *)model withError:(NSError*)error json:(id)JSON;
+- (void)modelDidFetch:(XivelyModel *)model;
+- (void)modelFailedToFetch:(XivelyModel *)model withError:(NSError*)error json:(id)JSON;
 ```
 
-### Creating a new datastream via a feed on Cosm
+### Creating a new datastream via a feed on Xively
 
 A datastream can be created at the same time as feed
 
 ``` objective-c
 // create the datastream model
-COSMDatastream *datastream = [[COSMDatastream alloc] init];
+XivelyDatastream *datastream = [[XivelyDatastream alloc] init];
 
 // add some information
 [datastream.info setObject:@"id" forKey:@"Room"];
@@ -226,13 +226,13 @@ COSMDatastream *datastream = [[COSMDatastream alloc] init];
 [feedModel save];
 ```
 
-### Creating a new datastream on Cosm
+### Creating a new datastream on Xively
 
 A new datastream may be made directly
 
 ``` objective-c
 // create the datastream model
-COSMDatastream *datastream = [[COSMDatastream alloc] init];
+XivelyDatastream *datastream = [[XivelyDatastream alloc] init];
 
 // provide its feed's id
 datastream.feedId = 101;
@@ -243,13 +243,13 @@ datastream.feedId = 101;
 [datastream.feedId save];
 ```
 
-### Retrieving a datastream from Cosm
+### Retrieving a datastream from Xively
  
 A datastream can retrieved by providing a `feedId` and the datastreams 'id' key to the info dictionary and calling `fetch`
  
 ``` objective-c
 // Create a new datastream model
-COSMDatastreamModel *myDatastream = [[COSMDatastreamModel alloc] init];
+XivelyDatastreamModel *myDatastream = [[XivelyDatastreamModel alloc] init];
 
 // Set the datastream's id
 [myDatastream setValue:@"Temperture" forKey:@"id"];
@@ -257,7 +257,7 @@ COSMDatastreamModel *myDatastream = [[COSMDatastreamModel alloc] init];
 // Also add the datastream parent feed id
 myDatastream.feedId = 100;
 
-// Finally, fetch the datastream from Cosm
+// Finally, fetch the datastream from Xively
 [myDatastream fetch];
 
 // ...
@@ -265,20 +265,20 @@ myDatastream.feedId = 100;
 NSString *currentValue = [myDatastream.info valueForKeyPath:@"current_value"];
 ```
 
-### Retrieving live updates of a datastream from Cosm.
+### Retrieving live updates of a datastream from Xively.
 
 __The below example also applies to feeds__
  
-A datastream may be updated with live updates from Cosm by subscribing a COSMDatastreamModel to Cosm. 
+A datastream may be updated with live updates from Xively by subscribing a XivelyDatastreamModel to Xively. 
  
- _*It is not nessicary to fetch the COSMDatastreamModel first, however without doing so there will be no information about the datastream until it is next changed on Cosm._
+ _*It is not nessicary to fetch the XivelyDatastreamModel first, however without doing so there will be no information about the datastream until it is next changed on Xively._
  
 ``` objective-c
 - (id)init {
     self = [super init];
     if (self) {
         // set up the datastream
-        self.datastream = [[COSMDatastream alloc] init];
+        self.datastream = [[XivelyDatastream alloc] init];
         self.datastream.feedId = 100;
         [self.datastream.info setValue:@"miles" forKey:@"id"];
         
@@ -295,15 +295,15 @@ A datastream may be updated with live updates from Cosm by subscribing a COSMDat
    }
 }
 
-- (void)modelUpdatedViaSubscription:(COSMModel *)model {
+- (void)modelUpdatedViaSubscription:(XivelyModel *)model {
    myLabel.text = [self.datastream.info valueForKeyPath:@"current_value"];
 }
 
-- (void)modelDidSubscribe:(COSMModel *)model {
+- (void)modelDidSubscribe:(XivelyModel *)model {
     NSLog(@"Web socket connected, now receiving live changes to datastream");
 }
 
-- (void)modelDidUnsubscribe:(COSMModel *)model withError:(NSError *)error;
+- (void)modelDidUnsubscribe:(XivelyModel *)model withError:(NSError *)error;
     NSLog("Web socket disconnected...");
     if (error) {
         NSLog(@"...because something went wrong");

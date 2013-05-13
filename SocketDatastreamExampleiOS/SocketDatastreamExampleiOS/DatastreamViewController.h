@@ -1,21 +1,21 @@
 #import <UIKit/UIKit.h>
-#import "COSM.h"
+#import "Xively.h"
 
-@interface DatastreamViewController : UIViewController<COSMSubscribableDelegate, UITextFieldDelegate>
+@interface DatastreamViewController : UIViewController<XivelySubscribableDelegate, UITextFieldDelegate>
 
 // UI
 - (void)updateLabels;
 
-// Cosm Datastream
-@property (nonatomic, strong) COSMDatastreamModel *datastreamModel;
+// Xively Datastream
+@property (nonatomic, strong) XivelyDatastreamModel *datastreamModel;
 
-// Cosm Model Delegate Methods
-- (void)modelDidFetch:(COSMModel *)model;
-- (void)modelFailedToFetch:(COSMModel *)model withError:(NSError *)error json:(id)JSON;
+// Xively Model Delegate Methods
+- (void)modelDidFetch:(XivelyModel *)model;
+- (void)modelFailedToFetch:(XivelyModel *)model withError:(NSError *)error json:(id)JSON;
 // Socket Connection Delegate Methods
-- (void)modelDidSubscribe:(COSMModel *)model;
-- (void)modelDidUnsubscribe:(COSMModel *)model withError:(NSError *)error;
-- (void)modelUpdatedViaSubscription:(COSMModel *)model;
+- (void)modelDidSubscribe:(XivelyModel *)model;
+- (void)modelDidUnsubscribe:(XivelyModel *)model withError:(NSError *)error;
+- (void)modelUpdatedViaSubscription:(XivelyModel *)model;
 
 // Interface Builder
 - (IBAction)loadDatastreamTouched:(id)sender;

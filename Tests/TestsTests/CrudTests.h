@@ -1,31 +1,31 @@
 #import <SenTestingKit/SenTestingKit.h>
-#import "COSM.h"
+#import "Xively.h"
 
 #define kAPI_KEY @"LwH31lva9MX0YG84cy3_XKv9z4OSAKx5NDdDYzAzejBHUT0g"
 
-@interface CrudTests : SenTestCase<COSMFeedCollectionDelegate, COSMSubscribableDelegate, COSMDatapointCollectionDelegate>
+@interface CrudTests : SenTestCase<XivelyFeedCollectionDelegate, XivelySubscribableDelegate, XivelyDatapointCollectionDelegate>
 
 // Feed Collection
-@property (nonatomic, strong) COSMFeedCollection *feedCollection;
+@property (nonatomic, strong) XivelyFeedCollection *feedCollection;
 
 // Feed Model
-@property (nonatomic, strong) COSMFeedModel *feedModel;
+@property (nonatomic, strong) XivelyFeedModel *feedModel;
 - (void)testFeedModel;
 
 // Datastream Collection
-@property (nonatomic, strong) COSMDatastreamCollection *datastreamCollection;
+@property (nonatomic, strong) XivelyDatastreamCollection *datastreamCollection;
 - (void)testDatastreamCollection;
 
 // Datastream Model
-@property (nonatomic, strong) COSMDatastreamModel *datastreamModel;
+@property (nonatomic, strong) XivelyDatastreamModel *datastreamModel;
 - (void)testDatastreamModel;
 
 // Datapoint Collection
-@property (nonatomic, strong) COSMDatapointCollection *datapointCollection;
+@property (nonatomic, strong) XivelyDatapointCollection *datapointCollection;
 - (void)testDatapointCollection;
 
 // Datapoint
-@property (nonatomic, strong) COSMDatapointModel *datapointModel;
+@property (nonatomic, strong) XivelyDatapointModel *datapointModel;
 - (void)testDatapointModel;
 
 // Locking
@@ -35,21 +35,21 @@
 - (void)reset;
 
 // Feed Collection Delegate
-- (void)feedCollectionDidFetch:(COSMFeedCollection *)feedCollection;
-- (void)feedCollectionFailedToFetch:(COSMFeedCollection *)feedCollection withError:(NSError*)error json:(id)JSON;
+- (void)feedCollectionDidFetch:(XivelyFeedCollection *)feedCollection;
+- (void)feedCollectionFailedToFetch:(XivelyFeedCollection *)feedCollection withError:(NSError*)error json:(id)JSON;
 
 // Feed Model Delegate
-- (void)modelDidFetch:(COSMModel *)model;
-- (void)modelFailedToFetch:(COSMModel *)model withError:(NSError*)error json:(id)JSON;
+- (void)modelDidFetch:(XivelyModel *)model;
+- (void)modelFailedToFetch:(XivelyModel *)model withError:(NSError*)error json:(id)JSON;
 
-- (void)modelDidSave:(COSMModel *)model;
-- (void)modelFailedToSave:(COSMModel *)model withError:(NSError*)error json:(id)JSON;
+- (void)modelDidSave:(XivelyModel *)model;
+- (void)modelFailedToSave:(XivelyModel *)model withError:(NSError*)error json:(id)JSON;
 
-- (void)modelDidDeleteFromCOSM:(COSMModel *)model;
-- (void)modelFailedToDeleteFromCOSM:(COSMModel *)model withError:(NSError*)error json:(id)JSON;
+- (void)modelDidDeleteFromXively:(XivelyModel *)model;
+- (void)modelFailedToDeleteFromXively:(XivelyModel *)model withError:(NSError*)error json:(id)JSON;
 
 // Datastream Collection Delegate
-- (void)datapointCollectionDidSaveAll:(COSMDatapointCollection *)collection;
-- (void)datapointCollectionFailedToSaveAll:(COSMDatapointCollection *)collection withError:(NSError *)error json:(id)JSON;
+- (void)datapointCollectionDidSaveAll:(XivelyDatapointCollection *)collection;
+- (void)datapointCollectionFailedToSaveAll:(XivelyDatapointCollection *)collection withError:(NSError *)error json:(id)JSON;
 
 @end

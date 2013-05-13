@@ -12,16 +12,16 @@
 		91074F5A16E4DE47008418BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91074F3B16E4DE47008418BE /* Foundation.framework */; };
 		91074F6216E4DE47008418BE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91074F6016E4DE47008418BE /* InfoPlist.strings */; };
 		91074F6516E4DE47008418BE /* CrudTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F6416E4DE47008418BE /* CrudTests.m */; };
-		91074F8B16E4DEE3008418BE /* COSMAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F7216E4DEE3008418BE /* COSMAPI.m */; };
-		91074F8D16E4DEE3008418BE /* COSMDatapointCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F7416E4DEE3008418BE /* COSMDatapointCollection.m */; };
-		91074F8F16E4DEE3008418BE /* COSMDatapointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F7616E4DEE3008418BE /* COSMDatapointModel.m */; };
-		91074F9116E4DEE3008418BE /* COSMDatastreamCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F7816E4DEE3008418BE /* COSMDatastreamCollection.m */; };
-		91074F9316E4DEE3008418BE /* COSMDatastreamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F7A16E4DEE3008418BE /* COSMDatastreamModel.m */; };
-		91074F9516E4DEE3008418BE /* COSMFeedCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F7C16E4DEE3008418BE /* COSMFeedCollection.m */; };
-		91074F9716E4DEE3008418BE /* COSMFeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F7F16E4DEE3008418BE /* COSMFeedModel.m */; };
-		91074F9916E4DEE3008418BE /* COSMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F8116E4DEE3008418BE /* COSMModel.m */; };
-		91074F9B16E4DEE3008418BE /* COSMRequestable.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F8416E4DEE3008418BE /* COSMRequestable.m */; };
-		91074F9D16E4DEE3008418BE /* COSMSubscribable.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F8616E4DEE3008418BE /* COSMSubscribable.m */; };
+		91074F8B16E4DEE3008418BE /* XivelyAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F7216E4DEE3008418BE /* XivelyAPI.m */; };
+		91074F8D16E4DEE3008418BE /* XivelyDatapointCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F7416E4DEE3008418BE /* XivelyDatapointCollection.m */; };
+		91074F8F16E4DEE3008418BE /* XivelyDatapointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F7616E4DEE3008418BE /* XivelyDatapointModel.m */; };
+		91074F9116E4DEE3008418BE /* XivelyDatastreamCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F7816E4DEE3008418BE /* XivelyDatastreamCollection.m */; };
+		91074F9316E4DEE3008418BE /* XivelyDatastreamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F7A16E4DEE3008418BE /* XivelyDatastreamModel.m */; };
+		91074F9516E4DEE3008418BE /* XivelyFeedCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F7C16E4DEE3008418BE /* XivelyFeedCollection.m */; };
+		91074F9716E4DEE3008418BE /* XivelyFeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F7F16E4DEE3008418BE /* XivelyFeedModel.m */; };
+		91074F9916E4DEE3008418BE /* XivelyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F8116E4DEE3008418BE /* XivelyModel.m */; };
+		91074F9B16E4DEE3008418BE /* XivelyRequestable.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F8416E4DEE3008418BE /* XivelyRequestable.m */; };
+		91074F9D16E4DEE3008418BE /* XivelySubscribable.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074F8616E4DEE3008418BE /* XivelySubscribable.m */; };
 		91074FE216E4EADA008418BE /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074FCF16E4EADA008418BE /* AFHTTPClient.m */; };
 		91074FE416E4EADA008418BE /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074FD116E4EADA008418BE /* AFHTTPRequestOperation.m */; };
 		91074FE616E4EADA008418BE /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 91074FD316E4EADA008418BE /* AFImageRequestOperation.m */; };
@@ -43,35 +43,35 @@
 		91074F3916E4DE47008418BE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		91074F3B16E4DE47008418BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		91074F3D16E4DE47008418BE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		91074F5616E4DE47008418BE /* TestsTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = TestsTests.octest; path = COSMObjectiveCTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		91074F5616E4DE47008418BE /* TestsTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = TestsTests.octest; path = XivelyObjectiveCTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91074F5716E4DE47008418BE /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		91074F5F16E4DE47008418BE /* TestsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestsTests-Info.plist"; sourceTree = "<group>"; };
 		91074F6116E4DE47008418BE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		91074F6316E4DE47008418BE /* CrudTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CrudTests.h; path = TestsTests/CrudTests.h; sourceTree = "<group>"; };
 		91074F6416E4DE47008418BE /* CrudTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CrudTests.m; path = TestsTests/CrudTests.m; sourceTree = "<group>"; };
-		91074F7016E4DEE3008418BE /* COSM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSM.h; sourceTree = "<group>"; };
-		91074F7116E4DEE3008418BE /* COSMAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMAPI.h; sourceTree = "<group>"; };
-		91074F7216E4DEE3008418BE /* COSMAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMAPI.m; sourceTree = "<group>"; };
-		91074F7316E4DEE3008418BE /* COSMDatapointCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMDatapointCollection.h; sourceTree = "<group>"; };
-		91074F7416E4DEE3008418BE /* COSMDatapointCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMDatapointCollection.m; sourceTree = "<group>"; };
-		91074F7516E4DEE3008418BE /* COSMDatapointModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMDatapointModel.h; sourceTree = "<group>"; };
-		91074F7616E4DEE3008418BE /* COSMDatapointModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMDatapointModel.m; sourceTree = "<group>"; };
-		91074F7716E4DEE3008418BE /* COSMDatastreamCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMDatastreamCollection.h; sourceTree = "<group>"; };
-		91074F7816E4DEE3008418BE /* COSMDatastreamCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMDatastreamCollection.m; sourceTree = "<group>"; };
-		91074F7916E4DEE3008418BE /* COSMDatastreamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMDatastreamModel.h; sourceTree = "<group>"; };
-		91074F7A16E4DEE3008418BE /* COSMDatastreamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMDatastreamModel.m; sourceTree = "<group>"; };
-		91074F7B16E4DEE3008418BE /* COSMFeedCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMFeedCollection.h; sourceTree = "<group>"; };
-		91074F7C16E4DEE3008418BE /* COSMFeedCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMFeedCollection.m; sourceTree = "<group>"; };
-		91074F7D16E4DEE3008418BE /* COSMFeedCollectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMFeedCollectionDelegate.h; sourceTree = "<group>"; };
-		91074F7E16E4DEE3008418BE /* COSMFeedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMFeedModel.h; sourceTree = "<group>"; };
-		91074F7F16E4DEE3008418BE /* COSMFeedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMFeedModel.m; sourceTree = "<group>"; };
-		91074F8016E4DEE3008418BE /* COSMModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMModel.h; sourceTree = "<group>"; };
-		91074F8116E4DEE3008418BE /* COSMModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMModel.m; sourceTree = "<group>"; };
-		91074F8216E4DEE3008418BE /* COSMModelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMModelDelegate.h; sourceTree = "<group>"; };
-		91074F8316E4DEE3008418BE /* COSMRequestable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMRequestable.h; sourceTree = "<group>"; };
-		91074F8416E4DEE3008418BE /* COSMRequestable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMRequestable.m; sourceTree = "<group>"; };
-		91074F8516E4DEE3008418BE /* COSMSubscribable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMSubscribable.h; sourceTree = "<group>"; };
-		91074F8616E4DEE3008418BE /* COSMSubscribable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COSMSubscribable.m; sourceTree = "<group>"; };
+		91074F7016E4DEE3008418BE /* Xively.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Xively.h; sourceTree = "<group>"; };
+		91074F7116E4DEE3008418BE /* XivelyAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XivelyAPI.h; sourceTree = "<group>"; };
+		91074F7216E4DEE3008418BE /* XivelyAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XivelyAPI.m; sourceTree = "<group>"; };
+		91074F7316E4DEE3008418BE /* XivelyDatapointCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XivelyDatapointCollection.h; sourceTree = "<group>"; };
+		91074F7416E4DEE3008418BE /* XivelyDatapointCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XivelyDatapointCollection.m; sourceTree = "<group>"; };
+		91074F7516E4DEE3008418BE /* XivelyDatapointModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XivelyDatapointModel.h; sourceTree = "<group>"; };
+		91074F7616E4DEE3008418BE /* XivelyDatapointModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XivelyDatapointModel.m; sourceTree = "<group>"; };
+		91074F7716E4DEE3008418BE /* XivelyDatastreamCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XivelyDatastreamCollection.h; sourceTree = "<group>"; };
+		91074F7816E4DEE3008418BE /* XivelyDatastreamCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XivelyDatastreamCollection.m; sourceTree = "<group>"; };
+		91074F7916E4DEE3008418BE /* XivelyDatastreamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XivelyDatastreamModel.h; sourceTree = "<group>"; };
+		91074F7A16E4DEE3008418BE /* XivelyDatastreamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XivelyDatastreamModel.m; sourceTree = "<group>"; };
+		91074F7B16E4DEE3008418BE /* XivelyFeedCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XivelyFeedCollection.h; sourceTree = "<group>"; };
+		91074F7C16E4DEE3008418BE /* XivelyFeedCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XivelyFeedCollection.m; sourceTree = "<group>"; };
+		91074F7D16E4DEE3008418BE /* XivelyFeedCollectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XivelyFeedCollectionDelegate.h; sourceTree = "<group>"; };
+		91074F7E16E4DEE3008418BE /* XivelyFeedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XivelyFeedModel.h; sourceTree = "<group>"; };
+		91074F7F16E4DEE3008418BE /* XivelyFeedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XivelyFeedModel.m; sourceTree = "<group>"; };
+		91074F8016E4DEE3008418BE /* XivelyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XivelyModel.h; sourceTree = "<group>"; };
+		91074F8116E4DEE3008418BE /* XivelyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XivelyModel.m; sourceTree = "<group>"; };
+		91074F8216E4DEE3008418BE /* XivelyModelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XivelyModelDelegate.h; sourceTree = "<group>"; };
+		91074F8316E4DEE3008418BE /* XivelyRequestable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XivelyRequestable.h; sourceTree = "<group>"; };
+		91074F8416E4DEE3008418BE /* XivelyRequestable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XivelyRequestable.m; sourceTree = "<group>"; };
+		91074F8516E4DEE3008418BE /* XivelySubscribable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XivelySubscribable.h; sourceTree = "<group>"; };
+		91074F8616E4DEE3008418BE /* XivelySubscribable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XivelySubscribable.m; sourceTree = "<group>"; };
 		91074FCE16E4EADA008418BE /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		91074FCF16E4EADA008418BE /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		91074FD016E4EADA008418BE /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -101,8 +101,8 @@
 		9107500116E4EC92008418BE /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		9107500316E4EC97008418BE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9107500516E4ECA1008418BE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		91D7530016E768E4005D5DDA /* COSMDatapointCollectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COSMDatapointCollectionDelegate.h; sourceTree = "<group>"; };
-		91D7531316E79AF9005D5DDA /* COSMSubscribableDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = COSMSubscribableDelegate.h; sourceTree = "<group>"; };
+		91D7530016E768E4005D5DDA /* XivelyDatapointCollectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XivelyDatapointCollectionDelegate.h; sourceTree = "<group>"; };
+		91D7531316E79AF9005D5DDA /* XivelySubscribableDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XivelySubscribableDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +127,7 @@
 			children = (
 				91074FF316E4EAE2008418BE /* SocketRocket */,
 				91074FCD16E4EADA008418BE /* AFNetworking */,
-				91074F6E16E4DEE3008418BE /* COSMObjectiveC */,
+				91074F6E16E4DEE3008418BE /* XivelyObjectiveC */,
 				91074F6316E4DE47008418BE /* CrudTests.h */,
 				91074F6416E4DE47008418BE /* CrudTests.m */,
 				91074F5E16E4DE47008418BE /* Supporting Files */,
@@ -168,37 +168,37 @@
 			path = TestsTests;
 			sourceTree = "<group>";
 		};
-		91074F6E16E4DEE3008418BE /* COSMObjectiveC */ = {
+		91074F6E16E4DEE3008418BE /* XivelyObjectiveC */ = {
 			isa = PBXGroup;
 			children = (
-				91074F7016E4DEE3008418BE /* COSM.h */,
-				91074F7116E4DEE3008418BE /* COSMAPI.h */,
-				91074F7216E4DEE3008418BE /* COSMAPI.m */,
-				91074F7316E4DEE3008418BE /* COSMDatapointCollection.h */,
-				91074F7416E4DEE3008418BE /* COSMDatapointCollection.m */,
-				91D7530016E768E4005D5DDA /* COSMDatapointCollectionDelegate.h */,
-				91074F7516E4DEE3008418BE /* COSMDatapointModel.h */,
-				91074F7616E4DEE3008418BE /* COSMDatapointModel.m */,
-				91074F7716E4DEE3008418BE /* COSMDatastreamCollection.h */,
-				91074F7816E4DEE3008418BE /* COSMDatastreamCollection.m */,
-				91074F7916E4DEE3008418BE /* COSMDatastreamModel.h */,
-				91074F7A16E4DEE3008418BE /* COSMDatastreamModel.m */,
-				91074F7B16E4DEE3008418BE /* COSMFeedCollection.h */,
-				91074F7C16E4DEE3008418BE /* COSMFeedCollection.m */,
-				91074F7D16E4DEE3008418BE /* COSMFeedCollectionDelegate.h */,
-				91074F7E16E4DEE3008418BE /* COSMFeedModel.h */,
-				91074F7F16E4DEE3008418BE /* COSMFeedModel.m */,
-				91074F8016E4DEE3008418BE /* COSMModel.h */,
-				91074F8116E4DEE3008418BE /* COSMModel.m */,
-				91074F8216E4DEE3008418BE /* COSMModelDelegate.h */,
-				91074F8316E4DEE3008418BE /* COSMRequestable.h */,
-				91074F8416E4DEE3008418BE /* COSMRequestable.m */,
-				91074F8516E4DEE3008418BE /* COSMSubscribable.h */,
-				91074F8616E4DEE3008418BE /* COSMSubscribable.m */,
-				91D7531316E79AF9005D5DDA /* COSMSubscribableDelegate.h */,
+				91074F7016E4DEE3008418BE /* Xively.h */,
+				91074F7116E4DEE3008418BE /* XivelyAPI.h */,
+				91074F7216E4DEE3008418BE /* XivelyAPI.m */,
+				91074F7316E4DEE3008418BE /* XivelyDatapointCollection.h */,
+				91074F7416E4DEE3008418BE /* XivelyDatapointCollection.m */,
+				91D7530016E768E4005D5DDA /* XivelyDatapointCollectionDelegate.h */,
+				91074F7516E4DEE3008418BE /* XivelyDatapointModel.h */,
+				91074F7616E4DEE3008418BE /* XivelyDatapointModel.m */,
+				91074F7716E4DEE3008418BE /* XivelyDatastreamCollection.h */,
+				91074F7816E4DEE3008418BE /* XivelyDatastreamCollection.m */,
+				91074F7916E4DEE3008418BE /* XivelyDatastreamModel.h */,
+				91074F7A16E4DEE3008418BE /* XivelyDatastreamModel.m */,
+				91074F7B16E4DEE3008418BE /* XivelyFeedCollection.h */,
+				91074F7C16E4DEE3008418BE /* XivelyFeedCollection.m */,
+				91074F7D16E4DEE3008418BE /* XivelyFeedCollectionDelegate.h */,
+				91074F7E16E4DEE3008418BE /* XivelyFeedModel.h */,
+				91074F7F16E4DEE3008418BE /* XivelyFeedModel.m */,
+				91074F8016E4DEE3008418BE /* XivelyModel.h */,
+				91074F8116E4DEE3008418BE /* XivelyModel.m */,
+				91074F8216E4DEE3008418BE /* XivelyModelDelegate.h */,
+				91074F8316E4DEE3008418BE /* XivelyRequestable.h */,
+				91074F8416E4DEE3008418BE /* XivelyRequestable.m */,
+				91074F8516E4DEE3008418BE /* XivelySubscribable.h */,
+				91074F8616E4DEE3008418BE /* XivelySubscribable.m */,
+				91D7531316E79AF9005D5DDA /* XivelySubscribableDelegate.h */,
 			);
-			name = COSMObjectiveC;
-			path = ../COSMObjectiveC;
+			name = XivelyObjectiveC;
+			path = ../XivelyObjectiveC;
 			sourceTree = "<group>";
 		};
 		91074FCD16E4EADA008418BE /* AFNetworking */ = {
@@ -246,9 +246,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		91074F5516E4DE47008418BE /* COSMObjectiveCTests */ = {
+		91074F5516E4DE47008418BE /* XivelyObjectiveCTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 91074F6B16E4DE47008418BE /* Build configuration list for PBXNativeTarget "COSMObjectiveCTests" */;
+			buildConfigurationList = 91074F6B16E4DE47008418BE /* Build configuration list for PBXNativeTarget "XivelyObjectiveCTests" */;
 			buildPhases = (
 				91074F5116E4DE47008418BE /* Sources */,
 				91074F5216E4DE47008418BE /* Frameworks */,
@@ -259,7 +259,7 @@
 			);
 			dependencies = (
 			);
-			name = COSMObjectiveCTests;
+			name = XivelyObjectiveCTests;
 			productName = TestsTests;
 			productReference = 91074F5616E4DE47008418BE /* TestsTests.octest */;
 			productType = "com.apple.product-type.bundle";
@@ -271,7 +271,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0450;
-				ORGANIZATIONNAME = "COSM Ltd.";
+				ORGANIZATIONNAME = "Xively Ltd.";
 			};
 			buildConfigurationList = 91074F2F16E4DE47008418BE /* Build configuration list for PBXProject "Tests" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -285,7 +285,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				91074F5516E4DE47008418BE /* COSMObjectiveCTests */,
+				91074F5516E4DE47008418BE /* XivelyObjectiveCTests */,
 			);
 		};
 /* End PBXProject section */
@@ -323,16 +323,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				91074F6516E4DE47008418BE /* CrudTests.m in Sources */,
-				91074F8B16E4DEE3008418BE /* COSMAPI.m in Sources */,
-				91074F8D16E4DEE3008418BE /* COSMDatapointCollection.m in Sources */,
-				91074F8F16E4DEE3008418BE /* COSMDatapointModel.m in Sources */,
-				91074F9116E4DEE3008418BE /* COSMDatastreamCollection.m in Sources */,
-				91074F9316E4DEE3008418BE /* COSMDatastreamModel.m in Sources */,
-				91074F9516E4DEE3008418BE /* COSMFeedCollection.m in Sources */,
-				91074F9716E4DEE3008418BE /* COSMFeedModel.m in Sources */,
-				91074F9916E4DEE3008418BE /* COSMModel.m in Sources */,
-				91074F9B16E4DEE3008418BE /* COSMRequestable.m in Sources */,
-				91074F9D16E4DEE3008418BE /* COSMSubscribable.m in Sources */,
+				91074F8B16E4DEE3008418BE /* XivelyAPI.m in Sources */,
+				91074F8D16E4DEE3008418BE /* XivelyDatapointCollection.m in Sources */,
+				91074F8F16E4DEE3008418BE /* XivelyDatapointModel.m in Sources */,
+				91074F9116E4DEE3008418BE /* XivelyDatastreamCollection.m in Sources */,
+				91074F9316E4DEE3008418BE /* XivelyDatastreamModel.m in Sources */,
+				91074F9516E4DEE3008418BE /* XivelyFeedCollection.m in Sources */,
+				91074F9716E4DEE3008418BE /* XivelyFeedModel.m in Sources */,
+				91074F9916E4DEE3008418BE /* XivelyModel.m in Sources */,
+				91074F9B16E4DEE3008418BE /* XivelyRequestable.m in Sources */,
+				91074F9D16E4DEE3008418BE /* XivelySubscribable.m in Sources */,
 				91074FE216E4EADA008418BE /* AFHTTPClient.m in Sources */,
 				91074FE416E4EADA008418BE /* AFHTTPRequestOperation.m in Sources */,
 				91074FE616E4EADA008418BE /* AFImageRequestOperation.m in Sources */,
@@ -458,7 +458,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		91074F6B16E4DE47008418BE /* Build configuration list for PBXNativeTarget "COSMObjectiveCTests" */ = {
+		91074F6B16E4DE47008418BE /* Build configuration list for PBXNativeTarget "XivelyObjectiveCTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				91074F6C16E4DE47008418BE /* Debug */,

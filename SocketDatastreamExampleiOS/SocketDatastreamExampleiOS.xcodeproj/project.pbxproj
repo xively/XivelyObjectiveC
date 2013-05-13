@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		918D6BC516DF9B5900909170 /* COSMAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BAF16DF9B5900909170 /* COSMAPI.m */; };
-		918D6BC616DF9B5900909170 /* COSMDatapointCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BB116DF9B5900909170 /* COSMDatapointCollection.m */; };
-		918D6BC716DF9B5900909170 /* COSMDatapointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BB316DF9B5900909170 /* COSMDatapointModel.m */; };
-		918D6BC816DF9B5900909170 /* COSMDatastreamCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BB516DF9B5900909170 /* COSMDatastreamCollection.m */; };
-		918D6BC916DF9B5900909170 /* COSMDatastreamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BB716DF9B5900909170 /* COSMDatastreamModel.m */; };
-		918D6BCA16DF9B5900909170 /* COSMFeedCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BB916DF9B5900909170 /* COSMFeedCollection.m */; };
-		918D6BCB16DF9B5900909170 /* COSMFeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BBC16DF9B5900909170 /* COSMFeedModel.m */; };
-		918D6BCC16DF9B5900909170 /* COSMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BBE16DF9B5900909170 /* COSMModel.m */; };
-		918D6BCD16DF9B5900909170 /* COSMRequestable.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BC116DF9B5900909170 /* COSMRequestable.m */; };
-		918D6BCE16DF9B5900909170 /* COSMSubscribable.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BC316DF9B5900909170 /* COSMSubscribable.m */; };
+		918D6BC516DF9B5900909170 /* XivelyAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BAF16DF9B5900909170 /* XivelyAPI.m */; };
+		918D6BC616DF9B5900909170 /* XivelyDatapointCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BB116DF9B5900909170 /* XivelyDatapointCollection.m */; };
+		918D6BC716DF9B5900909170 /* XivelyDatapointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BB316DF9B5900909170 /* XivelyDatapointModel.m */; };
+		918D6BC816DF9B5900909170 /* XivelyDatastreamCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BB516DF9B5900909170 /* XivelyDatastreamCollection.m */; };
+		918D6BC916DF9B5900909170 /* XivelyDatastreamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BB716DF9B5900909170 /* XivelyDatastreamModel.m */; };
+		918D6BCA16DF9B5900909170 /* XivelyFeedCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BB916DF9B5900909170 /* XivelyFeedCollection.m */; };
+		918D6BCB16DF9B5900909170 /* XivelyFeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BBC16DF9B5900909170 /* XivelyFeedModel.m */; };
+		918D6BCC16DF9B5900909170 /* XivelyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BBE16DF9B5900909170 /* XivelyModel.m */; };
+		918D6BCD16DF9B5900909170 /* XivelyRequestable.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BC116DF9B5900909170 /* XivelyRequestable.m */; };
+		918D6BCE16DF9B5900909170 /* XivelySubscribable.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BC316DF9B5900909170 /* XivelySubscribable.m */; };
 		918D6BCF16DF9B5900909170 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 918D6BC416DF9B5900909170 /* README.md */; };
 		91A55BC416DCE72400D2F4F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A55BC316DCE72400D2F4F4 /* UIKit.framework */; };
 		91A55BC616DCE72400D2F4F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A55BC516DCE72400D2F4F4 /* Foundation.framework */; };
@@ -47,34 +47,34 @@
 		91A55CA016DD5BE100D2F4F4 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A55C9F16DD5BBB00D2F4F4 /* Utils.m */; };
 		91A55CA216DD612400D2F4F4 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A55CA116DD612400D2F4F4 /* Icon.png */; };
 		91A55CA416DD612A00D2F4F4 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91A55CA316DD612A00D2F4F4 /* Icon@2x.png */; };
-		91D7530216E77547005D5DDA /* COSMDatapointCollectionDelegate.h in Resources */ = {isa = PBXBuildFile; fileRef = 91D7530116E77547005D5DDA /* COSMDatapointCollectionDelegate.h */; };
+		91D7530216E77547005D5DDA /* XivelyDatapointCollectionDelegate.h in Resources */ = {isa = PBXBuildFile; fileRef = 91D7530116E77547005D5DDA /* XivelyDatapointCollectionDelegate.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		918D6BAD16DF9B5900909170 /* COSM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSM.h; path = ../COSMObjectiveC/COSM.h; sourceTree = "<group>"; };
-		918D6BAE16DF9B5900909170 /* COSMAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMAPI.h; path = ../COSMObjectiveC/COSMAPI.h; sourceTree = "<group>"; };
-		918D6BAF16DF9B5900909170 /* COSMAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSMAPI.m; path = ../COSMObjectiveC/COSMAPI.m; sourceTree = "<group>"; };
-		918D6BB016DF9B5900909170 /* COSMDatapointCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMDatapointCollection.h; path = ../COSMObjectiveC/COSMDatapointCollection.h; sourceTree = "<group>"; };
-		918D6BB116DF9B5900909170 /* COSMDatapointCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSMDatapointCollection.m; path = ../COSMObjectiveC/COSMDatapointCollection.m; sourceTree = "<group>"; };
-		918D6BB216DF9B5900909170 /* COSMDatapointModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMDatapointModel.h; path = ../COSMObjectiveC/COSMDatapointModel.h; sourceTree = "<group>"; };
-		918D6BB316DF9B5900909170 /* COSMDatapointModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSMDatapointModel.m; path = ../COSMObjectiveC/COSMDatapointModel.m; sourceTree = "<group>"; };
-		918D6BB416DF9B5900909170 /* COSMDatastreamCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMDatastreamCollection.h; path = ../COSMObjectiveC/COSMDatastreamCollection.h; sourceTree = "<group>"; };
-		918D6BB516DF9B5900909170 /* COSMDatastreamCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSMDatastreamCollection.m; path = ../COSMObjectiveC/COSMDatastreamCollection.m; sourceTree = "<group>"; };
-		918D6BB616DF9B5900909170 /* COSMDatastreamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMDatastreamModel.h; path = ../COSMObjectiveC/COSMDatastreamModel.h; sourceTree = "<group>"; };
-		918D6BB716DF9B5900909170 /* COSMDatastreamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSMDatastreamModel.m; path = ../COSMObjectiveC/COSMDatastreamModel.m; sourceTree = "<group>"; };
-		918D6BB816DF9B5900909170 /* COSMFeedCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMFeedCollection.h; path = ../COSMObjectiveC/COSMFeedCollection.h; sourceTree = "<group>"; };
-		918D6BB916DF9B5900909170 /* COSMFeedCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSMFeedCollection.m; path = ../COSMObjectiveC/COSMFeedCollection.m; sourceTree = "<group>"; };
-		918D6BBA16DF9B5900909170 /* COSMFeedCollectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMFeedCollectionDelegate.h; path = ../COSMObjectiveC/COSMFeedCollectionDelegate.h; sourceTree = "<group>"; };
-		918D6BBB16DF9B5900909170 /* COSMFeedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMFeedModel.h; path = ../COSMObjectiveC/COSMFeedModel.h; sourceTree = "<group>"; };
-		918D6BBC16DF9B5900909170 /* COSMFeedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSMFeedModel.m; path = ../COSMObjectiveC/COSMFeedModel.m; sourceTree = "<group>"; };
-		918D6BBD16DF9B5900909170 /* COSMModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMModel.h; path = ../COSMObjectiveC/COSMModel.h; sourceTree = "<group>"; };
-		918D6BBE16DF9B5900909170 /* COSMModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSMModel.m; path = ../COSMObjectiveC/COSMModel.m; sourceTree = "<group>"; };
-		918D6BBF16DF9B5900909170 /* COSMModelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMModelDelegate.h; path = ../COSMObjectiveC/COSMModelDelegate.h; sourceTree = "<group>"; };
-		918D6BC016DF9B5900909170 /* COSMRequestable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMRequestable.h; path = ../COSMObjectiveC/COSMRequestable.h; sourceTree = "<group>"; };
-		918D6BC116DF9B5900909170 /* COSMRequestable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSMRequestable.m; path = ../COSMObjectiveC/COSMRequestable.m; sourceTree = "<group>"; };
-		918D6BC216DF9B5900909170 /* COSMSubscribable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COSMSubscribable.h; path = ../COSMObjectiveC/COSMSubscribable.h; sourceTree = "<group>"; };
-		918D6BC316DF9B5900909170 /* COSMSubscribable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COSMSubscribable.m; path = ../COSMObjectiveC/COSMSubscribable.m; sourceTree = "<group>"; };
-		918D6BC416DF9B5900909170 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../COSMObjectiveC/README.md; sourceTree = "<group>"; };
+		918D6BAD16DF9B5900909170 /* Xively.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Xively.h; path = ../XivelyObjectiveC/Xively.h; sourceTree = "<group>"; };
+		918D6BAE16DF9B5900909170 /* XivelyAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XivelyAPI.h; path = ../XivelyObjectiveC/XivelyAPI.h; sourceTree = "<group>"; };
+		918D6BAF16DF9B5900909170 /* XivelyAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XivelyAPI.m; path = ../XivelyObjectiveC/XivelyAPI.m; sourceTree = "<group>"; };
+		918D6BB016DF9B5900909170 /* XivelyDatapointCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XivelyDatapointCollection.h; path = ../XivelyObjectiveC/XivelyDatapointCollection.h; sourceTree = "<group>"; };
+		918D6BB116DF9B5900909170 /* XivelyDatapointCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XivelyDatapointCollection.m; path = ../XivelyObjectiveC/XivelyDatapointCollection.m; sourceTree = "<group>"; };
+		918D6BB216DF9B5900909170 /* XivelyDatapointModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XivelyDatapointModel.h; path = ../XivelyObjectiveC/XivelyDatapointModel.h; sourceTree = "<group>"; };
+		918D6BB316DF9B5900909170 /* XivelyDatapointModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XivelyDatapointModel.m; path = ../XivelyObjectiveC/XivelyDatapointModel.m; sourceTree = "<group>"; };
+		918D6BB416DF9B5900909170 /* XivelyDatastreamCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XivelyDatastreamCollection.h; path = ../XivelyObjectiveC/XivelyDatastreamCollection.h; sourceTree = "<group>"; };
+		918D6BB516DF9B5900909170 /* XivelyDatastreamCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XivelyDatastreamCollection.m; path = ../XivelyObjectiveC/XivelyDatastreamCollection.m; sourceTree = "<group>"; };
+		918D6BB616DF9B5900909170 /* XivelyDatastreamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XivelyDatastreamModel.h; path = ../XivelyObjectiveC/XivelyDatastreamModel.h; sourceTree = "<group>"; };
+		918D6BB716DF9B5900909170 /* XivelyDatastreamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XivelyDatastreamModel.m; path = ../XivelyObjectiveC/XivelyDatastreamModel.m; sourceTree = "<group>"; };
+		918D6BB816DF9B5900909170 /* XivelyFeedCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XivelyFeedCollection.h; path = ../XivelyObjectiveC/XivelyFeedCollection.h; sourceTree = "<group>"; };
+		918D6BB916DF9B5900909170 /* XivelyFeedCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XivelyFeedCollection.m; path = ../XivelyObjectiveC/XivelyFeedCollection.m; sourceTree = "<group>"; };
+		918D6BBA16DF9B5900909170 /* XivelyFeedCollectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XivelyFeedCollectionDelegate.h; path = ../XivelyObjectiveC/XivelyFeedCollectionDelegate.h; sourceTree = "<group>"; };
+		918D6BBB16DF9B5900909170 /* XivelyFeedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XivelyFeedModel.h; path = ../XivelyObjectiveC/XivelyFeedModel.h; sourceTree = "<group>"; };
+		918D6BBC16DF9B5900909170 /* XivelyFeedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XivelyFeedModel.m; path = ../XivelyObjectiveC/XivelyFeedModel.m; sourceTree = "<group>"; };
+		918D6BBD16DF9B5900909170 /* XivelyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XivelyModel.h; path = ../XivelyObjectiveC/XivelyModel.h; sourceTree = "<group>"; };
+		918D6BBE16DF9B5900909170 /* XivelyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XivelyModel.m; path = ../XivelyObjectiveC/XivelyModel.m; sourceTree = "<group>"; };
+		918D6BBF16DF9B5900909170 /* XivelyModelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XivelyModelDelegate.h; path = ../XivelyObjectiveC/XivelyModelDelegate.h; sourceTree = "<group>"; };
+		918D6BC016DF9B5900909170 /* XivelyRequestable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XivelyRequestable.h; path = ../XivelyObjectiveC/XivelyRequestable.h; sourceTree = "<group>"; };
+		918D6BC116DF9B5900909170 /* XivelyRequestable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XivelyRequestable.m; path = ../XivelyObjectiveC/XivelyRequestable.m; sourceTree = "<group>"; };
+		918D6BC216DF9B5900909170 /* XivelySubscribable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XivelySubscribable.h; path = ../XivelyObjectiveC/XivelySubscribable.h; sourceTree = "<group>"; };
+		918D6BC316DF9B5900909170 /* XivelySubscribable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XivelySubscribable.m; path = ../XivelyObjectiveC/XivelySubscribable.m; sourceTree = "<group>"; };
+		918D6BC416DF9B5900909170 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../XivelyObjectiveC/README.md; sourceTree = "<group>"; };
 		91A55BBF16DCE72400D2F4F4 /* SocketDatastreamExampleiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocketDatastreamExampleiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91A55BC316DCE72400D2F4F4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		91A55BC516DCE72400D2F4F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -124,7 +124,7 @@
 		91A55C9F16DD5BBB00D2F4F4 /* Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = ../Shared/Utilites/Utils.m; sourceTree = "<group>"; };
 		91A55CA116DD612400D2F4F4 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
 		91A55CA316DD612A00D2F4F4 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
-		91D7530116E77547005D5DDA /* COSMDatapointCollectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = COSMDatapointCollectionDelegate.h; path = ../COSMObjectiveC/COSMDatapointCollectionDelegate.h; sourceTree = "<group>"; };
+		91D7530116E77547005D5DDA /* XivelyDatapointCollectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = XivelyDatapointCollectionDelegate.h; path = ../XivelyObjectiveC/XivelyDatapointCollectionDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,42 +144,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		918D6B7F16DF97B200909170 /* COSMObjectiveC */ = {
+		918D6B7F16DF97B200909170 /* XivelyObjectiveC */ = {
 			isa = PBXGroup;
 			children = (
-				918D6BAD16DF9B5900909170 /* COSM.h */,
-				918D6BAE16DF9B5900909170 /* COSMAPI.h */,
-				918D6BAF16DF9B5900909170 /* COSMAPI.m */,
-				91D7530116E77547005D5DDA /* COSMDatapointCollectionDelegate.h */,
-				918D6BB016DF9B5900909170 /* COSMDatapointCollection.h */,
-				918D6BB116DF9B5900909170 /* COSMDatapointCollection.m */,
-				918D6BB216DF9B5900909170 /* COSMDatapointModel.h */,
-				918D6BB316DF9B5900909170 /* COSMDatapointModel.m */,
-				918D6BB416DF9B5900909170 /* COSMDatastreamCollection.h */,
-				918D6BB516DF9B5900909170 /* COSMDatastreamCollection.m */,
-				918D6BB616DF9B5900909170 /* COSMDatastreamModel.h */,
-				918D6BB716DF9B5900909170 /* COSMDatastreamModel.m */,
-				918D6BB816DF9B5900909170 /* COSMFeedCollection.h */,
-				918D6BB916DF9B5900909170 /* COSMFeedCollection.m */,
-				918D6BBA16DF9B5900909170 /* COSMFeedCollectionDelegate.h */,
-				918D6BBB16DF9B5900909170 /* COSMFeedModel.h */,
-				918D6BBC16DF9B5900909170 /* COSMFeedModel.m */,
-				918D6BBD16DF9B5900909170 /* COSMModel.h */,
-				918D6BBE16DF9B5900909170 /* COSMModel.m */,
-				918D6BBF16DF9B5900909170 /* COSMModelDelegate.h */,
-				918D6BC016DF9B5900909170 /* COSMRequestable.h */,
-				918D6BC116DF9B5900909170 /* COSMRequestable.m */,
-				918D6BC216DF9B5900909170 /* COSMSubscribable.h */,
-				918D6BC316DF9B5900909170 /* COSMSubscribable.m */,
+				918D6BAD16DF9B5900909170 /* Xively.h */,
+				918D6BAE16DF9B5900909170 /* XivelyAPI.h */,
+				918D6BAF16DF9B5900909170 /* XivelyAPI.m */,
+				91D7530116E77547005D5DDA /* XivelyDatapointCollectionDelegate.h */,
+				918D6BB016DF9B5900909170 /* XivelyDatapointCollection.h */,
+				918D6BB116DF9B5900909170 /* XivelyDatapointCollection.m */,
+				918D6BB216DF9B5900909170 /* XivelyDatapointModel.h */,
+				918D6BB316DF9B5900909170 /* XivelyDatapointModel.m */,
+				918D6BB416DF9B5900909170 /* XivelyDatastreamCollection.h */,
+				918D6BB516DF9B5900909170 /* XivelyDatastreamCollection.m */,
+				918D6BB616DF9B5900909170 /* XivelyDatastreamModel.h */,
+				918D6BB716DF9B5900909170 /* XivelyDatastreamModel.m */,
+				918D6BB816DF9B5900909170 /* XivelyFeedCollection.h */,
+				918D6BB916DF9B5900909170 /* XivelyFeedCollection.m */,
+				918D6BBA16DF9B5900909170 /* XivelyFeedCollectionDelegate.h */,
+				918D6BBB16DF9B5900909170 /* XivelyFeedModel.h */,
+				918D6BBC16DF9B5900909170 /* XivelyFeedModel.m */,
+				918D6BBD16DF9B5900909170 /* XivelyModel.h */,
+				918D6BBE16DF9B5900909170 /* XivelyModel.m */,
+				918D6BBF16DF9B5900909170 /* XivelyModelDelegate.h */,
+				918D6BC016DF9B5900909170 /* XivelyRequestable.h */,
+				918D6BC116DF9B5900909170 /* XivelyRequestable.m */,
+				918D6BC216DF9B5900909170 /* XivelySubscribable.h */,
+				918D6BC316DF9B5900909170 /* XivelySubscribable.m */,
 				918D6BC416DF9B5900909170 /* README.md */,
 			);
-			name = COSMObjectiveC;
+			name = XivelyObjectiveC;
 			sourceTree = "<group>";
 		};
 		91A55BB416DCE72400D2F4F4 = {
 			isa = PBXGroup;
 			children = (
-				918D6B7F16DF97B200909170 /* COSMObjectiveC */,
+				918D6B7F16DF97B200909170 /* XivelyObjectiveC */,
 				91A55BD216DCE72400D2F4F4 /* AppDelegate.h */,
 				91A55BD316DCE72400D2F4F4 /* AppDelegate.m */,
 				91A55BDB16DCE72400D2F4F4 /* MainStoryboard.storyboard */,
@@ -318,7 +318,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0450;
-				ORGANIZATIONNAME = "COSM Ltd.";
+				ORGANIZATIONNAME = "Xively Ltd.";
 			};
 			buildConfigurationList = 91A55BB916DCE72400D2F4F4 /* Build configuration list for PBXProject "SocketDatastreamExampleiOS" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -350,7 +350,7 @@
 				91A55CA216DD612400D2F4F4 /* Icon.png in Resources */,
 				91A55CA416DD612A00D2F4F4 /* Icon@2x.png in Resources */,
 				918D6BCF16DF9B5900909170 /* README.md in Resources */,
-				91D7530216E77547005D5DDA /* COSMDatapointCollectionDelegate.h in Resources */,
+				91D7530216E77547005D5DDA /* XivelyDatapointCollectionDelegate.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,16 +377,16 @@
 				91A55C9816DD5B3000D2F4F4 /* NSData+SRB64Additions.m in Sources */,
 				91A55C9916DD5B3000D2F4F4 /* SRWebSocket.m in Sources */,
 				91A55CA016DD5BE100D2F4F4 /* Utils.m in Sources */,
-				918D6BC516DF9B5900909170 /* COSMAPI.m in Sources */,
-				918D6BC616DF9B5900909170 /* COSMDatapointCollection.m in Sources */,
-				918D6BC716DF9B5900909170 /* COSMDatapointModel.m in Sources */,
-				918D6BC816DF9B5900909170 /* COSMDatastreamCollection.m in Sources */,
-				918D6BC916DF9B5900909170 /* COSMDatastreamModel.m in Sources */,
-				918D6BCA16DF9B5900909170 /* COSMFeedCollection.m in Sources */,
-				918D6BCB16DF9B5900909170 /* COSMFeedModel.m in Sources */,
-				918D6BCC16DF9B5900909170 /* COSMModel.m in Sources */,
-				918D6BCD16DF9B5900909170 /* COSMRequestable.m in Sources */,
-				918D6BCE16DF9B5900909170 /* COSMSubscribable.m in Sources */,
+				918D6BC516DF9B5900909170 /* XivelyAPI.m in Sources */,
+				918D6BC616DF9B5900909170 /* XivelyDatapointCollection.m in Sources */,
+				918D6BC716DF9B5900909170 /* XivelyDatapointModel.m in Sources */,
+				918D6BC816DF9B5900909170 /* XivelyDatastreamCollection.m in Sources */,
+				918D6BC916DF9B5900909170 /* XivelyDatastreamModel.m in Sources */,
+				918D6BCA16DF9B5900909170 /* XivelyFeedCollection.m in Sources */,
+				918D6BCB16DF9B5900909170 /* XivelyFeedModel.m in Sources */,
+				918D6BCC16DF9B5900909170 /* XivelyModel.m in Sources */,
+				918D6BCD16DF9B5900909170 /* XivelyRequestable.m in Sources */,
+				918D6BCE16DF9B5900909170 /* XivelySubscribable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

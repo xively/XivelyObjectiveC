@@ -30,17 +30,17 @@
 
 @synthesize tableView;
 
-#pragma mark - Cosm Datastream
+#pragma mark - Xively Datastream
 
 @synthesize feedModel;
 
-#pragma mark - Cosm Model Delegate Methods
+#pragma mark - Xively Model Delegate Methods
 
-- (void)modelDidFetch:(COSMModel *)model {
+- (void)modelDidFetch:(XivelyModel *)model {
     [self updateView];
 }
 
-- (void)modelFailedToFetch:(COSMModel *)model withError:(NSError *)error json:(id)JSON {
+- (void)modelFailedToFetch:(XivelyModel *)model withError:(NSError *)error json:(id)JSON {
     NSLog(@"Error fetching feed");
     NSLog(@"Error is %@", error);
     NSLog(@"JSON is %@", JSON);
@@ -49,12 +49,12 @@
 
 #pragma mark – Socket Connection Delegate Methods
 
-- (void)modelDidSubscribe:(COSMModel *)model {
+- (void)modelDidSubscribe:(XivelyModel *)model {
     self.subscribeUnsubscribeButton.userInteractionEnabled = YES;
     [self.subscribeUnsubscribeButton setTitle:@"Unsubscribe" forState:UIControlStateNormal];
 }
 
-- (void)modelDidUnsubscribe:(COSMModel *)model withError:(NSError *)error {
+- (void)modelDidUnsubscribe:(XivelyModel *)model withError:(NSError *)error {
     NSLog(@"modelDidUnsubscribe");
     if (error) {
         NSLog(@"Error subscribing %@", error);
@@ -64,35 +64,35 @@
     [self.subscribeUnsubscribeButton setTitle:@"Subscribe" forState:UIControlStateNormal];
 }
 
-- (void)modelUpdatedViaSubscription:(COSMModel *)model {
+- (void)modelUpdatedViaSubscription:(XivelyModel *)model {
     [self updateView];
 }
 
 #pragma mark - Interface Builder
-    
+
 - (IBAction)fetchFeedTouched:(id)sender {
     // hide the keyboard
     [self.apiKeyTextField resignFirstResponder];
     [self.feedIdTextField resignFirstResponder];
-    
+
     // check data has been entered by the use
     if (!self.apiKeyTextField.text.length) {
-        [Utils alert:@"Missing COSM API Key" message:@"Please add your API key"];
+        [Utils alert:@"Missing Xively API Key" message:@"Please add your API key"];
         return;
     } else if (!self.feedIdTextField.text.length) {
         [Utils alert:@"Missing Feed ID" message:@"Please enter the feed ID of the datastream you wish to fetch"];
         return;
     }
-    
+
     // clear any previous model
     self.feedModel.delegate = nil;
     [self.feedModel unsubscribe];
-    
-    // set the API key for Cosm
-    [[COSMAPI defaultAPI] setApiKey:self.apiKeyTextField.text];
-    
+
+    // set the API key for Xively
+    [[XivelyAPI defaultAPI] setApiKey:self.apiKeyTextField.text];
+
     // create a new datastream model
-    self.feedModel = [[COSMFeedModel alloc] init];
+    self.feedModel = [[XivelyFeedModel alloc] init];
     [self.feedModel.info setObject:self.feedIdTextField.text forKey:@"id"] ;
     self.feedModel.delegate = self;
     [self.feedModel fetch];
@@ -148,12 +148,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *reuseIdentifier = @"Datastream Cell";
     DatastreamCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
-    
+
     // populate with data about the feed
-    COSMDatapointModel *datastream = [self.feedModel.datastreamCollection.datastreams objectAtIndex:indexPath.row];
+    XivelyDatapointModel *datastream = [self.feedModel.datastreamCollection.datastreams objectAtIndex:indexPath.row];
     cell.currentValueLabel.text = [datastream.info valueForKeyPath:@"current_value"];
     cell.datastreamNameLabel.text = [datastream.info valueForKeyPath:@"id"];
-    
+
     return cell;
 }
 
@@ -181,7 +181,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
+
     NSNotificationCenter* defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self
                       selector:@selector(saveUserInfo)

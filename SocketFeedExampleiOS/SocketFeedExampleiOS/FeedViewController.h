@@ -1,22 +1,22 @@
 #import <UIKit/UIKit.h>
-#import "COSM.h"
+#import "Xively.h"
 
-@interface FeedViewController : UIViewController<COSMSubscribableDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface FeedViewController : UIViewController<XivelySubscribableDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 // UI
 - (void)updateView;
 @property (nonatomic, weak) UITableView *tableView;
 
-// Cosm Datastream
-@property (nonatomic, strong) COSMFeedModel *feedModel;
+// Xively Datastream
+@property (nonatomic, strong) XivelyFeedModel *feedModel;
 
-// Cosm Model Delegate Methods
-- (void)modelDidFetch:(COSMModel *)model;
-- (void)modelFailedToFetch:(COSMModel *)model withError:(NSError *)error json:(id)JSON;
+// Xively Model Delegate Methods
+- (void)modelDidFetch:(XivelyModel *)model;
+- (void)modelFailedToFetch:(XivelyModel *)model withError:(NSError *)error json:(id)JSON;
 // Socket Connection Delegate Methods
-- (void)modelDidSubscribe:(COSMModel *)model;
-- (void)modelDidUnsubscribe:(COSMModel *)model withError:(NSError *)error;
-- (void)modelUpdatedViaSubscription:(COSMModel *)model;
+- (void)modelDidSubscribe:(XivelyModel *)model;
+- (void)modelDidUnsubscribe:(XivelyModel *)model withError:(NSError *)error;
+- (void)modelUpdatedViaSubscription:(XivelyModel *)model;
 
 // Interface Builder
 - (IBAction)fetchFeedTouched:(id)sender;

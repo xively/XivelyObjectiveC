@@ -18,40 +18,40 @@
         self.minValueLabel.text = [self.datastreamModel.info valueForKeyPath:@"max_value"];
         self.maxValueLabel.text = [self.datastreamModel.info valueForKeyPath:@"min_value"];
         self.lastUpdatedLabel.text = [Utils replaceDates:[NSString stringWithFormat:@"last updated: %@", [self.datastreamModel.info valueForKeyPath:@"at"]]];
-        
+
         // reset the button is this is a newly synced feed
         if (!self.datastreamModel.isSubscribed) {
             self.subscribeUnsubscribeButton.userInteractionEnabled = YES;
             [self.subscribeUnsubscribeButton setTitle:@"Subscribe" forState:UIControlStateNormal];
         }
-        
+
     } else {
         self.datastreamInfoContainerView.hidden = YES;
     }
 }
 
-#pragma mark - Cosm Datastream
+#pragma mark - Xively Datastream
 
 @synthesize datastreamModel;
 
-#pragma mark - Cosm Model Delegate Methods
+#pragma mark - Xively Model Delegate Methods
 
-- (void)modelDidFetch:(COSMModel *)model {
+- (void)modelDidFetch:(XivelyModel *)model {
     [self updateLabels];
 }
 
-- (void)modelFailedToFetch:(COSMModel *)model withError:(NSError *)error json:(id)JSON {
+- (void)modelFailedToFetch:(XivelyModel *)model withError:(NSError *)error json:(id)JSON {
     [Utils alertUsingJSON:JSON orTitle:@"Failed to fetch feed" message:@"Something went wrong, check console"];
 }
 
 #pragma mark – Socket Connection Delegate Methods
 
-- (void)modelDidSubscribe:(COSMModel *)model {
+- (void)modelDidSubscribe:(XivelyModel *)model {
     self.subscribeUnsubscribeButton.userInteractionEnabled = YES;
     [self.subscribeUnsubscribeButton setTitle:@"Unsubscribe" forState:UIControlStateNormal];
 }
 
-- (void)modelDidUnsubscribe:(COSMModel *)model withError:(NSError *)error {
+- (void)modelDidUnsubscribe:(XivelyModel *)model withError:(NSError *)error {
     if (error) {
         NSLog(@"Error subscribing %@", error);
         [Utils alert:@"Failed to subscribe to feed" message:@"Something went wrong, check console"];
@@ -60,7 +60,7 @@
     [self.subscribeUnsubscribeButton setTitle:@"Subscribe" forState:UIControlStateNormal];
 }
 
-- (void)modelUpdatedViaSubscription:(COSMModel *)model {
+- (void)modelUpdatedViaSubscription:(XivelyModel *)model {
     [self updateLabels];
 }
 
@@ -71,10 +71,10 @@
     [self.apiKeyTextField resignFirstResponder];
     [self.feedIdTextField resignFirstResponder];
     [self.datastreamIdTextField resignFirstResponder];
-    
+
     // check data has been entered by the use
     if (!self.apiKeyTextField.text.length) {
-        [Utils alert:@"Missing COSM API Key" message:@"Please add your API key"];
+        [Utils alert:@"Missing Xively API Key" message:@"Please add your API key"];
         return;
     } else if (!self.feedIdTextField.text.length) {
         [Utils alert:@"Missing Feed ID" message:@"Please enter the feed ID of the datastream you wish to fetch"];
@@ -83,16 +83,16 @@
         [Utils alert:@"Missing Datastrean ID" message:@"Please enter the datastream ID of the datastream you wish to fetch"];
         return;
     }
-    
+
     // clear any previous model
     self.datastreamModel.delegate = nil;
     [self.datastreamModel unsubscribe];
-    
-    // set the API key for Cosm
-    [[COSMAPI defaultAPI] setApiKey:self.apiKeyTextField.text];
-    
+
+    // set the API key for Xively
+    [[XivelyAPI defaultAPI] setApiKey:self.apiKeyTextField.text];
+
     // create a new datastream model
-    self.datastreamModel = [[COSMDatastreamModel alloc] init];
+    self.datastreamModel = [[XivelyDatastreamModel alloc] init];
     self.datastreamModel.feedId = [self.feedIdTextField.text integerValue];
     [self.datastreamModel.info setObject:self.datastreamIdTextField.text forKey:@"id"];
     self.datastreamModel.delegate = self;
@@ -141,11 +141,11 @@
 #pragma mark - Lifecycle
 
 - (void)viewWillAppear:(BOOL)animated {
-    
+
     // hide the information until we have successful
-    // created a connection 
+    // created a connection
     self.datastreamInfoContainerView.hidden = YES;
-    
+
     [self loadUserEnteredInfo];
 }
 
@@ -157,7 +157,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
+
     NSNotificationCenter* defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self
                       selector:@selector(saveUserInfo)
