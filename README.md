@@ -38,7 +38,7 @@ XivelyDatapointCollection can also __save__ all its new datapoints to Xively.
 
 ### Setting the API Key
 
-This should be done early as possible if only one API Key is used.
+This should be done as early as possible if only one API Key is used.
 
 ``` objective-c
 [[XivelyAPI defaultAPI] setApiKey:@"<API Key>"];
