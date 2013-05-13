@@ -1,9 +1,9 @@
-#import "COSMDatapointCollection.h"
-#import "COSMDatapointModel.h"
+#import "XivelyDatapointCollection.h"
+#import "XivelyDatapointModel.h"
 #import "AFJSONRequestOperation.h"
 #import "AFHTTPClient.h"
 
-@implementation COSMDatapointCollection
+@implementation XivelyDatapointCollection
 
 #pragma mark - Data
 
@@ -37,14 +37,14 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:self.api.versionString forHTTPHeaderField:@"User-Agent"];
-    
+
     NSMutableArray *arrayOfDatapoints = [[NSMutableArray alloc] initWithCapacity:self.datapoints.count];
-    [self.datapoints enumerateObjectsUsingBlock:^(COSMDatapointModel *model, NSUInteger idx, BOOL *stop) {
+    [self.datapoints enumerateObjectsUsingBlock:^(XivelyDatapointModel *model, NSUInteger idx, BOOL *stop) {
         if (model.isNew) {
             [arrayOfDatapoints addObject:model.info];
         }
     }];
-    
+
     NSData *data  = [NSJSONSerialization dataWithJSONObject:@{@"datapoints":arrayOfDatapoints} options:NSJSONWritingPrettyPrinted error:nil];
     [request setHTTPBody:data];
     AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -64,7 +64,7 @@
             NSError *jsonError = NULL;
             id JSON;
             // see if the data can be made into data, if not
-            // make something similar to COSM Api error
+            // make something similar to Xively Api error
             // with the error information we have extracted.
             if ([NSJSONSerialization isValidJSONObject:dataToJsonify]) {
                 JSON = [NSJSONSerialization JSONObjectWithData:[dataToJsonify dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments error:&jsonError];
@@ -79,14 +79,14 @@
 
 - (void)parse:(id)JSON {
     if ([JSON isKindOfClass:[NSDictionary class]])  {
-        NSLog(@"@stub: COSMDatapointCollection::parse with JSON of NSDictionary. Not adding any datapoints to collection.");
+        NSLog(@"@stub: XivelyDatapointCollection::parse with JSON of NSDictionary. Not adding any datapoints to collection.");
     } else if ([JSON isKindOfClass:[NSArray class]]) {
         // clear all the previous data
         [self.datapoints removeAllObjects];        // add the data streams
         NSEnumerator *enumerator = [JSON objectEnumerator];
         NSDictionary *datapointData;
         while (datapointData = [enumerator nextObject]) {
-            COSMDatapointModel *datapoint = [[COSMDatapointModel alloc] init];
+            XivelyDatapointModel *datapoint = [[XivelyDatapointModel alloc] init];
             datapoint.feedId = self.feedId;
             datapoint.datastreamId = self.datastreamId;
             datapoint.isNew = NO;
@@ -94,7 +94,7 @@
             [self.datapoints addObject:datapoint];
         }
     } else {
-        //NSLog(@"COSMDatapointCollection::parse: don't know what kind JSON is. Not adding any datapoint to collection.");
+        //NSLog(@"XivelyDatapointCollection::parse: don't know what kind JSON is. Not adding any datapoint to collection.");
     }
 }
 
@@ -102,7 +102,7 @@
 
 - (id)init {
     if (self=[super init]) {
-        self.api = [COSMAPI defaultAPI];
+        self.api = [XivelyAPI defaultAPI];
         self.datapoints = [[NSMutableArray alloc] init];
     }
     return self;

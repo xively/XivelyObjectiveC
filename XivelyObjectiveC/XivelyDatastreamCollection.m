@@ -1,7 +1,7 @@
-#import "COSMDatastreamCollection.h"
-#import "COSMDatastreamModel.h"
+#import "XivelyDatastreamCollection.h"
+#import "XivelyDatastreamModel.h"
 
-@implementation COSMDatastreamCollection
+@implementation XivelyDatastreamCollection
 
 #pragma mark - Data
 
@@ -14,11 +14,11 @@
 #pragma mark - Synchronisation
 
 - (void)parse:(id)JSON {
-    
+
     if (JSON == NULL) {
-        
+
     } else if ([JSON isKindOfClass:[NSDictionary class]])  {
-        NSLog(@"@stub: COSMDatastreamCollection::parse with JSON of NSDictionary. Not adding and data streams to collection.");
+        NSLog(@"@stub: XivelyDatastreamCollection::parse with JSON of NSDictionary. Not adding and data streams to collection.");
     } else if ([JSON isKindOfClass:[NSArray class]]) {
         // clear all the previous data
         [self.datastreams removeAllObjects];
@@ -27,14 +27,14 @@
         NSEnumerator *enumerator = [JSON objectEnumerator];
         NSDictionary *datastreamData;
         while (datastreamData = [enumerator nextObject]) {
-            COSMDatastreamModel *datastream = [[COSMDatastreamModel alloc] init];
+            XivelyDatastreamModel *datastream = [[XivelyDatastreamModel alloc] init];
             datastream.feedId = self.feedId;
             [datastream parse:datastreamData];
             [self.datastreams addObject:datastream];
         }
     } else {
-        NSLog(@"COSMDatastreamCollection::parse: don't know what kind JSON is. Not adding and datastreams to collection.");
-        NSLog(@"COSMDatastreamCollection::parse %@", [JSON class]);
+        NSLog(@"XivelyDatastreamCollection::parse: don't know what kind JSON is. Not adding and datastreams to collection.");
+        NSLog(@"XivelyDatastreamCollection::parse %@", [JSON class]);
         NSLog(@"%@", JSON);
     }
 }

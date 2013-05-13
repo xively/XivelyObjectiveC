@@ -1,8 +1,8 @@
 #import <Foundation/Foundation.h>
 
-@class COSMModel;
+@class XivelyModel;
 
-@protocol COSMModelDelegate <NSObject>
+@protocol XivelyModelDelegate <NSObject>
 
 @optional
 ///---------------------------------------------------------------------------------------
@@ -11,41 +11,41 @@
 
 /** Tells the delegate that the fetch was successful.
     @param model Reference to the model which was fetch */
-- (void)modelDidFetch:(COSMModel *)model;
+- (void)modelDidFetch:(XivelyModel *)model;
 
 /** Tells the delegate that the fetch failed.
- @param model Reference to the model which attempted to fetch 
+ @param model Reference to the model which attempted to fetch
  @param error An error or `nil`
- @param json JSON representation of the error, or a JSON response from Cosm, or `nil` */
-- (void)modelFailedToFetch:(COSMModel *)model withError:(NSError*)error json:(id)JSON;
+ @param json JSON representation of the error, or a JSON response from Xively, or `nil` */
+- (void)modelFailedToFetch:(XivelyModel *)model withError:(NSError*)error json:(id)JSON;
 
 ///---------------------------------------------------------------------------------------
 /// @name Saving
 ///---------------------------------------------------------------------------------------
 
-/** Tells the delegate that the save was successful. 
+/** Tells the delegate that the save was successful.
  @param model Reference to the model which was saved */
-- (void)modelDidSave:(COSMModel *)model;
+- (void)modelDidSave:(XivelyModel *)model;
 
 /** Tells the delegate that the save failed.
- @param model Reference to the model which attempted to saved 
+ @param model Reference to the model which attempted to saved
  @param error An error or `nil`
- @param json JSON representation of the error, or a JSON response from Cosm, or `nil` */
-- (void)modelFailedToSave:(COSMModel *)model withError:(NSError*)error json:(id)JSON;
+ @param json JSON representation of the error, or a JSON response from Xively, or `nil` */
+- (void)modelFailedToSave:(XivelyModel *)model withError:(NSError*)error json:(id)JSON;
 
 ///---------------------------------------------------------------------------------------
 /// @name Deleting
 ///---------------------------------------------------------------------------------------
 
 /** Tells the delegate that the delete was successful.
- @param model Reference to the model which was deleted from Cosm 
+ @param model Reference to the model which was deleted from Xively
  @param error An error or `nil`
- @param json JSON representation of the error, or a JSON response from Cosm, or `nil` */
-- (void)modelDidDeleteFromCOSM:(COSMModel *)model;
+ @param json JSON representation of the error, or a JSON response from Xively, or `nil` */
+- (void)modelDidDeleteFromXively:(XivelyModel *)model;
 
 /** Tells the delegate that the delete was failed.
- @param model Reference to the model which attempted to delete from Cosm 
+ @param model Reference to the model which attempted to delete from Xively
  @param error An error or `nil`
- @param json JSON representation of the error, or a JSON response from Cosm, or `nil` */
-- (void)modelFailedToDeleteFromCOSM:(COSMModel *)model withError:(NSError*)error json:(id)JSON;
+ @param json JSON representation of the error, or a JSON response from Xively, or `nil` */
+- (void)modelFailedToDeleteFromXively:(XivelyModel *)model withError:(NSError*)error json:(id)JSON;
 @end

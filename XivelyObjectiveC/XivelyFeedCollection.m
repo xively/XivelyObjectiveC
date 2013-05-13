@@ -1,8 +1,8 @@
-#import "COSMFeedCollection.h"
-#import "COSMFeedModel.h"
+#import "XivelyFeedCollection.h"
+#import "XivelyFeedModel.h"
 #import "AFJSONRequestOperation.h"
 
-@implementation COSMFeedCollection
+@implementation XivelyFeedCollection
 
 #pragma mark - Data
 
@@ -37,14 +37,14 @@
 
 - (void)removeDeleted {
     NSMutableArray *deletedItems = [NSMutableArray array];
-    COSMFeedModel *feed;
-    
+    XivelyFeedModel *feed;
+
     for (feed in feeds) {
-        if ([feed isDeletedFromCosm]) {
+        if ([feed isDeletedFromXively]) {
             [deletedItems addObject:feed];
         }
     }
-    
+
     [feeds removeObjectsInArray:deletedItems];
 }
 
@@ -53,20 +53,20 @@
     CFPropertyListRef mutableJSONRef  = CFPropertyListCreateDeepCopy(kCFAllocatorDefault, (CFDictionaryRef)JSON, kCFPropertyListMutableContainers);
     NSMutableDictionary *mutableJSON = (__bridge NSMutableDictionary *)mutableJSONRef;
     if (!mutableJSON) { return; }
-    
+
     [self.feeds removeAllObjects];
-    
+
     NSArray *returnedFeeds = [mutableJSON valueForKeyPath:@"results"];
     NSEnumerator *feedsEnumerator = [returnedFeeds objectEnumerator];
     NSDictionary *feedData;
     while (feedData = [feedsEnumerator nextObject]) {
-        COSMFeedModel *feed = [[COSMFeedModel alloc] init];
+        XivelyFeedModel *feed = [[XivelyFeedModel alloc] init];
         [feed parse:feedData];
         [self.feeds addObject:feed];
     }
-    
+
     [mutableJSON removeObjectForKey:@"results"];
-    
+
     self.info = mutableJSON;
 
     CFRelease(mutableJSONRef);
@@ -78,7 +78,7 @@
     if (self=[super init]) {
         feeds = [[NSMutableArray alloc] init];
         info = [[NSMutableDictionary alloc] init];
-		api = [COSMAPI defaultAPI];
+		api = [XivelyAPI defaultAPI];
 	}
     return self;
 }

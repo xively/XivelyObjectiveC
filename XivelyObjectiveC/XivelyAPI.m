@@ -1,13 +1,13 @@
-#import "COSMAPI.h"
+#import "XivelyAPI.h"
 
-@implementation COSMAPI
+@implementation XivelyAPI
 
 #pragma mark - Default Instance
 
-static COSMAPI *defaultAPI = nil;
-+ (COSMAPI *)defaultAPI {
+static XivelyAPI *defaultAPI = nil;
++ (XivelyAPI *)defaultAPI {
     if (!defaultAPI) {
-        defaultAPI = [[COSMAPI alloc] init];
+        defaultAPI = [[XivelyAPI alloc] init];
     }
     return defaultAPI;
 }
@@ -20,7 +20,7 @@ static COSMAPI *defaultAPI = nil;
 
 - (NSURL*)urlForRoute:(NSString*)route {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@?key=%@", apiURLString, route, apiKey]];
-    //NSLog(@"COSMAPI `urlForRoute:` is %@", url);
+    //NSLog(@"XivelyAPI `urlForRoute:` is %@", url);
     return url;
 }
 
@@ -61,9 +61,9 @@ static COSMAPI *defaultAPI = nil;
 
 - (id)init {
     if (self=[super init]) {
-        self.apiURLString = @"http://api.cosm.com/v2";
-        self.socketApiURLString = @"http://api.cosm.com:8080";
-        self.versionString = @"Cosm-ObjectiveC-Lib/1.0";
+        self.apiURLString = @"http://api.xively.com/v2";
+        self.socketApiURLString = @"http://api.xively.com:8080";
+        self.versionString = @"Xively-ObjectiveC-Lib/1.0";
     }
     return self;
 }

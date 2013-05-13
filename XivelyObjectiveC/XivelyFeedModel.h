@@ -1,34 +1,34 @@
-#import "COSMSubscribable.h"
-#import "COSMDatastreamCollection.h"
+#import "XivelySubscribable.h"
+#import "XivelyDatastreamCollection.h"
 
-/** COSMFeedModel is the representation of a feed on Cosm. It can be fetched, saved, deleted, subscribed and unsubscribed to/from Cosm. */
-@interface COSMFeedModel : COSMSubscribable
+/** XivelyFeedModel is the representation of a feed on Xively. It can be fetched, saved, deleted, subscribed and unsubscribed to/from Xively. */
+@interface XivelyFeedModel : XivelySubscribable
 
 ///---------------------------------------------------------------------------------------
 /// @name Data
 ///---------------------------------------------------------------------------------------
 
 /** Container for the feeds datastreams */
-@property (nonatomic, strong) COSMDatastreamCollection *datastreamCollection;
+@property (nonatomic, strong) XivelyDatastreamCollection *datastreamCollection;
 
 ///---------------------------------------------------------------------------------------
 /// @name Synchronisation
 ///---------------------------------------------------------------------------------------
 
-/** Fetches the feed from Cosm. It must have an `id` key in its info dictionary before fetching. The result of the operation will be notified to the model's delegate using the COSModelDelegate protocol.
- 
- @see COSMModelDelegate */
+/** Fetches the feed from Xively. It must have an `id` key in its info dictionary before fetching. The result of the operation will be notified to the model's delegate using the XivelyodelDelegate protocol.
+
+ @see XivelyModelDelegate */
 - (void)fetch;
 
-/** Saves the feed to Cosm. The result of the operation will be notified to the model's delegate using the COSModelDelegate protocol.
- 
- @see COSMModelDelegate */
+/** Saves the feed to Xively. The result of the operation will be notified to the model's delegate using the XivelyodelDelegate protocol.
+
+ @see XivelyModelDelegate */
 - (void)save;
 
-/** Deletes the feed from Cosm. It must have an `id` key in its info dictionary and have its feedId set. The result of the operation will be notified to the model's delegate using the COSModelDelegate protocol and the model's flag isDeletedFromCosm will be set to true. 
- 
- @see COSMModelDelegate */
-- (void)deleteFromCOSM;
+/** Deletes the feed from Xively. It must have an `id` key in its info dictionary and have its feedId set. The result of the operation will be notified to the model's delegate using the XivelyodelDelegate protocol and the model's flag isDeletedFromXively will be set to true.
+
+ @see XivelyModelDelegate */
+- (void)deleteFromXively;
 
 - (void)parse:(id)JSON;
 /* returns the info dictionary without any references

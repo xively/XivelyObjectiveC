@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
-@class COSMDatapointCollection;
+@class XivelyDatapointCollection;
 
-@protocol COSMDatapointCollectionDelegate <NSObject>
+@protocol XivelyDatapointCollectionDelegate <NSObject>
 @optional
 ///---------------------------------------------------------------------------------------
 /// @name Saving
@@ -9,11 +9,11 @@
 
 /** Tells the delegate that the save was successful.
  @param collection Reference to the collection which was saved */
-- (void)datapointCollectionDidSaveAll:(COSMDatapointCollection *)collection;
+- (void)datapointCollectionDidSaveAll:(XivelyDatapointCollection *)collection;
 
 /** Tells the delegate that the save failed.
  @param collection Reference to the collection which attempted to saved
  @param error An error or `nil`
- @param json The JSON representation of the error, a JSON response from Cosm or `nil` */
-- (void)datapointCollectionFailedToSaveAll:(COSMDatapointCollection *)collection withError:(NSError *)error json:(id)JSON;
+ @param json The JSON representation of the error, a JSON response from Xively or `nil` */
+- (void)datapointCollectionFailedToSaveAll:(XivelyDatapointCollection *)collection withError:(NSError *)error json:(id)JSON;
 @end

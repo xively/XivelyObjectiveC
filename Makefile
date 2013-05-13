@@ -3,9 +3,9 @@ documentation:
 	appledoc \
 		--no-repeat-first-par \
 		--print-settings \
-		--project-name COSMObjectiveC \
-		--project-company "COSM Ltd." \
-		--company-id com.cosm \
+		--project-name XivelyObjectiveC \
+		--project-company "Xively Ltd." \
+		--company-id com.xively \
 		--output ~/help \
  		--no-keep-undocumented-objects \
 		--no-keep-undocumented-members \
@@ -17,11 +17,11 @@ documentation:
 		--no-warn-unknown-directive \
 		--no-warn-invalid-crossref \
 		--no-warn-missing-arg \
-		COSMObjectiveC
+		XivelyObjectiveC
 
 publish-docs:
 
-	cp -r ~/Library/Developer/Shared/Documentation/DocSets/com.cosm.COSMObjectiveC.docset/Contents/Resources/Documents/* ../Documentation/
+	cp -r ~/Library/Developer/Shared/Documentation/DocSets/com.xively.XivelyObjectiveC.docset/Contents/Resources/Documents/* ../Documentation/
 	git --git-dir=../Documentation/.git --work-tree=../Documentation status
 	git --git-dir=../Documentation/.git --work-tree=../Documentation add .
 	git --git-dir=../Documentation/.git --work-tree=../Documentation commit -am "automated commit" 
@@ -29,6 +29,6 @@ publish-docs:
 
 open:
 
-	open ~/Library/Developer/Shared/Documentation/DocSets/com.cosm.COSMObjectiveC.docset/Contents/Resources/Documents/index.html
+	open ~/Library/Developer/Shared/Documentation/DocSets/com.xively.XivelyObjectiveC.docset/Contents/Resources/Documents/index.html
 
 .PHONY: documentation publish-docs

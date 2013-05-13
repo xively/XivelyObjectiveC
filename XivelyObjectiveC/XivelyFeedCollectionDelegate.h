@@ -1,8 +1,8 @@
 #import <Foundation/Foundation.h>
 
-@class COSMFeedCollection;
+@class XivelyFeedCollection;
 
-@protocol COSMFeedCollectionDelegate <NSObject>
+@protocol XivelyFeedCollectionDelegate <NSObject>
 @optional
 ///---------------------------------------------------------------------------------------
 /// @name Fetching
@@ -10,12 +10,12 @@
 
 /** Tells the delegate that the fetch was successful.
  @param feedCollection Reference to the collection which was fetch */
-- (void)feedCollectionDidFetch:(COSMFeedCollection *)feedCollection;
+- (void)feedCollectionDidFetch:(XivelyFeedCollection *)feedCollection;
 
 /** Tells the delegate that the fetch failed.
  @param feedCollection Reference to the collection which attempted to fetch
  @param error An error or `nil`
- @param json JSON representation of the error, or a JSON responce from Cosm, or `nil` */
-- (void)feedCollectionFailedToFetch:(COSMFeedCollection *)feedCollection withError:(NSError*)error json:(id)JSON;
+ @param json JSON representation of the error, or a JSON responce from Xively, or `nil` */
+- (void)feedCollectionFailedToFetch:(XivelyFeedCollection *)feedCollection withError:(NSError*)error json:(id)JSON;
 
 @end

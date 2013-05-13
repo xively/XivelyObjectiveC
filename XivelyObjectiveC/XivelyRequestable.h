@@ -1,15 +1,15 @@
 #import <Foundation/Foundation.h>
 
-/** COSMRequestable is a base class used by COSMModel and COSMFeedCollection to add parameters to a `fetch` request. 
- 
- For example, historical queries can be made by adding the paramenters `start` and `end` to a COSMFeedCollection and then calling `fetch` */
-@interface COSMRequestable : NSObject
+/** XivelyRequestable is a base class used by XivelyModel and XivelyFeedCollection to add parameters to a `fetch` request.
+
+ For example, historical queries can be made by adding the paramenters `start` and `end` to a XivelyFeedCollection and then calling `fetch` */
+@interface XivelyRequestable : NSObject
 
 ///---------------------------------------------------------------------------------------
 /// @name Request Data
 ///---------------------------------------------------------------------------------------
 
-/** A mutable dictionary of any request parameter which will be used when a model or collection fetches from Cosm. */
+/** A mutable dictionary of any request parameter which will be used when a model or collection fetches from Xively. */
 @property (strong, nonatomic) NSMutableDictionary *parameters;
 
 /** Convenience method for adding parameters to any models or collection. This is used for adding parameters to any fetch request such as `per_page` or for creating filters for fetch request as in the case of historical queries. */

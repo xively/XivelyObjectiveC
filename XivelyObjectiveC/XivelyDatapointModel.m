@@ -1,8 +1,8 @@
-#import "COSMDatapointModel.h"
+#import "XivelyDatapointModel.h"
 #import "AFJSONRequestOperation.h"
 #import "AFHTTPClient.h"
 
-@implementation COSMDatapointModel
+@implementation XivelyDatapointModel
 
 #pragma mark - Data
 
@@ -32,7 +32,7 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:self.api.versionString forHTTPHeaderField:@"User-Agent"];
-    
+
     NSData *data  = [NSJSONSerialization dataWithJSONObject:@{@"datapoints":@[self.info]} options:NSJSONWritingPrettyPrinted error:nil];
     [request setHTTPBody:data];
     AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -53,7 +53,7 @@
             NSError *jsonError = NULL;
             id JSON;
             // see if the data can be made into data, if not
-            // make something similar to COSM Api error
+            // make something similar to Xively Api error
             // with the error information we have extracted.
             if ([NSJSONSerialization isValidJSONObject:dataToJsonify]) {
                 JSON = [NSJSONSerialization JSONObjectWithData:[dataToJsonify dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments error:&jsonError];
@@ -100,25 +100,25 @@
             }
         }];
     [operation start];
-    
+
 }
 
-- (void)deleteFromCosm {
+- (void)deleteFromXively {
     if (self.feedId == 0) {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToDeleteFromCOSM:withError:json:)]) {
-            [self.delegate modelFailedToDeleteFromCOSM:self withError:nil json:@{ @"Error" : @"Datapoint has no feed id" }];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToDeleteFromXively:withError:json:)]) {
+            [self.delegate modelFailedToDeleteFromXively:self withError:nil json:@{ @"Error" : @"Datapoint has no feed id" }];
         }
         return;
     }
     if (self.datastreamId == nil) {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToDeleteFromCOSM:withError:json:)]) {
-            [self.delegate modelFailedToDeleteFromCOSM:self withError:nil json:@{ @"Error" : @"Datapoint has no datastream id" }];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToDeleteFromXively:withError:json:)]) {
+            [self.delegate modelFailedToDeleteFromXively:self withError:nil json:@{ @"Error" : @"Datapoint has no datastream id" }];
         }
         return;
     }
     if ([self.info objectForKey:@"at"] == nil) {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToDeleteFromCOSM:withError:json:)]) {
-            [self.delegate modelFailedToDeleteFromCOSM:self withError:nil json:@{ @"Error" : @"Datapoint has no `at` value" }];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToDeleteFromXively:withError:json:)]) {
+            [self.delegate modelFailedToDeleteFromXively:self withError:nil json:@{ @"Error" : @"Datapoint has no `at` value" }];
         }
         return;
     }
@@ -128,17 +128,17 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:self.api.versionString forHTTPHeaderField:@"User-Agent"];
     AFHTTPRequestOperation *operation = [httpClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        self.isDeletedFromCosm = YES;
-        if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidDeleteFromCOSM:)]) {
-            [self.delegate modelDidDeleteFromCOSM:self];
+        self.isDeletedFromXively = YES;
+        if (self.delegate && [self.delegate respondsToSelector:@selector(modelDidDeleteFromXively:)]) {
+            [self.delegate modelDidDeleteFromXively:self];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToDeleteFromCOSM:withError:json:)]) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(modelFailedToDeleteFromXively:withError:json:)]) {
             if ([[error userInfo] valueForKeyPath:NSLocalizedRecoverySuggestionErrorKey]) {
                 id JSON = [NSJSONSerialization JSONObjectWithData:[[[error userInfo] valueForKeyPath:NSLocalizedRecoverySuggestionErrorKey]  dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-                [self.delegate modelFailedToDeleteFromCOSM:self withError:error json:JSON];
+                [self.delegate modelFailedToDeleteFromXively:self withError:error json:JSON];
             } else {
-                [self.delegate modelFailedToDeleteFromCOSM:self withError:error json:NULL];
+                [self.delegate modelFailedToDeleteFromXively:self withError:error json:NULL];
             }
         }
     }];

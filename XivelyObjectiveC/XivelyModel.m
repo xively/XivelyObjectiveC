@@ -1,6 +1,6 @@
-#import "COSMModel.h"
+#import "XivelyModel.h"
 
-@implementation COSMModel
+@implementation XivelyModel
 
 #pragma mark - Data
 
@@ -12,9 +12,9 @@
     return NO;
 }
 
-@synthesize isDeletedFromCosm;
+@synthesize isDeletedFromXively;
 
-#pragma mark - Synchronisation 
+#pragma mark - Synchronisation
 
 @synthesize api, delegate;
 
@@ -28,9 +28,9 @@
 
 - (id)init {
     if (self=[super init]) {
-        isDeletedFromCosm = FALSE;
+        isDeletedFromXively = FALSE;
         info = [[NSMutableDictionary alloc] initWithCapacity:25.0f];
-		api = [COSMAPI defaultAPI];
+		api = [XivelyAPI defaultAPI];
 	}
     return self;
 }

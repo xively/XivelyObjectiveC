@@ -1,6 +1,6 @@
-#import "COSMRequestable.h"
+#import "XivelyRequestable.h"
 
-@implementation COSMRequestable
+@implementation XivelyRequestable
 
 @synthesize parameters;
 
