@@ -21,11 +21,11 @@ documentation:
 
 publish-docs:
 
-	cp -r ~/Library/Developer/Shared/Documentation/DocSets/com.xively.XivelyObjectiveC.docset/Contents/Resources/Documents/* ../Documentation/
-	git --git-dir=../Documentation/.git --work-tree=../Documentation status
-	git --git-dir=../Documentation/.git --work-tree=../Documentation add .
-	git --git-dir=../Documentation/.git --work-tree=../Documentation commit -am "automated commit" 
-	git --git-dir=../Documentation/.git --work-tree=../Documentation push origin gh-pages;
+	cp -r ~/Library/Developer/Shared/Documentation/DocSets/com.xively.XivelyObjectiveC.docset/Contents/Resources/Documents/* ./Documentation/
+	git --git-dir=./Documentation/.git --work-tree=./Documentation status
+	git --git-dir=./Documentation/.git --work-tree=./Documentation add .
+	git --git-dir=./Documentation/.git --work-tree=./Documentation commit -am "Updated docs - automated commit"
+	git --git-dir=./Documentation/.git --work-tree=./Documentation push origin gh-pages;
 
 open:
 
