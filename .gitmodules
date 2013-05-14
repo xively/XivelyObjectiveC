@@ -4,3 +4,6 @@
 [submodule "Shared/Libraries/SocketRocket"]
 	path = Shared/Libraries/SocketRocket
 	url = git://github.com/square/SocketRocket.git
+[submodule "Documentation"]
+	path = Documentation
+	url = git://github.com/xively/XivelyObjectiveC.git
