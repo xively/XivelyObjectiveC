@@ -1,5 +1,7 @@
 # XivelyObjectiveC
 
+[![Build Status](https://travis-ci.org/xively/XivelyObjectiveC.png?branch=master)](https://travis-ci.org/xively/XivelyObjectiveC)
+
 An iOS and OSX Objective-C Library for [Xively](http://xively.com/) similar in design to [backbone.js](http://backbonejs.org).
 
 ## Requirements
