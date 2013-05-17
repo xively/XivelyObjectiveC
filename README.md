@@ -312,4 +312,5 @@ A datastream may be updated with live updates from Xively by subscribing a Xivel
     }
 }
 ```
-    
+
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/3c468d6880eb1b349f34ab2e1d6cf07f "githalytics.com")](http://githalytics.com/xively/XivelyObjectiveC)
