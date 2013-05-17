@@ -1,6 +1,6 @@
 [submodule "Shared/Libraries/AFNetworking"]
 	path = Shared/Libraries/AFNetworking
-	url = git@github.com:AFNetworking/AFNetworking.git
+	url = git://github.com/AFNetworking/AFNetworking.git
 [submodule "Shared/Libraries/SocketRocket"]
 	path = Shared/Libraries/SocketRocket
-	url = git@github.com:square/SocketRocket.git
+	url = git://github.com/square/SocketRocket.git
