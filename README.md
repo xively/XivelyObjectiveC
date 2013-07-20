@@ -58,6 +58,14 @@ XivelyAPI *alternativeAPI = [[XivelyApi alloc] init];
 
 ## Examples
 
+
+### See the example code folders for ready-to-use templates of apps that read Xively Feed and Datastreams over socket connections.
+
+![feed](https://xively.github.io/XivelyObjectiveC/img/x_ios_screen_feed.jpeg)
+
+![datastreams](https://xively.github.io/XivelyObjectiveC/img/x_ios_screen_datastream.jpeg)
+
+
 ### Basic example
 
 Add a new datapoint to  Xively
