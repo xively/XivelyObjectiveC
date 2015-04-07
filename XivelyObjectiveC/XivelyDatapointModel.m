@@ -26,7 +26,7 @@
         }
         return;
     }
-    NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%d/datastreams/%@/datapoints", self.feedId, self.datastreamId]];
+    NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%lu/datastreams/%@/datapoints", (unsigned long)self.feedId, self.datastreamId]];
     AFHTTPClient *httpClient = [AFHTTPClient clientWithBaseURL:url];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:nil parameters:nil];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
@@ -85,7 +85,7 @@
         }
         return;
     }
-    NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%d/datastreams/%@/datapoints/%@", self.feedId, self.datastreamId, [self.info objectForKey:@"at"]] withParameters:self.parameters];
+    NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%lu/datastreams/%@/datapoints/%@", (unsigned long)self.feedId, self.datastreamId, [self.info objectForKey:@"at"]] withParameters:self.parameters];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:40.0];
     [request setValue:self.api.versionString forHTTPHeaderField:@"User-Agent"];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
@@ -122,7 +122,7 @@
         }
         return;
     }
-    NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%d/datastreams/%@/datapoints/%@", self.feedId, self.datastreamId, [self.info objectForKey:@"at"]]];
+    NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%lu/datastreams/%@/datapoints/%@", (unsigned long)self.feedId, self.datastreamId, [self.info objectForKey:@"at"]]];
     AFHTTPClient *httpClient = [AFHTTPClient clientWithBaseURL:url];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"DELETE" path:nil parameters:nil];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];

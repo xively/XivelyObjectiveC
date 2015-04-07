@@ -24,7 +24,7 @@
 @synthesize isNew;
 
 - (NSString *)resourceURLString {
-    return [NSString stringWithFormat:@"feeds/%d/datastreams/%@", self.feedId, [self.info valueForKeyPath:@"id"]];
+    return [NSString stringWithFormat:@"feeds/%lu/datastreams/%@", (unsigned long)self.feedId, [self.info valueForKeyPath:@"id"]];
 }
 
 - (void)fetch {
@@ -73,7 +73,7 @@
 
         // POST
         // using the feed api as the datastream api is returning an error?
-        NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%d", self.feedId]];
+        NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%lu", (unsigned long)self.feedId]];
         AFHTTPClient *httpClient = [AFHTTPClient clientWithBaseURL:url];
         NSMutableURLRequest *request = [httpClient requestWithMethod:@"PUT" path:nil parameters:nil];
         [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
@@ -167,7 +167,7 @@
         }
         return;
     }
-    NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%d/datastreams/%@", feedId, datastreamId]];
+    NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%lu/datastreams/%@", (unsigned long)feedId, datastreamId]];
     AFHTTPClient *httpClient = [AFHTTPClient clientWithBaseURL:url];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"DELETE" path:nil parameters:nil];
     [request setValue:self.api.versionString forHTTPHeaderField:@"User-Agent"];
