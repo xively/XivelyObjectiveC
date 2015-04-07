@@ -43,7 +43,7 @@
 		91074F3916E4DE47008418BE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		91074F3B16E4DE47008418BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		91074F3D16E4DE47008418BE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		91074F5616E4DE47008418BE /* TestsTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = TestsTests.octest; path = XivelyObjectiveCTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		91074F5616E4DE47008418BE /* XivelyObjectiveCTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XivelyObjectiveCTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91074F5716E4DE47008418BE /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		91074F5F16E4DE47008418BE /* TestsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestsTests-Info.plist"; sourceTree = "<group>"; };
 		91074F6116E4DE47008418BE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 		91074F3616E4DE47008418BE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				91074F5616E4DE47008418BE /* TestsTests.octest */,
+				91074F5616E4DE47008418BE /* XivelyObjectiveCTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -261,8 +261,8 @@
 			);
 			name = XivelyObjectiveCTests;
 			productName = TestsTests;
-			productReference = 91074F5616E4DE47008418BE /* TestsTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 91074F5616E4DE47008418BE /* XivelyObjectiveCTests.octest */;
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
