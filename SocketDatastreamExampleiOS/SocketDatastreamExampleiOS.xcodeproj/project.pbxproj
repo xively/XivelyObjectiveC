@@ -17,6 +17,7 @@
 		918D6BCC16DF9B5900909170 /* XivelyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BBE16DF9B5900909170 /* XivelyModel.m */; };
 		918D6BCD16DF9B5900909170 /* XivelyRequestable.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BC116DF9B5900909170 /* XivelyRequestable.m */; };
 		918D6BCE16DF9B5900909170 /* XivelySubscribable.m in Sources */ = {isa = PBXBuildFile; fileRef = 918D6BC316DF9B5900909170 /* XivelySubscribable.m */; };
+		918D6BCF16DF9B5900909170 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 918D6BC416DF9B5900909170 /* README.md */; };
 		91A55BC416DCE72400D2F4F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A55BC316DCE72400D2F4F4 /* UIKit.framework */; };
 		91A55BC616DCE72400D2F4F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A55BC516DCE72400D2F4F4 /* Foundation.framework */; };
 		91A55BC816DCE72400D2F4F4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A55BC716DCE72400D2F4F4 /* CoreGraphics.framework */; };
@@ -73,6 +74,7 @@
 		918D6BC116DF9B5900909170 /* XivelyRequestable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XivelyRequestable.m; path = ../XivelyObjectiveC/XivelyRequestable.m; sourceTree = "<group>"; };
 		918D6BC216DF9B5900909170 /* XivelySubscribable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XivelySubscribable.h; path = ../XivelyObjectiveC/XivelySubscribable.h; sourceTree = "<group>"; };
 		918D6BC316DF9B5900909170 /* XivelySubscribable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XivelySubscribable.m; path = ../XivelyObjectiveC/XivelySubscribable.m; sourceTree = "<group>"; };
+		918D6BC416DF9B5900909170 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../XivelyObjectiveC/README.md; sourceTree = "<group>"; };
 		91A55BBF16DCE72400D2F4F4 /* SocketDatastreamExampleiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocketDatastreamExampleiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91A55BC316DCE72400D2F4F4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		91A55BC516DCE72400D2F4F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -122,7 +124,7 @@
 		91A55C9F16DD5BBB00D2F4F4 /* Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = ../Shared/Utilites/Utils.m; sourceTree = "<group>"; };
 		91A55CA116DD612400D2F4F4 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
 		91A55CA316DD612A00D2F4F4 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
-		91D7530116E77547005D5DDA /* XivelyDatapointCollectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XivelyDatapointCollectionDelegate.h; path = ../XivelyObjectiveC/XivelyDatapointCollectionDelegate.h; sourceTree = "<group>"; };
+		91D7530116E77547005D5DDA /* XivelyDatapointCollectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = XivelyDatapointCollectionDelegate.h; path = ../XivelyObjectiveC/XivelyDatapointCollectionDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 				918D6BC116DF9B5900909170 /* XivelyRequestable.m */,
 				918D6BC216DF9B5900909170 /* XivelySubscribable.h */,
 				918D6BC316DF9B5900909170 /* XivelySubscribable.m */,
+				918D6BC416DF9B5900909170 /* README.md */,
 			);
 			name = XivelyObjectiveC;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				91A55BDD16DCE72400D2F4F4 /* MainStoryboard.storyboard in Resources */,
 				91A55CA216DD612400D2F4F4 /* Icon.png in Resources */,
 				91A55CA416DD612A00D2F4F4 /* Icon@2x.png in Resources */,
+				918D6BCF16DF9B5900909170 /* README.md in Resources */,
 				91D7530216E77547005D5DDA /* XivelyDatapointCollectionDelegate.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
