@@ -31,7 +31,7 @@
         }
         return;
     }
-    NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%d/datastreams/%@/datapoints", self.feedId, self.datastreamId]];
+    NSURL *url = [self.api urlForRoute:[NSString stringWithFormat:@"feeds/%lu/datastreams/%@/datapoints", (unsigned long)self.feedId, self.datastreamId]];
     AFHTTPClient *httpClient = [AFHTTPClient clientWithBaseURL:url];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:nil parameters:nil];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
